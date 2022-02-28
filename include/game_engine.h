@@ -63,4 +63,25 @@ typedef struct addon_s {
     event_functions_t on_scene_loaded;
 } addon_t;
 
+engine_t *init_game(sfVideoMode *video, char const *title);
+int open_game(engine_t *engine, int fps);
+sfBool change_scene(char const *name, engine_t *engine);
+int destroy_game(engine_t *engine);
+int init_text(engine_t *engine);
+sfBool add_font(engine_t *engine);
+sfBool print_text(char const *text, sfVector2f position, engine_t *engine);
+sfBool change_font(char const *name, engine_t *engine);
+int destroy_text(engine_t *engine);
+int init_scene(char const *name, sfBool const_scene, engine_t *engine);
+int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine);
+int destroy_scene(scene_t *scene, engine_t *engine);
+int create_object(char const *name, engine_t *engine);
+int create_object_by_list(list_t *object, engine_t *engine);
+int destroy_object(object_t *object, engine_t *engine);
+int init_entity(char const *texture, object_t *object);
+int destroy_entity(object_t *object);
+sfBool set_active(sfBool value, object_t *object, engine_t *engine);
+sfBool add_function(event_functions_t functions, float time);
+float get_delta(engine_t *engine);
+
 #endif
