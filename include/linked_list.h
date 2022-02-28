@@ -110,4 +110,13 @@ node_t *create_newnode(int id);
  */
 void free_node(node_t *node);
 
+/**
+ * @brief searches a node from a given key
+ * 
+ * @param list the list where to search the node
+ * @param key the key we need to find
+ * @return node_t* NULL if not found or the node we are looking for
+ */
+node_t *search_from_key(list_t *list, char *key);
+
 #endif
