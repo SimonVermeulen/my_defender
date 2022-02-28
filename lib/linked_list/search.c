@@ -36,18 +36,3 @@ node_t *search_from_key(list_t *list, char *key)
     return (NULL);
 }
 
-node_t *search_from_id(list_t *list, int id)
-{
-    node_t *current = NULL;
-
-    if (!list)
-        return (NULL);
-    current = list->head;
-    for (int i = 0; i < list->nb_elements; i++) {
-        if (id == current->id)
-            return (current);
-        current = current->next;
-    }
-    write(2, "Error: can't find node with this id\n", 37);
-    return (NULL);
-}
