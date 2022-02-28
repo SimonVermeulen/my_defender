@@ -8,14 +8,13 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-node_t *create_newnode(int id)
+node_t *create_newnode(void)
 {
     node_t *new_node = NULL;
 
     new_node = malloc(sizeof(node_t));
     if (!new_node)
         return (NULL);
-    new_node->id = id;
     new_node->type = -1;
     new_node->len = 0;
     new_node->value = NULL;

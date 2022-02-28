@@ -37,7 +37,7 @@ static int get_single_object(const char *buff, node_t *new_node)
     if (!list)
         return (-1);
     for (; buff[len] && buff[len] != '}' && !stop;) {
-        tmp = create_newnode(list->nb_elements);
+        tmp = create_newnode();
         len = get_buff_infos(buff, tmp, len);
         stop = (len < 0) ? 1 : 0;
         push_element(list, tmp);

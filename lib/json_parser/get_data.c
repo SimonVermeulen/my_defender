@@ -17,7 +17,7 @@ list_t *get_data(char *buffer)
 
     list = create_empty_list();
     for (int i = 0; buffer[i] && buffer[i] != '}';) {
-        tmp = create_newnode(list->nb_elements);
+        tmp = create_newnode();
         i = get_key(buffer, i, tmp);
         if (i < 0)
             return (NULL);

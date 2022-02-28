@@ -19,7 +19,6 @@
  * - len : the nb of elements of the current value (if it's an array)
  * - key : the key linked to the current node
  * - value : the value of the current node
- * - id : the id of the current node
  */
 typedef struct node_s {
     struct node_s *prev;
@@ -28,7 +27,6 @@ typedef struct node_s {
     int len;
     char *key;
     void *value;
-    int id;
 } node_t;
 
 /**
@@ -98,10 +96,9 @@ int shift_element(list_t *list);
 /**
  * @brief Create an empty_node to fill
  * 
- * @param id the nb of current elements
  * @return node_t* the empty node created and allocated
  */
-node_t *create_newnode(int id);
+node_t *create_newnode(void);
 
 /**
  * @brief Free the given node
