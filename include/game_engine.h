@@ -9,6 +9,7 @@
     #define GAME_ENGINE_H
     #include <SFML/Graphics.h>
     #include "linked_list.h"
+    #define ERROR 84
 
 typedef struct scene_s {
     list_t *objects;
@@ -68,7 +69,7 @@ int open_game(engine_t *engine, int fps);
 sfBool change_scene(char const *name, engine_t *engine);
 int destroy_game(engine_t *engine);
 int init_text(engine_t *engine);
-sfBool add_font(engine_t *engine);
+sfBool add_font(char const *font, engine_t *engine);
 sfBool print_text(char const *text, sfVector2f position, engine_t *engine);
 sfBool change_font(char const *name, engine_t *engine);
 int destroy_text(engine_t *engine);
