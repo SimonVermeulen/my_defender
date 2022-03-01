@@ -28,7 +28,7 @@ typedef struct text_s {
 
 typedef struct engine_s {
     list_t *scenes;
-    int actual_scene;
+    scene_t *actual_scene;
     scene_t *const_scene;
     sfRenderWindow *window;
     sfEvent event;
