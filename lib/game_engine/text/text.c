@@ -28,18 +28,21 @@ sfBool add_font(char const *font, engine_t *engine)
     return sfTrue;
 }
 
-sfBool draw_text(char const *text, sfVector2f position, engine_t *engine)
+sfBool print_text(char const *text, sfVector2f position, engine_t *engine)
 {
 
 }
 
-sfBool print_text(char const *text, sfVector2f position, engine_t *engine)
+sfBool draw_text(print_text_t *data, engine_t *engine)
 {
-    if (text == NULL || engine == NULL)
+    if (data->text == NULL || engine == NULL)
         return sfFalse;
-    sfText_setPosition(engine->text.text, position);
-    sfText_setString(engine->text.text, text);
+    sfText_setFont(engine->text.text, data->font);
+    sfText_setPosition(engine->text.text, data->position);
+    sfText_setString(engine->text.text, data->text);
     sfRenderWindow_drawText(engine->window, engine->text.text, NULL);
+    free(data->text);
+    free(data);
     return sfTrue;
 }
 
