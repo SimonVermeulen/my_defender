@@ -17,4 +17,28 @@ sfBool change_scene(char const *name, engine_t *engine)
     if (current == NULL)
         return sfFalse;
     engine->actual_scene = current->value;
+    return sfTrue;
+}
+
+int destroy_scene(scene_t *scene)
+{
+    node_t *node = NULL;
+
+    if (scene == NULL)
+        return ERROR;
+    while (scene->objects != 0) {
+        node = scene->objects->head;
+        destroy_object(node->value);
+        free(node->key);
+        shift_element(scene->objects);
+    }
+    free(scene->objects);
+    while (scene->canvas != 0) {
+        node = scene->canvas->head;
+        destroy_object(node->value);
+        free(node->key);
+        shift_element(scene->canvas);
+    }
+    free(scene->canvas);
+    return 0;
 }

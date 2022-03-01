@@ -31,6 +31,17 @@ engine_t *init_game(sfVideoMode video, char const *title)
     return instance;
 }
 
+void destroy_engine(engine_t *engine)
+{
+    destroy_scene(engine->const_scene);
+    destroy_text(engine);
+    destroy_addons(engine->addons);
+    destroy_functions(engine->functions);
+    destroy_print_list(engine, sfTrue);
+    sfRenderWindow_destroy(engine->window);
+    sfView_destroy(engine->view);
+}
+
 int destroy_game(engine_t *engine)
 {
     node_t *node = NULL;
@@ -39,17 +50,12 @@ int destroy_game(engine_t *engine)
         return ERROR;
     while (engine->scenes->nb_elements != 0) {
         node = engine->scenes->head;
-        destroy_scene(engine->scenes->head, engine);
+        destroy_scene(engine->scenes->head);
+        free(node->key);
         shift_element(engine->scenes);
     }
     free(engine->scenes);
-    destroy_scene(engine->const_scene, engine);
-    destroy_text(engine);
-    destroy_addons(engine->addons);
-    destroy_functions(engine->functions);
-    destroy_print_list(engine, sfTrue);
-    sfRenderWindow_destroy(engine->window);
-    sfView_destroy(engine->view);
+    destroy_engine(engine);
     free(engine);
     return 0;
 }

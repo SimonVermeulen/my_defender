@@ -6,6 +6,7 @@
 */
 
 #include "game_engine.h"
+#include "libma.h"
 
 int init_text(engine_t *engine)
 {
@@ -24,7 +25,7 @@ sfBool add_font(char const *font, char const *name, engine_t *engine)
     if (engine == NULL || font == NULL || name == NULL)
         return sfFalse;
     node->value = font;
-    node->key = name;
+    node->key = my_strdup(name);
     push_element(engine->text.fonts, node);
     return sfTrue;
 }

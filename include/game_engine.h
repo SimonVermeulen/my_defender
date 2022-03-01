@@ -50,6 +50,7 @@ typedef struct entity_s {
 typedef struct object_s {
     sfBool isActive;
     list_t *addons;
+    list_t *addons_data;
     entity_t *entity;
 } object_t;
 
@@ -57,6 +58,7 @@ typedef int (*event_functions_t) (object_t *, engine_t *);
 
 typedef struct addon_s {
     void *data;
+    event_functions_t init;
     event_functions_t on_enable;
     event_functions_t on_disable;
     event_functions_t on_tick;
@@ -69,6 +71,7 @@ int open_game(engine_t *engine, int fps);
 int destroy_game(engine_t *engine);
 
 void *get_addon(char const *name, object_t *object);
+sfBool create_addon(char const *name, addon_t *addon, engine_t *engine);
 sfBool add_addon(char const *name, object_t *object, engine_t *engine);
 int destroy_addons(list_t *addon);
 
@@ -97,11 +100,11 @@ int destroy_text(engine_t *engine);
 int init_scene(char const *name, sfBool const_scene, engine_t *engine);
 sfBool change_scene(char const *name, engine_t *engine);
 int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine);
-int destroy_scene(scene_t *scene, engine_t *engine);
+int destroy_scene(scene_t *scene);
 
 int create_object(char const *name, engine_t *engine);
 int create_object_by_list(list_t *object, engine_t *engine);
-int destroy_object(object_t *object, engine_t *engine);
+int destroy_object(object_t *object);
 
 int init_entity(char const *texture, object_t *object);
 int print_entity(object_t *object);
