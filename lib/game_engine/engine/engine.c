@@ -31,7 +31,7 @@ engine_t *init_game(sfVideoMode video, char const *title)
     return instance;
 }
 
-int destroy_window(engine_t *engine)
+int destroy_game(engine_t *engine)
 {
     node_t *node = NULL;
 
