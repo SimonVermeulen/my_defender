@@ -68,8 +68,6 @@ engine_t *init_game(sfVideoMode video, char const *title);
 int open_game(engine_t *engine, int fps);
 int destroy_game(engine_t *engine);
 
-int destroy_functions(engine_t *engine);
-
 void *get_addon(char const *name, object_t *object);
 sfBool add_addon(char const *name, object_t *object, engine_t *engine);
 int destroy_addons(list_t *addon);
@@ -80,12 +78,19 @@ typedef struct print_text_s {
     sfVector2f position;
 } print_text_t;
 
+typedef struct print_node_s {
+    print_text_t *print_text;
+    entity_t *print_entity;
+    int order;
+} print_node_t;
+
 int print_list(engine_t *engine);
-int destroy_print_list(engine_t *engine);
+sfBool add_print(print_text_t *print, entity_t *entity, int order, engine_t *engine);
+int destroy_print_list(engine_t *engine, sfBool final);
 
 int init_text(engine_t *engine);
-sfBool add_font(char const *font, engine_t *engine);
-sfBool print_text(char const *text, sfVector2f position, engine_t *engine);
+sfBool add_font(char const *font, char const *name, engine_t *engine);
+sfBool print_text(char const *text, sfVector2f position, int order, engine_t *engine);
 sfBool draw_text(print_text_t *data, engine_t *engine);
 int destroy_text(engine_t *engine);
 
@@ -104,6 +109,7 @@ int destroy_entity(object_t *object);
 
 sfBool set_active(sfBool value, object_t *object, engine_t *engine);
 sfBool add_function(event_functions_t functions, float time);
+int destroy_functions(engine_t *engine);
 float get_delta(engine_t *engine);
 
 #endif

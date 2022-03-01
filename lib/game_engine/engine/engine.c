@@ -47,7 +47,7 @@ int destroy_game(engine_t *engine)
     destroy_text(engine);
     destroy_addons(engine->addons);
     destroy_functions(engine->functions);
-    destroy_print_list(engine);
+    destroy_print_list(engine, sfTrue);
     sfRenderWindow_destroy(engine->window);
     sfView_destroy(engine->view);
     free(engine);

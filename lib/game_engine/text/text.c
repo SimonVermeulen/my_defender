@@ -16,21 +16,30 @@ int init_text(engine_t *engine)
     return 0;
 }
 
-sfBool add_font(char const *font, engine_t *engine)
+sfBool add_font(char const *font, char const *name, engine_t *engine)
 {
     sfFont *font = sfFont_createFromFile(font);
     node_t *node = create_newnode(0);
 
-    if (engine == NULL || font == NULL)
+    if (engine == NULL || font == NULL || name == NULL)
         return sfFalse;
     node->value = font;
+    node->key = name;
     push_element(engine->text.fonts, node);
     return sfTrue;
 }
 
-sfBool print_text(char const *text, sfVector2f position, engine_t *engine)
+sfBool print_text(char const *text, sfVector2f position, int order, engine_t *engine)
 {
+    print_text_t *data = NULL;
 
+    if (engine == NULL || text == NULL)
+        return sfFalse;
+    data = malloc(sizeof(print_text_t));
+    data->font = sfText_getFont(engine->text.text);
+    data->position = position;
+    data->text = text;
+    return sfTrue;
 }
 
 sfBool draw_text(print_text_t *data, engine_t *engine)
