@@ -102,8 +102,8 @@ sfBool change_scene(char const *name, engine_t *engine);
 int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine);
 int destroy_scene(scene_t *scene);
 
-int create_object(char const *name, engine_t *engine);
-int create_object_by_list(list_t *object, engine_t *engine);
+int create_object(char const *name, list_t *scene);
+int create_object_by_list(list_t *object, list_t *scene);
 int destroy_object(object_t *object);
 
 int init_entity(char const *texture, object_t *object);
