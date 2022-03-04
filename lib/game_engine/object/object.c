@@ -41,3 +41,23 @@ int destroy_object(object_t *object)
     free(object);
     return 0;
 }
+
+sfBool set_active(sfBool value, object_t *object, engine_t *engine)
+{
+    node_t *node = NULL;
+    addon_t *addon = NULL;
+
+    if (object == NULL || engine == NULL || object->isActive == value)
+        return sfFalse;
+    object->isActive = value;
+    node = object->addons->head;
+    for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
+        addon = node->value;
+        if (object->isActive == sfTrue) {
+            add_function(addon->on_enable, 0);
+            continue;
+        }
+        add_function(addon->on_disable, 0);
+    }
+    return sfTrue;
+}
