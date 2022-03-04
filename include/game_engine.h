@@ -105,12 +105,12 @@ int destroy_scene(scene_t *scene);
 int create_object(char const *name, list_t *scene);
 int create_object_by_list(list_t *object, list_t *scene);
 int destroy_object(object_t *object);
+sfBool set_active(sfBool value, object_t *object, engine_t *engine);
 
-int init_entity(char const *texture, object_t *object);
-int print_entity(object_t *object);
+int init_entity(int order, char const *texture, object_t *object);
+int print_entity(object_t *object, engine_t *engine);
 int destroy_entity(object_t *object);
 
-sfBool set_active(sfBool value, object_t *object, engine_t *engine);
 sfBool add_function(event_functions_t functions, float time);
 int destroy_functions(engine_t *engine);
 float get_delta(engine_t *engine);
