@@ -111,7 +111,14 @@ int init_entity(int order, char const *texture, object_t *object);
 int print_entity(object_t *object, engine_t *engine);
 int destroy_entity(object_t *object);
 
-sfBool add_function(event_functions_t functions, float time);
+typedef struct execute_function_s {
+    float time;
+    event_functions_t function;
+    object_t *object;
+} execute_function_t;
+
+sfBool add_function(event_functions_t function, float time, object_t *object, engine_t *engine);
+int execute_functions(engine_t *engine);
 int destroy_functions(engine_t *engine);
 float get_delta(engine_t *engine);
 

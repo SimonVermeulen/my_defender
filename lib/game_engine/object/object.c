@@ -54,10 +54,10 @@ sfBool set_active(sfBool value, object_t *object, engine_t *engine)
     for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
         addon = node->value;
         if (object->isActive == sfTrue) {
-            add_function(addon->on_enable, 0);
+            add_function(addon->on_enable, 0, object, engine);
             continue;
         }
-        add_function(addon->on_disable, 0);
+        add_function(addon->on_disable, 0, object, engine);
     }
     return sfTrue;
 }
