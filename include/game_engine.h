@@ -9,6 +9,7 @@
     #define GAME_ENGINE_H
     #include <SFML/Graphics.h>
     #include "linked_list.h"
+    #include "json_parser.h"
     #define ERROR 84
 
 typedef struct scene_s {
@@ -97,13 +98,12 @@ sfBool print_text(char const *text, sfVector2f position, int order, engine_t *en
 sfBool draw_text(print_text_t *data, engine_t *engine);
 int destroy_text(engine_t *engine);
 
-int init_scene(char const *name, sfBool const_scene, engine_t *engine);
+scene_t *init_scene(char const *name, sfBool const_scene, engine_t *engine);
 sfBool change_scene(char const *name, engine_t *engine);
 int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine);
 int destroy_scene(scene_t *scene);
 
-int create_object(char const *name, list_t *scene);
-int create_object_by_list(list_t *object, list_t *scene);
+object_t *create_object(char const *name, list_t *scene);
 int destroy_object(object_t *object);
 sfBool set_active(sfBool value, object_t *object, engine_t *engine);
 
