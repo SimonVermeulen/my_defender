@@ -59,7 +59,6 @@ typedef int (*event_functions_t) (object_t *, engine_t *);
 
 typedef struct addon_s {
     void *data;
-    event_functions_t init;
     event_functions_t on_enable;
     event_functions_t on_disable;
     event_functions_t on_tick;
@@ -122,6 +121,8 @@ typedef struct execute_function_s {
 sfBool add_function(event_functions_t function, float time, object_t *object, engine_t *engine);
 int execute_functions(engine_t *engine);
 int destroy_functions(engine_t *engine);
+
 float get_delta(engine_t *engine);
+int set_time(engine_t *engine);
 
 #endif
