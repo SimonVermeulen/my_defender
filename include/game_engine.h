@@ -109,7 +109,7 @@ int destroy_object(object_t *object);
 sfBool set_active(sfBool value, object_t *object, engine_t *engine);
 
 int init_entity(int order, char const *texture, object_t *object);
-int init_entity_by_list(list *entity, object_t *object);
+int init_entity_by_list(list_t *entity_list, object_t *object);
 int print_entity(object_t *object, engine_t *engine);
 int destroy_entity(object_t *object);
 

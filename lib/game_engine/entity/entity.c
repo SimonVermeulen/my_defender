@@ -7,6 +7,19 @@
 
 #include "game_engine.h"
 
+int init_entity_by_list(list_t *entity_list, object_t *object)
+{
+    node_t *texture = NULL;
+    node_t *order = NULL;
+
+    texture = search_from_key(entity_list, "name");
+    order = search_from_key(entity_list , "order");
+    if (texture == NULL || texture->type != 4 || order == NULL ||
+        order->type != 3)
+        return ERROR;
+    return init_entity(*(int *)order->value, texture->value, object);
+}
+
 int init_entity(int order, char const *texture, object_t *object)
 {
     sfSprite *sprite = NULL;
