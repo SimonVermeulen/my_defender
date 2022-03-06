@@ -23,7 +23,7 @@ object_t *create_object(char const *name, list_t *scene)
     if (node == NULL || string == NULL || object == NULL)
         return NULL;
     object->addons = create_empty_list();
-    object->addons_data = create_empty_list();
+    object->addons_data = NULL;
     object->isActive = sfTrue;
     object->entity = NULL;
     if (object->addons == NULL || object->addons_data == NULL)
