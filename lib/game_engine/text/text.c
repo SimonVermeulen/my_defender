@@ -6,6 +6,7 @@
 */
 
 #include "game_engine.h"
+#include "libma.h"
 
 int init_text(engine_t *engine)
 {
@@ -16,30 +17,42 @@ int init_text(engine_t *engine)
     return 0;
 }
 
-sfBool add_font(char const *font, engine_t *engine)
+sfBool add_font(char const *font, char const *name, engine_t *engine)
 {
     sfFont *font = sfFont_createFromFile(font);
     node_t *node = create_newnode(0);
 
-    if (engine == NULL || font == NULL)
+    if (engine == NULL || font == NULL || name == NULL)
         return sfFalse;
     node->value = font;
+    node->key = my_strdup(name);
     push_element(engine->text.fonts, node);
     return sfTrue;
 }
 
-sfBool draw_text(char const *text, sfVector2f position, engine_t *engine)
+sfBool print_text(char const *text, sfVector2f position, int order, engine_t *engine)
 {
+    print_text_t *data = NULL;
 
+    if (engine == NULL || text == NULL)
+        return sfFalse;
+    data = malloc(sizeof(print_text_t));
+    data->font = sfText_getFont(engine->text.text);
+    data->position = position;
+    data->text = text;
+    return sfTrue;
 }
 
-sfBool print_text(char const *text, sfVector2f position, engine_t *engine)
+sfBool draw_text(print_text_t *data, engine_t *engine)
 {
-    if (text == NULL || engine == NULL)
+    if (data->text == NULL || engine == NULL)
         return sfFalse;
-    sfText_setPosition(engine->text.text, position);
-    sfText_setString(engine->text.text, text);
+    sfText_setFont(engine->text.text, data->font);
+    sfText_setPosition(engine->text.text, data->position);
+    sfText_setString(engine->text.text, data->text);
     sfRenderWindow_drawText(engine->window, engine->text.text, NULL);
+    free(data->text);
+    free(data);
     return sfTrue;
 }
 
