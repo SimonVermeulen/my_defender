@@ -28,7 +28,7 @@ void free_list(list_t *list)
 
     while (current != list->head) {
         tmp = current->prev;
-        delete_node(current);
+        free_node(current);
         current = tmp;
     }
     delete_node(list->head);
