@@ -101,6 +101,14 @@ int shift_element(list_t *list);
 node_t *create_newnode(void);
 
 /**
+ * @brief Deletes the node in list at the given index
+ * 
+ * @param list the list where to destroy the node
+ * @param index the index where to destroy the node
+ */
+void splice(list_t *list, int index);
+
+/**
  * @brief Free the given node
  * 
  * @param node the node to delete
