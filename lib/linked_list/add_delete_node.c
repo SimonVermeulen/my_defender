@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-node_t *create_newnode(void)
+node_t *create_emptynode(void)
 {
     node_t *new_node = NULL;
 
