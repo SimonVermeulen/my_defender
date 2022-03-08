@@ -31,6 +31,6 @@ void free_list(list_t *list)
         free_node(current);
         current = tmp;
     }
-    delete_node(list->head);
+    free_node(list->head);
     free(list);
 }
