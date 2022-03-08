@@ -98,7 +98,25 @@ int shift_element(list_t *list);
  * 
  * @return node_t* the empty node created and allocated
  */
-node_t *create_newnode(void);
+node_t *create_emptynode(void);
+
+/**
+ * @brief Create a newnode object from value + type + len
+ * 
+ * @param value the value of the node
+ * @param type the type of the node
+ * @param len the len of the node if it's an array
+ * @return node_t* the node created
+ */
+node_t *create_newnode(void *value, int type, int len);
+
+/**
+ * @brief Deletes the node in list at the given index
+ * 
+ * @param list the list where to destroy the node
+ * @param index the index where to destroy the node
+ */
+void splice(list_t *list, int index);
 
 /**
  * @brief Free the given node
