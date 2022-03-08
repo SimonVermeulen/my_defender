@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-node_t *create_newnode(void)
+node_t *create_emptynode(void)
 {
     node_t *new_node = NULL;
 
@@ -23,6 +23,33 @@ node_t *create_newnode(void)
     new_node->prev = NULL;
 
     return (new_node);
+}
+
+node_t *create_newnode(void *value, int type, int len)
+{
+    node_t *new_node = NULL;
+
+    new_node = create_emptynode();
+    if (!new_node)
+        return (NULL);
+    new_node->value = value;
+    new_node->type = type;
+    new_node->len = len;
+    return (new_node);
+}
+
+void splice(list_t *list, int index)
+{
+    node_t *current_node = NULL;
+
+    for (int i = 0; i < index; i++)
+        current_node = current_node->next;
+    if (current_node == list->head)
+        current_node->next = list->head;
+    current_node->prev->next = current_node->next;
+    current_node->next->prev = current_node->prev;
+    free_node(current_node);
+    list->nb_elements--;
 }
 
 //à coder
