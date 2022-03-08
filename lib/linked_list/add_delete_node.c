@@ -25,6 +25,19 @@ node_t *create_emptynode(void)
     return (new_node);
 }
 
+node_t *create_newnode(void *value, int type, int len)
+{
+    node_t *new_node = NULL;
+
+    new_node = create_emptynode();
+    if (!new_node)
+        return (NULL);
+    new_node->value = value;
+    new_node->type = type;
+    new_node->len = len;
+    return (new_node);
+}
+
 void splice(list_t *list, int index)
 {
     node_t *current_node = NULL;
