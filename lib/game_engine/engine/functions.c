@@ -5,10 +5,6 @@
 ** functions.c
 */
 
-void splice(list_t *list, int index)
-{
-}
-
 #include "game_engine.h"
 
 sfBool add_function(event_functions_t function, float time, object_t *object, engine_t *engine)

@@ -12,7 +12,7 @@ sfBool change_scene(char const *name, engine_t *engine)
     node_t *current = NULL;
 
     if (engine == NULL)
-        return NULL;
+        return sfFalse;
     current = search_from_key(engine->scenes, name);
     if (current == NULL)
         return sfFalse;

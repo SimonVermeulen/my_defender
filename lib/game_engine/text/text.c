@@ -17,20 +17,20 @@ int init_text(engine_t *engine)
     return 0;
 }
 
-sfBool add_font(char const *font, char const *name, engine_t *engine)
+sfBool add_font(char const *font_name, char const *name, engine_t *engine)
 {
-    sfFont *font = sfFont_createFromFile(font);
-    node_t *node = create_newnode(0);
+    sfFont *font = sfFont_createFromFile(font_name);
+    node_t *node = malloc(sizeof(node_t));
 
-    if (engine == NULL || font == NULL || name == NULL)
+    if (engine == NULL || font == NULL || name == NULL || node == NULL)
         return sfFalse;
     node->value = font;
-    node->key = my_strdup(name);
+    node->key = my_strdup(font_name);
     push_element(engine->text.fonts, node);
     return sfTrue;
 }
 
-sfBool print_text(char const *text, sfVector2f position, int order, engine_t *engine)
+sfBool print_text(char const *text, sfVector2f position, engine_t *engine)
 {
     print_text_t *data = NULL;
 
@@ -51,7 +51,6 @@ sfBool draw_text(print_text_t *data, engine_t *engine)
     sfText_setPosition(engine->text.text, data->position);
     sfText_setString(engine->text.text, data->text);
     sfRenderWindow_drawText(engine->window, engine->text.text, NULL);
-    free(data->text);
     free(data);
     return sfTrue;
 }
@@ -65,8 +64,8 @@ int destroy_text(engine_t *engine)
         return ERROR;
     fonts = engine->text.fonts;
     while (fonts->nb_elements != 0) {
-        fonts = fonts->head;
-        sfFont_destroy(fonts->head->value);
+        temp = fonts->head;
+        sfFont_destroy(temp->value);
         shift_element(fonts);       
     }
     sfText_destroy(engine->text.text);

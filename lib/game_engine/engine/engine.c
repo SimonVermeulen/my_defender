@@ -25,7 +25,7 @@ engine_t *init_game(sfVideoMode video, char const *title)
         instance->view == NULL || instance->window == NULL ||
         instance->time.delta == NULL || instance->time.time == NULL ||
         init_text(instance) == ERROR || init_scene("const_scene", sfTrue,
-        instance) == ERROR)
+        instance) == NULL)
         return NULL;
     instance->actual_scene = 0;
     return instance;
@@ -36,7 +36,7 @@ void destroy_engine(engine_t *engine)
     destroy_scene(engine->const_scene);
     destroy_text(engine);
     destroy_addons(engine->addons);
-    destroy_functions(engine->functions);
+    destroy_functions(engine);
     destroy_print_list(engine, sfTrue);
     sfRenderWindow_destroy(engine->window);
     sfView_destroy(engine->view);
@@ -50,7 +50,7 @@ int destroy_game(engine_t *engine)
         return ERROR;
     while (engine->scenes->nb_elements != 0) {
         node = engine->scenes->head;
-        destroy_scene(engine->scenes->head);
+        destroy_scene(node->value);
         free(node->key);
         shift_element(engine->scenes);
     }
