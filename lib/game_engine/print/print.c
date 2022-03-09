@@ -26,7 +26,7 @@ void make_bubble_sort_print(list_t *stack)
     for (int i = 0; i < stack->nb_elements; i++, traveler_a = traveler_a->next){
         for (int j = 0; j < stack->nb_elements; j++, traveler_b =
             traveler_b->next)
-            switch_element_sort(traveler_a->value, traveler_b->value);
+            switch_element_sort_print(traveler_a->value, traveler_b->value);
         traveler_b = stack->head;
     }
 }
@@ -62,8 +62,8 @@ sfBool add_print(print_text_t *print, entity_t *entity, int order,
 
     if (print_node == NULL || node == NULL)
         return sfFalse;
-    print_node->print_entity = print;
-    print_node->print_text = entity;
+    print_node->print_entity = entity;
+    print_node->print_text = print;
     print_node->order = order;
     node->value = print_node;
     push_element(engine->print_sprites, node);

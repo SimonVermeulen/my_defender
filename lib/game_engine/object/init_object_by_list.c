@@ -42,7 +42,6 @@ int add_object_by_list(list_t *object_list, list_t *scene, engine_t *engine)
     object_t *object = NULL;
     node_t *name = NULL;
     node_t *entity = NULL;
-    node_t *addon = NULL;
 
     name = search_from_key(object_list, "name");
     if (name == NULL || name->type != 4)
@@ -54,4 +53,5 @@ int add_object_by_list(list_t *object_list, list_t *scene, engine_t *engine)
     if (entity != NULL && name->type == 10)
         init_entity_by_list(entity->value, object);
     add_addon_by_list(object_list, engine, object);
+    return 0;
 }

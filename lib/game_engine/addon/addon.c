@@ -5,6 +5,7 @@
 ** addon.c
 */
 
+#include <stdlib.h>
 #include "game_engine.h"
 #include "libma.h"
 

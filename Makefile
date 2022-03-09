@@ -11,13 +11,14 @@ OBJ 			=		$(SRC:.c=.o)
 
 NAME 			= 		my_defender
 
-LIBFLAG 		= 		lib/liblist.a lib/libjson_parser.a lib/libmy.a lib/libma.a
+LIBFLAG 		= 		lib/liblist.a lib/libjson_parser.a lib/libmy.a lib/libma.a lib/game_engine.a
 
 CFLAGS 			+= 		-I ./include -g3
 
 all:	$(NAME)
 
 $(NAME): 	$(OBJ)
+		$(MAKE) -C ./lib/game_engine
 		$(MAKE) -C ./lib/my
 		$(MAKE) -C ./lib/libma
 		$(MAKE) -C ./lib/linked_list

@@ -33,8 +33,6 @@ int core_game(engine_t *engine)
 
 int open_game(engine_t *engine, int fps)
 {
-    int code = 0;
-
     if (engine == NULL || set_time(engine) == 84)
         return ERROR;
     sfRenderWindow_setView(engine->window, engine->view);
@@ -48,5 +46,5 @@ int open_game(engine_t *engine, int fps)
     sfClock_destroy(engine->time.delta);
     sfClock_destroy(engine->time.time);
     destroy_game(engine);
-    return code;
+    return 0;
 }
