@@ -40,8 +40,8 @@ int print_list(engine_t *engine)
     make_bubble_sort_print(engine->print_sprites);
     if (engine == NULL)
         return 84;
-    current = engine->scenes->head;
-    for (int i = 0; i < engine->scenes->nb_elements; i++,
+    current = engine->print_sprites->head;
+    for (int i = 0; i < engine->print_sprites->nb_elements; i++,
         current = current->next) {
         print_node = current->value;
         if (print_node->print_text == NULL) {
@@ -62,10 +62,12 @@ sfBool add_print(print_text_t *print, entity_t *entity, int order,
 
     if (print_node == NULL || node == NULL)
         return sfFalse;
+    
     print_node->print_entity = entity;
     print_node->print_text = print;
     print_node->order = order;
     node->value = print_node;
+    node->key = NULL;
     push_element(engine->print_sprites, node);
     return sfTrue;
 }
@@ -76,10 +78,8 @@ int destroy_print_list(engine_t *engine, sfBool final)
 
     if (engine == NULL)
         return ERROR;
-    while (engine->print_sprites->nb_elements != 0) {
-        node = engine->print_sprites->head;
-        free(engine->print_sprites->head->value);
-        free(engine->print_sprites->head);
+    while (engine->print_sprites->nb_elements > 0) {
+        shift_element(engine->print_sprites);
     }
     if (final == sfTrue)
         free(engine->print_sprites);

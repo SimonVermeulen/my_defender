@@ -26,17 +26,15 @@ int destroy_scene(scene_t *scene)
 
     if (scene == NULL)
         return ERROR;
-    while (scene->objects != 0) {
+    while (scene->objects->nb_elements != 0) {
         node = scene->objects->head;
         destroy_object(node->value);
-        free(node->key);
         shift_element(scene->objects);
     }
     free(scene->objects);
-    while (scene->canvas != 0) {
+    while (scene->canvas->nb_elements != 0) {
         node = scene->canvas->head;
         destroy_object(node->value);
-        free(node->key);
         shift_element(scene->canvas);
     }
     free(scene->canvas);

@@ -30,6 +30,8 @@ int window_on_tick(list_t *scene, engine_t *engine)
     node_t *node = NULL;
     int code = 0;
 
+    if (scene == NULL)
+        return 0;
     node = scene->head;
     for (int i = 0; i < scene->nb_elements; i++, node = node->next) {
         object = node->value;

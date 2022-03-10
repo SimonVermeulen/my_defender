@@ -46,6 +46,8 @@ int window_on_scene_loaded(list_t *scene, engine_t *engine)
     int code = 0;
     static scene_t *actual_scene = NULL;
 
+    if (scene == NULL)
+        return 0;
     if (actual_scene != engine->actual_scene && actual_scene != NULL)
         code = loop_track_on_scene_loaded(scene, engine);
     actual_scene = engine->actual_scene;

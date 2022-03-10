@@ -1,0 +1,10 @@
+{
+    "name": "scene1",
+    "objects": [{
+            "name": "object1",
+            "entity": {
+                "texture": "./img/duck.png",
+                "order": 1
+            }
+        }]
+}

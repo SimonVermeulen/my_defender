@@ -57,9 +57,6 @@ int destroy_addons(list_t *addon)
     if (addon == NULL)
         return ERROR;
     while (addon->nb_elements != 0) {
-        node = addon->head;
-        free(node->value);
-        free(node->key);
         shift_element(addon);
     }
     free(addon);
