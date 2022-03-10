@@ -10,7 +10,7 @@
 
 int init_text(engine_t *engine)
 {
-    engine->text.fonts = NULL;
+    engine->text.fonts = create_empty_list();
     engine->text.text = sfText_create();
     if (engine->text.text == NULL)
         return ERROR;
@@ -60,12 +60,13 @@ int destroy_text(engine_t *engine)
     list_t *fonts = NULL;
     node_t *temp = NULL;
     
-    if (engine == NULL)
+    if (engine == NULL || engine->text.fonts == NULL)
         return ERROR;
     fonts = engine->text.fonts;
     while (fonts->nb_elements != 0) {
         temp = fonts->head;
         sfFont_destroy(temp->value);
+        temp->value = NULL;
         shift_element(fonts);       
     }
     sfText_destroy(engine->text.text);

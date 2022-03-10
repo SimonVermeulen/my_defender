@@ -7,6 +7,16 @@
 
 #include "game_engine.h"
 
+int check_init_game(engine_t *instance)
+{
+    if (instance->scenes == NULL || instance->print_sprites == NULL ||
+        instance->addons == NULL || instance->functions == NULL ||
+        instance->view == NULL || instance->window == NULL ||
+        init_text(instance) == ERROR)
+        return 84;
+    return 0;
+}
+
 engine_t *init_game(sfVideoMode video, char const *title)
 {
     engine_t *instance = malloc(sizeof(engine_t));
@@ -20,14 +30,10 @@ engine_t *init_game(sfVideoMode video, char const *title)
     instance->view = sfView_create();
     instance->window = sfRenderWindow_create(video, title,
         sfClose | sfResize, NULL);
-    if (instance->scenes == NULL || instance->print_sprites == NULL ||
-        instance->addons == NULL || instance->functions == NULL ||
-        instance->view == NULL || instance->window == NULL ||
-        instance->time.delta == NULL || instance->time.time == NULL ||
-        init_text(instance) == ERROR || init_scene("const_scene", sfTrue,
-        instance) == NULL)
+    instance->actual_scene = NULL;
+    instance->const_scene = NULL;
+    if (check_init_game(instance) == 84)
         return NULL;
-    instance->actual_scene = 0;
     return instance;
 }
 

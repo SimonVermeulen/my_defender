@@ -45,6 +45,8 @@ int window_event_manager(list_t *scene, engine_t *engine)
 {
     int code = 0;
     
+    if (scene == NULL)
+        return 0;
     while (sfRenderWindow_pollEvent(engine->window, &engine->event)) {
         if (engine->event.type == sfEvtClosed)
             sfRenderWindow_close(engine->window);

@@ -24,9 +24,9 @@ SRC	=	addon/addon.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS = -I../../include -Wall -Wextra -pedantic
+CFLAGS = -I../../include -Wall -Wextra -pedantic -g3
 
-LFLAGS =	-L./lib -llist -llibjson_parser
+LFLAGS =	-L./lib -llibma -llist -llibjson_parser
 
 NAME	=	game_engine.a
 

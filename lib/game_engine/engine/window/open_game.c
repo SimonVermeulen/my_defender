@@ -15,14 +15,18 @@ int window_on_scene_loaded(list_t *scene, engine_t *engine);
 int core_game(engine_t *engine)
 {
     int code = 0;
-    int (*event[])(list_t *, engine_t *) = {&window_on_scene_loaded,
-        &window_on_tick, &window_event_manager, NULL};
+    int (*event[])(list_t *, engine_t *) = {window_on_scene_loaded,
+        window_on_tick, window_event_manager, NULL};
     
     for (int i = 0; event[i] != NULL; i++) {
-        code += (*event[i])(engine->actual_scene->objects, engine);
-        code += (*event[i])(engine->actual_scene->canvas, engine);
-        code += (*event[i])(engine->const_scene->objects, engine);
-        code += (*event[i])(engine->const_scene->canvas, engine);
+        if (engine->actual_scene != NULL) {
+            code += (*event[i])(engine->actual_scene->objects, engine);
+            code += (*event[i])(engine->actual_scene->canvas, engine);
+        }
+        if (engine->const_scene != NULL) {
+            code += (*event[i])(engine->const_scene->objects, engine);
+            code += (*event[i])(engine->const_scene->canvas, engine);
+        }
         if (code != 0)
             return 1;
     }

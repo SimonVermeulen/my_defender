@@ -50,7 +50,7 @@ int add_object_by_list(list_t *object_list, list_t *scene, engine_t *engine)
     if (object == NULL)
         return ERROR;
     entity = search_from_key(object_list, "entity");
-    if (entity != NULL && name->type == 10)
+    if (entity != NULL && entity->type == 1)
         init_entity_by_list(entity->value, object);
     add_addon_by_list(object_list, engine, object);
     return 0;
