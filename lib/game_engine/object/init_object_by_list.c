@@ -9,19 +9,16 @@
 
 int add_addon_by_list(list_t *object_list, engine_t *engine, object_t *object)
 {
+    char **addons_array = NULL;
     node_t *addons = NULL;
-    node_t *node = NULL;
     int nbr = 0;
 
     addons = search_from_key(object_list, "addons");
-    if (object_list == NULL || object == NULL || addons == NULL || addons->type != 10)
+    if (object_list == NULL || object == NULL || addons == NULL || addons->type != 40)
         return ERROR;
-    node = ((list_t *)addons->value)->head;
-    nbr = ((list_t *)addons->value)->nb_elements;
-    for (int i = 0; i < nbr; i++, node = node->next) {
-        if (node->type != 4)
-            return ERROR;
-        add_addon(node->value, object, engine);
+    addons_array = addons->value;
+    for (int i = 0; i < addons->len; i++) {
+        add_addon(addons_array[i], object, engine);
     }
     return 0;
 }

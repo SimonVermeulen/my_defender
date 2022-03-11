@@ -7,14 +7,14 @@
 
 #include "game_engine.h"
 
-void switch_element_sort_print(print_node_t *i, print_node_t *j)
+void switch_element_sort_print(node_t *i, node_t *j)
 {
-    print_node_t *temp = NULL;
+    print_node_t *temp_a = i->value;
+    print_node_t *temp_b = j->value;
 
-    if (i->order < j->order) {
-        temp = i;
-        i = j;
-        j = temp;
+    if (temp_a->order < temp_b->order) {
+        i->value = temp_b;
+        j->value = temp_a;
     }
 }
 
@@ -26,7 +26,7 @@ void make_bubble_sort_print(list_t *stack)
     for (int i = 0; i < stack->nb_elements; i++, traveler_a = traveler_a->next){
         for (int j = 0; j < stack->nb_elements; j++, traveler_b =
             traveler_b->next)
-            switch_element_sort_print(traveler_a->value, traveler_b->value);
+            switch_element_sort_print(traveler_a, traveler_b);
         traveler_b = stack->head;
     }
 }

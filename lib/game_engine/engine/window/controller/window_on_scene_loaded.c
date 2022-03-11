@@ -16,8 +16,8 @@ int loop_execution_on_scene_loaded(object_t *object, engine_t *engine)
     node = object->addons->head;
     for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
         addon = node->value;
-        if (addon->on_tick != NULL)
-            code = addon->on_tick(object, engine);
+        if (addon->on_scene_loaded != NULL || object->isActive == sfTrue)
+            code = addon->on_scene_loaded(object, engine);
         if (code != 0)
             return code;
     }
