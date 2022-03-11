@@ -16,8 +16,8 @@ int loop_execution_event_manager(object_t *object, engine_t *engine)
     node = object->addons->head;
     for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
         addon = node->value;
-        if (addon->on_tick != NULL)
-            code = addon->on_tick(object, engine);
+        if (addon->event_manager != NULL)
+            code = addon->event_manager(object, engine);
         if (code != 0)
             return code;
     }
@@ -33,7 +33,7 @@ int loop_track_event_manager(list_t *scene, engine_t *engine)
     node = scene->head;
     for (int i = 0; i < scene->nb_elements; i++, node = node->next) {
         object = node->value;
-        if (object->addons != NULL)
+        if (object->addons != NULL || object->isActive == sfTrue)
             code = loop_execution_event_manager(object, engine);
         if (code != 0)
             return code;

@@ -35,7 +35,7 @@ int window_on_tick(list_t *scene, engine_t *engine)
     node = scene->head;
     for (int i = 0; i < scene->nb_elements; i++, node = node->next) {
         object = node->value;
-        if (object->addons != NULL)
+        if (object->addons != NULL || object->isActive == sfTrue)
             code = loop_execution_tick(object, engine);
         print_entity(object, engine);
         if (code != 0)

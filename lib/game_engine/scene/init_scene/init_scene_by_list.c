@@ -37,6 +37,7 @@ int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine)
 {
     scene_t *scene = NULL;
     node_t *node = NULL;
+    int code = 0;
 
     if (object == NULL || engine == NULL)
         return ERROR;
@@ -46,7 +47,7 @@ int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine)
     scene = init_scene(node->value, const_scene, engine);
     if (scene == NULL)
         return ERROR;
-    get_objects_by_list("objects", object, scene->objects, engine);
-    get_objects_by_list("canvas", object, scene->canvas, engine);
-    return 0;
+    code += get_objects_by_list("objects", object, scene->objects, engine);
+    code += get_objects_by_list("canvas", object, scene->canvas, engine);
+    return (code != 0) ? 84 : 0;
 }
