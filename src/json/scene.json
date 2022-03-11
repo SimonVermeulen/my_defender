@@ -2,14 +2,6 @@
     "name": "scene1",
     "objects": [
         {
-            "name": "object1",
-            "entity": {
-                "texture": "./img/duck.png",
-                "order": 1
-            },
-            "addons": ["base"]
-        },
-        {
             "name": "object2",
             "entity": {
                 "texture": "./img/background.png",

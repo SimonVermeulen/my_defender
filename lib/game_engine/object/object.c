@@ -45,8 +45,8 @@ int destroy_object(object_t *object)
 {
     if (object == NULL)
         return 84;
-    destroy_addons(object->addons);
-    destroy_addons(object->addons_data);
+    destroy_addons(object->addons, sfTrue);
+    destroy_addons(object->addons_data, sfFalse);
     destroy_entity(object);
     return 0;
 }

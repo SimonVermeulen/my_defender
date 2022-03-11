@@ -25,21 +25,25 @@ sfBool add_font(char const *font_name, char const *name, engine_t *engine)
     if (engine == NULL || font == NULL || name == NULL || node == NULL)
         return sfFalse;
     node->value = font;
-    node->key = my_strdup(font_name);
+    node->key = my_strdup(name);
     push_element(engine->text.fonts, node);
     return sfTrue;
 }
 
-sfBool print_text(char const *text, sfVector2f position, engine_t *engine)
+sfBool print_text(char const *text, sfVector2f position, int order,
+    engine_t *engine)
 {
     print_text_t *data = NULL;
 
     if (engine == NULL || text == NULL)
         return sfFalse;
     data = malloc(sizeof(print_text_t));
+    if (data == NULL)
+        return sfFalse;
     data->font = sfText_getFont(engine->text.text);
     data->position = position;
     data->text = text;
+    add_print(data, NULL, order, engine);
     return sfTrue;
 }
 

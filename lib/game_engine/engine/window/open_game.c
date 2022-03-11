@@ -10,7 +10,6 @@
 int window_on_scene_loaded(list_t *scene, engine_t *engine);
 int window_on_tick(list_t *scene, engine_t *engine);
 int window_event_manager(list_t *scene, engine_t *engine);
-int window_on_scene_loaded(list_t *scene, engine_t *engine);
 
 int core_game(engine_t *engine)
 {
@@ -44,8 +43,8 @@ int open_game(engine_t *engine, int fps)
     while (sfRenderWindow_isOpen(engine->window)) {
         sfRenderWindow_clear(engine->window, sfBlack);
         core_game(engine);
-        sfRenderWindow_display(engine->window);
         sfClock_restart(engine->time.delta);
+        sfRenderWindow_display(engine->window);
     }
     sfClock_destroy(engine->time.delta);
     sfClock_destroy(engine->time.time);

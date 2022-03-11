@@ -62,7 +62,6 @@ sfBool add_print(print_text_t *print, entity_t *entity, int order,
 
     if (print_node == NULL || node == NULL)
         return sfFalse;
-    
     print_node->print_entity = entity;
     print_node->print_text = print;
     print_node->order = order;
@@ -78,7 +77,7 @@ int destroy_print_list(engine_t *engine, sfBool final)
 
     if (engine == NULL)
         return ERROR;
-    while (engine->print_sprites->nb_elements > 0) {
+    while (engine->print_sprites->nb_elements != 0) {
         shift_element(engine->print_sprites);
     }
     if (final == sfTrue)

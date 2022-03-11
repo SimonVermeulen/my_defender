@@ -31,17 +31,18 @@ int execute_functions(engine_t *engine)
     if (engine == NULL)
         return ERROR;
     node = engine->functions->head;
-    for (int i = 0; i < engine->functions->nb_elements; i++) {
+    for (int i = 0; i < engine->functions->nb_elements;) {
         execute = node->value;
-        execute->time -= delta;
+        execute->time -= get_delta(engine);
         if (execute->time <= 0) {
             execute->function(execute->object, engine);
-            free(node->value);
-            node = node->prev;
+            node->key = NULL;
+            node = node->next;
             splice(engine->functions, i);
             continue;
         }
         node = node->next;
+        i++;
     }
     return 0;
 }
@@ -54,8 +55,7 @@ int destroy_functions(engine_t *engine)
         return ERROR;
     while (engine->functions->nb_elements != 0) {
         node = engine->functions->head;
-        free(node->value);
-        free(node->key);
+        node->key = NULL;
         shift_element(engine->functions);
     }
     free(engine->functions);
