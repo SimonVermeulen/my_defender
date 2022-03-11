@@ -50,5 +50,6 @@ int add_object_by_list(list_t *object_list, list_t *scene, engine_t *engine)
     if (entity != NULL && entity->type == 1)
         init_entity_by_list(entity->value, object);
     add_addon_by_list(object_list, engine, object);
+    add_addon_data(object_list, object);
     return 0;
 }

@@ -41,7 +41,7 @@ void destroy_engine(engine_t *engine)
 {
     destroy_scene(engine->const_scene);
     destroy_text(engine);
-    destroy_addons(engine->addons);
+    destroy_addons(engine->addons, sfFalse);
     destroy_functions(engine);
     destroy_print_list(engine, sfTrue);
     sfRenderWindow_destroy(engine->window);
@@ -57,7 +57,6 @@ int destroy_game(engine_t *engine)
     while (engine->scenes->nb_elements != 0) {
         node = engine->scenes->head;
         destroy_scene(node->value);
-        free(node->key);
         shift_element(engine->scenes);
     }
     free(engine->scenes);

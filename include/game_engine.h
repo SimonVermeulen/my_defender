@@ -71,10 +71,10 @@ engine_t *init_game(sfVideoMode video, char const *title);
 int open_game(engine_t *engine, int fps);
 int destroy_game(engine_t *engine);
 
-void *get_addon(char const *name, object_t *object);
+void *get_addon(char const *name, int type, object_t *object);
 sfBool create_addon(char const *name, addon_t *addon, engine_t *engine);
 sfBool add_addon(char const *name, object_t *object, engine_t *engine);
-int destroy_addons(list_t *addon);
+int destroy_addons(list_t *addon, sfBool bool);
 
 typedef struct print_text_s {
     const sfFont *font;
@@ -94,9 +94,11 @@ int destroy_print_list(engine_t *engine, sfBool final);
 
 int init_text(engine_t *engine);
 sfBool add_font(char const *font, char const *name, engine_t *engine);
-sfBool print_text(char const *text, sfVector2f position, engine_t *engine);
+sfBool print_text(char const *text, sfVector2f position, int order,
+    engine_t *engine);
 sfBool draw_text(print_text_t *data, engine_t *engine);
 int destroy_text(engine_t *engine);
+sfBool change_font(char const *name, engine_t *engine);
 
 scene_t *init_scene(char const *name, sfBool const_scene, engine_t *engine);
 sfBool change_scene(char const *name, engine_t *engine);
