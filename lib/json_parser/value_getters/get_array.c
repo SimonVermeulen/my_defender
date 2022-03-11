@@ -26,17 +26,27 @@ static int get_nb_elements_others(const char *buff)
     return (nb_elements);
 }
 
+static int check_stop(int array_level, char c)
+{
+    if (c == ']' && array_level == 1) 
+        return (1);
+    return (0);
+}
+
 static int get_nb_elements_object(const char *buff)
 {
     int level = 0;
+    int array_level = 0;
     int nb_elements = 0;
 
-    for (int i = 0; buff[i] && buff[i] != ']'; i++) {
+    for (int i = 0; buff[i] && !check_stop(array_level, buff[i]); i++) {
         if (buff[i] == '{')
             level++;
         else if (buff[i] == '}')
             level--;
-        nb_elements += (buff[i] == '}' && !level);
+        nb_elements += (buff[i] == '}' && !level) ? 1 : 0;
+        array_level += (buff[i] == '[') ? 1 : 0;
+        array_level -= (buff[i] == ']' && array_level) ? 1 : 0;
     }
     return (nb_elements);
 }
