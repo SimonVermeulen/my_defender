@@ -19,7 +19,7 @@ int load_game(void)
 {
     engine_t *engine = init_game((sfVideoMode) {width, height, 32}, title);
 
-    if (engine == 84 || load_addons(engine, load_addon) == 84 ||
+    if (engine == NULL || load_addons(engine, load_addon) == 84 ||
         load_scenes(engine, load_scene) == 84 || load_fonts(engine) == 84)
         return 84;
     return open_game(engine, fps);
