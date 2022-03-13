@@ -17,7 +17,8 @@ int init_node_for_scene(char const *name, scene_t *scene, engine_t *engine)
         return ERROR;
     node->key = text;
     node->value = scene;
-    return push_element(engine->scenes, node);
+    push_element(engine->scenes, node);
+    return 0;
 }
 
 scene_t *init_scene(char const *name, sfBool const_scene, engine_t *engine)

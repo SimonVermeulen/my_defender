@@ -8,6 +8,7 @@
 #ifndef GAME_ENGINE_H
     #define GAME_ENGINE_H
     #include <SFML/Graphics.h>
+    #include <stdlib.h>
     #include "linked_list.h"
     #include "json_parser.h"
     #define ERROR 84
@@ -17,10 +18,10 @@ typedef struct scene_s {
     list_t *canvas;
 } scene_t;
 
-typedef struct time_s {
+typedef struct times_s {
     sfClock *delta;
     sfClock *time;
-} time_t;
+} times_t;
 
 typedef struct text_s {
     list_t *fonts;
@@ -37,7 +38,7 @@ typedef struct engine_s {
     sfView *view;
     list_t *print_sprites;
     list_t *addons;
-    time_t time;
+    times_t time;
     list_t *functions;
 } engine_t;
 
@@ -70,13 +71,13 @@ engine_t *init_game(sfVideoMode video, char const *title);
 int open_game(engine_t *engine, int fps);
 int destroy_game(engine_t *engine);
 
-void *get_addon(char const *name, object_t *object);
+void *get_addon(char const *name, int type, object_t *object);
 sfBool create_addon(char const *name, addon_t *addon, engine_t *engine);
 sfBool add_addon(char const *name, object_t *object, engine_t *engine);
-int destroy_addons(list_t *addon);
+int destroy_addons(list_t *addon, sfBool bool);
 
 typedef struct print_text_s {
-    sfFont *font;
+    const sfFont *font;
     char const *text;
     sfVector2f position;
 } print_text_t;
@@ -93,9 +94,11 @@ int destroy_print_list(engine_t *engine, sfBool final);
 
 int init_text(engine_t *engine);
 sfBool add_font(char const *font, char const *name, engine_t *engine);
-sfBool print_text(char const *text, sfVector2f position, int order, engine_t *engine);
+sfBool print_text(char const *text, sfVector2f position, int order,
+    engine_t *engine);
 sfBool draw_text(print_text_t *data, engine_t *engine);
 int destroy_text(engine_t *engine);
+sfBool change_font(char const *name, engine_t *engine);
 
 scene_t *init_scene(char const *name, sfBool const_scene, engine_t *engine);
 sfBool change_scene(char const *name, engine_t *engine);
