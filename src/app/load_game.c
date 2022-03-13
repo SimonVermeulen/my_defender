@@ -7,7 +7,7 @@
 
 #include "game.h"
 
-const int (*load_scene[])(engine_t *) = {NULL};
+const int (*load_scene[])(engine_t *) = {init_main_menu, NULL};
 const int (*load_addon[])(engine_t *) = {NULL};
 
 const int width = 1980;
@@ -22,5 +22,6 @@ int load_game(void)
     if (engine == NULL || load_addons(engine, load_addon) == 84 ||
         load_scenes(engine, load_scene) == 84 || load_fonts(engine) == 84)
         return 84;
+    change_scene("MainMenu", engine);
     return open_game(engine, fps);
 }

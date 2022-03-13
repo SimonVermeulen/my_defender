@@ -29,7 +29,7 @@ int get_objects_by_list(char const *name, list_t *objects, list_t *scene, engine
         return ERROR;
     node = search_from_key(objects, name);
     if (node == NULL || node->type != 10)
-        return ERROR;
+        return 0;
     return add_objects_by_list(node, scene, engine);
 }
 
