@@ -6,6 +6,11 @@
 ##
 
 SRC				=		src/main.c	\
+						src/core/addons/load_addons.c	\
+						src/core/scenes/load_scenes.c	\
+						src/app/load_fonts.c	\
+						src/app/load_game.c	\
+						src/app/scenes/main_menu/main_menu.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
