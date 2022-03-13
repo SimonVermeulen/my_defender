@@ -1,0 +1,19 @@
+{
+    "name": "MainMenu",
+    "objects": [
+        {
+            "name": "background",
+            "entity": {
+                "texture": "./assets/images/menu/menu_background.png",
+                "order": 0
+            }
+        },
+        {
+            "name": "logo",
+            "entity": {
+                "texture": "./assets/images/menu/kingdom_rush_logo.png",
+                "order": 1
+            }
+        }
+    ]
+}

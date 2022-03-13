@@ -9,7 +9,7 @@
 
 int init_main_menu(engine_t *engine)
 {
-    list_t *scene = launch_parsing("./json/scene/main_menu.json");
+    list_t *scene = launch_parsing("./json/scenes/main_menu.json");
 
     if (scene == NULL)
         return 84;

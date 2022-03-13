@@ -14,4 +14,6 @@ int load_scenes(engine_t *engine, const int (*load_scene[])(engine_t *));
 int load_game(void);
 int load_fonts(engine_t *engine);
 
+int init_main_menu(engine_t *engine);
+
 #endif /* !GAME_H_ */
