@@ -7,8 +7,8 @@
 
 #include "game.h"
 
-const (*load_scene[])(engine_t *) = {NULL};
-const (*load_addon[])(engine_t *) = {NULL};
+const int (*load_scene[])(engine_t *) = {NULL};
+const int (*load_addon[])(engine_t *) = {NULL};
 
 const int width = 1980;
 const int height = 1080;
