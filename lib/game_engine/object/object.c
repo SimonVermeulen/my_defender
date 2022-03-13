@@ -9,6 +9,19 @@
 #include "game_engine.h"
 #include "libma.h"
 
+int create_secondary_step_object(object_t *object, node_t *node,
+    char *name, list_t *scene)
+{
+    object->addons_data = NULL;
+    object->isActive = sfTrue;
+    object->entity = NULL;
+    if (object->addons == NULL)
+        return 84;
+    node->value = object;
+    node->key = name;
+    return push_element(scene, node);
+}
+
 object_t *create_object(char const *name, list_t *scene)
 {
     node_t *node = NULL;
@@ -23,10 +36,7 @@ object_t *create_object(char const *name, list_t *scene)
     if (node == NULL || string == NULL || object == NULL)
         return NULL;
     object->addons = create_empty_list();
-    object->addons_data = NULL;
-    object->isActive = sfTrue;
-    object->entity = NULL;
-    if (object->addons == NULL || object->addons_data == NULL)
+    if (create_secondary_step_object(object, node , string, scene) == 84)
         return NULL;
     return object;
 }
@@ -35,10 +45,9 @@ int destroy_object(object_t *object)
 {
     if (object == NULL)
         return 84;
-    destroy_addons(object->addons);
-    destroy_addons(object->addons_data);
+    destroy_addons(object->addons, sfTrue);
+    destroy_addons(object->addons_data, sfFalse);
     destroy_entity(object);
-    free(object);
     return 0;
 }
 
