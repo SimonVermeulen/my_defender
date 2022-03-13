@@ -16,8 +16,8 @@ int loop_execution_on_scene_loaded(object_t *object, engine_t *engine)
     node = object->addons->head;
     for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
         addon = node->value;
-        if (addon->on_tick != NULL)
-            code = addon->on_tick(object, engine);
+        if (addon->on_scene_loaded != NULL)
+            code = addon->on_scene_loaded(object, engine);
         if (code != 0)
             return code;
     }
@@ -33,7 +33,7 @@ int loop_track_on_scene_loaded(list_t *scene, engine_t *engine)
     node = scene->head;
     for (int i = 0; i < scene->nb_elements; i++, node = node->next) {
         object = node->value;
-        if (object->addons != NULL)
+        if (object->addons != NULL || object->isActive == sfTrue)
             code = loop_execution_on_scene_loaded(object, engine);
         if (code != 0)
             return code;
@@ -46,6 +46,8 @@ int window_on_scene_loaded(list_t *scene, engine_t *engine)
     int code = 0;
     static scene_t *actual_scene = NULL;
 
+    if (scene == NULL)
+        return 0;
     if (actual_scene != engine->actual_scene && actual_scene != NULL)
         code = loop_track_on_scene_loaded(scene, engine);
     actual_scene = engine->actual_scene;
