@@ -42,10 +42,13 @@ void splice(list_t *list, int index)
 {
     node_t *current_node = NULL;
 
+    if (index < 0 || index >= list->nb_elements)
+        return;
+    current_node = list->head;
     for (int i = 0; i < index; i++)
         current_node = current_node->next;
     if (current_node == list->head)
-        current_node->next = list->head;
+        list->head = current_node->next;
     current_node->prev->next = current_node->next;
     current_node->next->prev = current_node->prev;
     free_node(current_node);

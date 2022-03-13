@@ -7,14 +7,14 @@
 
 #include "game_engine.h"
 
-void switch_element_sort_print(print_node_t *i, print_node_t *j)
+void switch_element_sort_print(node_t *i, node_t *j)
 {
-    print_node_t *temp = NULL;
+    print_node_t *temp_a = i->value;
+    print_node_t *temp_b = j->value;
 
-    if (i->order < j->order) {
-        temp = i;
-        i = j;
-        j = temp;
+    if (temp_a->order < temp_b->order) {
+        i->value = temp_b;
+        j->value = temp_a;
     }
 }
 
@@ -26,7 +26,7 @@ void make_bubble_sort_print(list_t *stack)
     for (int i = 0; i < stack->nb_elements; i++, traveler_a = traveler_a->next){
         for (int j = 0; j < stack->nb_elements; j++, traveler_b =
             traveler_b->next)
-            switch_element_sort(traveler_a->value, traveler_b->value);
+            switch_element_sort_print(traveler_a, traveler_b);
         traveler_b = stack->head;
     }
 }
@@ -40,8 +40,8 @@ int print_list(engine_t *engine)
     make_bubble_sort_print(engine->print_sprites);
     if (engine == NULL)
         return 84;
-    current = engine->scenes->head;
-    for (int i = 0; i < engine->scenes->nb_elements; i++,
+    current = engine->print_sprites->head;
+    for (int i = 0; i < engine->print_sprites->nb_elements; i++,
         current = current->next) {
         print_node = current->value;
         if (print_node->print_text == NULL) {
@@ -62,10 +62,11 @@ sfBool add_print(print_text_t *print, entity_t *entity, int order,
 
     if (print_node == NULL || node == NULL)
         return sfFalse;
-    print_node->print_entity = print;
-    print_node->print_text = entity;
+    print_node->print_entity = entity;
+    print_node->print_text = print;
     print_node->order = order;
     node->value = print_node;
+    node->key = NULL;
     push_element(engine->print_sprites, node);
     return sfTrue;
 }
@@ -77,9 +78,7 @@ int destroy_print_list(engine_t *engine, sfBool final)
     if (engine == NULL)
         return ERROR;
     while (engine->print_sprites->nb_elements != 0) {
-        node = engine->print_sprites->head;
-        free(engine->print_sprites->head->value);
-        free(engine->print_sprites->head);
+        shift_element(engine->print_sprites);
     }
     if (final == sfTrue)
         free(engine->print_sprites);

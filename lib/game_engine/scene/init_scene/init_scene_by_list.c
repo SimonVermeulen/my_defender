@@ -7,35 +7,37 @@
 
 #include "game_engine.h"
 
-int add_objects_by_list(list_t *objects, list_t *scene, engine_t *engine)
+int add_objects_by_list(node_t *lists, list_t *scene, engine_t *engine)
 {
-    node_t *node = NULL;
+    list_t **array = NULL;
 
-    if (objects == NULL || scene == NULL)
+    if (lists == NULL || scene == NULL)
         return ERROR;
-    node = objects->head;
-    for (int i = 0; i < objects->nb_elements; i++, node = node->next) {
-        if (node->type != 10)
+    array = lists->value;
+    for (int i = 0; i < lists->len; i++) {
+        if (add_object_by_list(array[i], scene, engine) == ERROR)
             return ERROR;
-        
     }
+    return 0;
 }
 
-int get_objects_by_list(char const *name, node_t *objects, list_t *scene, engine_t *engine)
+int get_objects_by_list(char const *name, list_t *objects, list_t *scene, engine_t *engine)
 {
     node_t *node = NULL;
 
     if (objects == NULL || scene == NULL)
         return ERROR;
-    node = search_from_key(objects->value, name);
+    node = search_from_key(objects, name);
     if (node == NULL || node->type != 10)
         return ERROR;
+    return add_objects_by_list(node, scene, engine);
 }
 
 int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine)
 {
     scene_t *scene = NULL;
     node_t *node = NULL;
+    int code = 0;
 
     if (object == NULL || engine == NULL)
         return ERROR;
@@ -43,4 +45,9 @@ int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine)
     if (node == NULL || node->type != 4)
         return ERROR;
     scene = init_scene(node->value, const_scene, engine);
+    if (scene == NULL)
+        return ERROR;
+    code += get_objects_by_list("objects", object, scene->objects, engine);
+    code += get_objects_by_list("canvas", object, scene->canvas, engine);
+    return (code != 0) ? 84 : 0;
 }

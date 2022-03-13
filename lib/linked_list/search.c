@@ -28,7 +28,7 @@ node_t *search_from_key(list_t *list, char *key)
         return (NULL);
     current = list->head;
     for (int i = 0; i < list->nb_elements; i++) {
-        if (cmp(key, current->key))
+        if (!cmp(key, current->key))
             return (current);
         current = current->next;
     }
