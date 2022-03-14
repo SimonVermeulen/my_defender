@@ -2,15 +2,15 @@
 ** EPITECH PROJECT, 2021
 ** B-CPE-100-TLS-1-1-cpoolday09-younes1.bahri
 ** File description:
-** my.h
+** random.h
 */
 
 #ifndef RANDOM_H
     #define RANDOM_H
     #include <stdio.h>
 
-int randomize(void);
+int get_random(void);
 
-int randomize_helper(FILE *in);
+int set_random(FILE *file);
 
 #endif
