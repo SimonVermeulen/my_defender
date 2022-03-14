@@ -5,7 +5,9 @@
 ** main.c
 */
 
+#include "game.h"
+
 int main(int argc, char **argv)
 {
-    get_random();
+    return load_game();
 }
