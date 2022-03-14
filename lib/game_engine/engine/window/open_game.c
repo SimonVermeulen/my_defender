@@ -7,35 +7,37 @@
 
 #include "game_engine.h"
 
-int window_on_scene_loaded(list_t *scene, engine_t *engine);
 int window_on_tick(list_t *scene, engine_t *engine);
-int window_event_manager(list_t *scene, engine_t *engine);
+int window_on_event(list_t *scene, engine_t *engine);
 
 int core_game(engine_t *engine)
 {
-    int code = 0;
-    int (*event[])(list_t *, engine_t *) = {window_on_scene_loaded,
-        window_on_tick, window_event_manager, NULL};
+    int (*event[])(list_t *, engine_t *) = {window_on_tick, window_on_event,
+        NULL};
     
+    execute_functions(engine);
+    if (engine->prev_scene != NULL) {
+        destroy_scene(engine->prev_scene);
+        engine->prev_scene = NULL;
+    }
     for (int i = 0; event[i] != NULL; i++) {
         if (engine->actual_scene != NULL) {
-            code += (*event[i])(engine->actual_scene->objects, engine);
-            code += (*event[i])(engine->actual_scene->canvas, engine);
+            (*event[i])(engine->actual_scene->objects, engine);
+            (*event[i])(engine->actual_scene->canvas, engine);
         }
         if (engine->const_scene != NULL) {
-            code += (*event[i])(engine->const_scene->objects, engine);
-            code += (*event[i])(engine->const_scene->canvas, engine);
+            (*event[i])(engine->const_scene->objects, engine);
+            (*event[i])(engine->const_scene->canvas, engine);
         }
-        if (code != 0)
-            return 1;
     }
-    execute_functions(engine);
     print_list(engine);
     return 0;
 }
 
 int open_game(engine_t *engine, int fps)
 {
+    int code = 0;
+
     if (engine == NULL || set_time(engine) == 84)
         return ERROR;
     sfRenderWindow_setView(engine->window, engine->view);
@@ -48,6 +50,7 @@ int open_game(engine_t *engine, int fps)
     }
     sfClock_destroy(engine->time.delta);
     sfClock_destroy(engine->time.time);
+    code = engine->code;
     destroy_game(engine);
-    return 0;
+    return code;
 }
