@@ -134,4 +134,8 @@ void free_node(node_t *node);
  */
 node_t *search_from_key(list_t *list, char *key);
 
+void *get_value_list(list_t *list, const char *name, int type);
+
+node_t *create_new_node(void *value, int type, int length, const char *name);
+
 #endif
