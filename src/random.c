@@ -7,28 +7,29 @@
 
 #include <stdio.h>
 
-int randomize_helper(FILE *in)
+int set_random(FILE *file)
 {
     unsigned int seed = 0;
 
-    if (!in)
+    if (!file)
         return 84;
-    if (fread(&seed, sizeof seed, 1, in) == 1) {
-        fclose(in);
+    if (fread(&seed, sizeof seed, 1, file) == 1) {
+        fclose(file);
         srand(seed);
+        printf("%d", seed);
         return 0;
     }
-    fclose(in);
+    fclose(file);
     return 84;
 }
 
-int randomize(void)
+int get_random(void)
 {
-    if (!randomize_helper(fopen("/dev/urandom", "r")))
+    if (!set_random(fopen("/dev/urandom", "r")))
         return 0;
-    if (!randomize_helper(fopen("/dev/arandom", "r")))
+    if (!set_random(fopen("/dev/arandom", "r")))
         return 0;
-    if (!randomize_helper(fopen("/dev/random", "r")))
+    if (!set_random(fopen("/dev/random", "r")))
         return 0;
     return 84;
 }
