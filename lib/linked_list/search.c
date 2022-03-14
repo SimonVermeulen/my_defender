@@ -32,7 +32,6 @@ node_t *search_from_key(list_t *list, char *key)
             return (current);
         current = current->next;
     }
-    write(2, "Error: can't find node with this key\n", 38);
     return (NULL);
 }
 
