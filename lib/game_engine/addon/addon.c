@@ -29,7 +29,8 @@ sfBool create_addon(char const *name, addon_t *addon, engine_t *engine)
         return sfFalse;
     node->value = addon;
     node->key = my_strdup(name);
-    return push_element(engine->addons, node);
+    push_element(engine->addons, node);
+    return sfTrue;
 }
 
 sfBool add_addon(char const *name, object_t *object, engine_t *engine)
