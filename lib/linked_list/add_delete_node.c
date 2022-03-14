@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "linked_list.h"
+#include "my.h"
 
 node_t *create_emptynode(void)
 {
@@ -36,6 +37,20 @@ node_t *create_newnode(void *value, int type, int len)
     new_node->type = type;
     new_node->len = len;
     return (new_node);
+}
+
+node_t *create_new_node(void *value, int type, int length, const char *name)
+{
+    node_t *new_node = create_newnode(value, type, length);
+
+    if (new_node == NULL)
+        return NULL;
+    new_node->key = my_strdup(name);
+    if (new_node->key == NULL) {
+        free(new_node);
+        return NULL;
+    }
+    return new_node;
 }
 
 void splice(list_t *list, int index)
