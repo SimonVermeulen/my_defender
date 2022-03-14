@@ -38,12 +38,12 @@ int print_list(engine_t *engine)
     entity_t *entity = NULL;
 
     make_bubble_sort_print(engine->print_sprites);
-    if (engine == NULL)
-        return 84;
     current = engine->print_sprites->head;
     for (int i = 0; i < engine->print_sprites->nb_elements; i++,
         current = current->next) {
         print_node = current->value;
+        if (print_node->print_entity == NULL && print_node->print_text == NULL)
+            continue;
         if (print_node->print_text == NULL) {
             entity = print_node->print_entity;
             sfRenderWindow_drawSprite(engine->window, entity->sprite, NULL);

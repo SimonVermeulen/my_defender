@@ -36,8 +36,9 @@ int init_hover_button_addons(engine_t *engine)
         return 84;
     addon->on_enable = NULL;
     addon->on_disable = NULL;
-    addon->event_manager = NULL;
-    addon->on_scene_loaded = NULL;
+    addon->on_end = NULL;
+    addon->on_start = print_text;
+    addon->on_event = NULL;
     addon->on_tick = hover_button_tick;
     if (create_addon("hover_button", addon, engine) == sfFalse)
         return 84;

@@ -6,8 +6,9 @@
 ##
 
 SRC	=	addon/addon.c	\
-		engine/window/controller/window_event_manager.c	\
-		engine/window/controller/window_on_scene_loaded.c	\
+		addon/event/on_end.c	\
+		addon/event/on_start.c	\
+		engine/window/controller/window_on_event.c	\
 		engine/window/controller/window_on_tick.c	\
 		engine/window/open_game.c	\
 		engine/engine.c	\
@@ -16,6 +17,7 @@ SRC	=	addon/addon.c	\
 		entity/entity.c	\
 		object/init_object_by_list.c	\
 		object/object.c	\
+		object/seach_object.c	\
 		print/print.c	\
 		scene/init_scene/init_scene_by_list.c	\
 		scene/init_scene/init_scene.c	\
