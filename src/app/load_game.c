@@ -8,7 +8,8 @@
 #include "game.h"
 
 const int (*load_scene[])(engine_t *) = {init_main_menu, NULL};
-const int (*load_addon[])(engine_t *) = {init_position_addons, NULL};
+const int (*load_addon[])(engine_t *) = {init_position_addons,
+    init_hover_button_addons, NULL};
 
 const int width = 1920;
 const int height = 1080;
