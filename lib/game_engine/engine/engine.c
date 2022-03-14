@@ -7,6 +7,16 @@
 
 #include "game_engine.h"
 
+int check_init_game(engine_t *instance)
+{
+    if (instance->scenes == NULL || instance->print_sprites == NULL ||
+        instance->addons == NULL || instance->functions == NULL ||
+        instance->view == NULL || instance->window == NULL ||
+        init_text(instance) == ERROR)
+        return 84;
+    return 0;
+}
+
 engine_t *init_game(sfVideoMode video, char const *title)
 {
     engine_t *instance = malloc(sizeof(engine_t));
@@ -20,18 +30,25 @@ engine_t *init_game(sfVideoMode video, char const *title)
     instance->view = sfView_create();
     instance->window = sfRenderWindow_create(video, title,
         sfClose | sfResize, NULL);
-    if (instance->scenes == NULL || instance->print_sprites == NULL ||
-        instance->addons == NULL || instance->functions == NULL ||
-        instance->view == NULL || instance->window == NULL ||
-        instance->time.delta == NULL || instance->time.time == NULL ||
-        init_text(instance) == ERROR || init_scene("const_scene", sfTrue,
-        instance) == ERROR)
+    instance->actual_scene = NULL;
+    instance->const_scene = NULL;
+    if (check_init_game(instance) == 84)
         return NULL;
-    instance->actual_scene = 0;
     return instance;
 }
 
-int destroy_window(engine_t *engine)
+void destroy_engine(engine_t *engine)
+{
+    destroy_scene(engine->const_scene);
+    destroy_text(engine);
+    destroy_addons(engine->addons, sfFalse);
+    destroy_functions(engine);
+    destroy_print_list(engine, sfTrue);
+    sfRenderWindow_destroy(engine->window);
+    sfView_destroy(engine->view);
+}
+
+int destroy_game(engine_t *engine)
 {
     node_t *node = NULL;
 
@@ -39,17 +56,11 @@ int destroy_window(engine_t *engine)
         return ERROR;
     while (engine->scenes->nb_elements != 0) {
         node = engine->scenes->head;
-        destroy_scene(engine->scenes->head, engine);
+        destroy_scene(node->value);
         shift_element(engine->scenes);
     }
     free(engine->scenes);
-    destroy_scene(engine->const_scene, engine);
-    destroy_text(engine);
-    destroy_addons(engine->addons);
-    destroy_functions(engine->functions);
-    destroy_print_list(engine);
-    sfRenderWindow_destroy(engine->window);
-    sfView_destroy(engine->view);
+    destroy_engine(engine);
     free(engine);
     return 0;
 }
