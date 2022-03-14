@@ -6,6 +6,11 @@
             "entity": {
                 "texture": "./assets/images/menu/menu_background.png",
                 "order": 0
+            },
+            "addons": ["position"],
+            "addon_data": {
+                "PositionX": 0,
+                "PositionY": 0
             }
         },
         {
@@ -13,6 +18,11 @@
             "entity": {
                 "texture": "./assets/images/menu/kingdom_rush_logo.png",
                 "order": 1
+            },
+            "addons": ["position"],
+            "addon_data": {
+                "PositionX": 610,
+                "PositionY": 50
             }
         }
     ]

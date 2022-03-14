@@ -16,4 +16,6 @@ int load_fonts(engine_t *engine);
 
 int init_main_menu(engine_t *engine);
 
+int init_position_addons(engine_t *engine);
+
 #endif /* !GAME_H_ */
