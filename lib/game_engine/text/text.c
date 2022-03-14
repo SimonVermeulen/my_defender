@@ -6,7 +6,7 @@
 */
 
 #include "game_engine.h"
-#include "libma.h"
+#include "my.h"
 
 int init_text(engine_t *engine)
 {

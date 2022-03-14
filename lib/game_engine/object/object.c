@@ -7,7 +7,7 @@
 
 #include <unistd.h>
 #include "game_engine.h"
-#include "libma.h"
+#include "my.h"
 
 int create_secondary_step_object(object_t *object, node_t *node,
     char *name, list_t *scene)

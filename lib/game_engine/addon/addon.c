@@ -7,7 +7,7 @@
 
 #include <stdlib.h>
 #include "game_engine.h"
-#include "libma.h"
+#include "my.h"
 
 void *get_addon(char const *name, int type, object_t *object)
 {

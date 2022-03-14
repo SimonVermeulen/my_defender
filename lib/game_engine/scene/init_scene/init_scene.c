@@ -6,7 +6,7 @@
 */
 
 #include "game_engine.h"
-#include "libma.h"
+#include "my.h"
 
 int init_node_for_scene(char const *name, scene_t *scene, engine_t *engine)
 {
