@@ -35,6 +35,8 @@ object_t *create_object(char const *name, list_t *scene)
     object = malloc(sizeof(object_t));
     if (node == NULL || string == NULL || object == NULL)
         return NULL;
+    object->name = string;
+    object->actual_scene = scene;
     object->addons = create_empty_list();
     if (create_secondary_step_object(object, node , string, scene) == 84)
         return NULL;
@@ -43,12 +45,24 @@ object_t *create_object(char const *name, list_t *scene)
 
 int destroy_object(object_t *object)
 {
+    node_t *node = NULL;
+    node_t *next = NULL;
+
     if (object == NULL)
         return 84;
     destroy_addons(object->addons, sfTrue);
     destroy_addons(object->addons_data, sfFalse);
     destroy_entity(object);
-    return 0;
+    node = search_from_key(object->actual_scene, object->name);
+    next = object->actual_scene->head;
+    for (int i = 0; i < object->actual_scene->nb_elements; i++) {
+        if (next == node) {
+            splice(object->actual_scene, i);
+            return 0;
+        }
+        next = next->next;
+    }
+    return 84;
 }
 
 sfBool set_active(sfBool value, object_t *object, engine_t *engine)

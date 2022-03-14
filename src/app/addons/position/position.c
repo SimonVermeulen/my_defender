@@ -42,8 +42,9 @@ int init_position_addons(engine_t *engine)
         return 84;
     addon->on_enable = NULL;
     addon->on_disable = NULL;
-    addon->event_manager = NULL;
-    addon->on_scene_loaded = NULL;
+    addon->on_end = NULL;
+    addon->on_start = NULL;
+    addon->on_event = NULL;
     addon->on_tick = position_tick_event;
     if (create_addon("position", addon, engine) == sfFalse)
         return 84;
