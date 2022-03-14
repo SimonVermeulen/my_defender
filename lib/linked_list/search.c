@@ -32,7 +32,17 @@ node_t *search_from_key(list_t *list, char *key)
             return (current);
         current = current->next;
     }
-    write(2, "Error: can't find node with this key\n", 38);
     return (NULL);
 }
 
+void *get_value(list_t *list, const char *name, int type)
+{
+    node_t *node = NULL;
+
+    if (list == NULL || name == NULL)
+        return NULL;
+    node = search_from_key(list, name);
+    if (node == NULL || node->type != type)
+        return NULL;
+    return node->value;
+}
