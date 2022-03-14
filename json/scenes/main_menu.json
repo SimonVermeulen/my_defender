@@ -17,12 +17,26 @@
             "name": "logo",
             "entity": {
                 "texture": "./assets/images/menu/kingdom_rush_logo.png",
-                "order": 1
+                "order": 5
             },
             "addons": ["position"],
             "addon_data": {
                 "PositionX": 610,
                 "PositionY": 50
+            }
+        },
+        {
+            "name": "StartButton",
+            "entity": {
+                "texture": "./assets/images/menu/start.png",
+                "order": 2
+            },
+            "addons": ["hover_button", "position"],
+            "addon_data": {
+                "HoverButton_Width": 372,
+                "HoverButton_Height": 380,
+                "PositionX": 775,
+                "PositionY": 360
             }
         }
     ]
