@@ -26,5 +26,6 @@ clean:
 
 fclean:
 	rm -f $(BINARY)
+	rm	-f ../$(BINARY)
 
 re: fclean all
