@@ -25,10 +25,11 @@ $(NAME): $(OBJ)
 	cp $(NAME) ./../
 
 clean:
-	rm -f *.o
+	rm -f $(OBJ)
 
 fclean:
 	rm -f $(OBJ) $(NAME)
+	rm	-f ../$(NAME)
 
 re: fclean all
 
