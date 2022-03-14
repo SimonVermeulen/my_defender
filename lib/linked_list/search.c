@@ -35,7 +35,7 @@ node_t *search_from_key(list_t *list, char *key)
     return (NULL);
 }
 
-void *get_value(list_t *list, const char *name, int type)
+void *get_value_list(list_t *list, const char *name, int type)
 {
     node_t *node = NULL;
 
