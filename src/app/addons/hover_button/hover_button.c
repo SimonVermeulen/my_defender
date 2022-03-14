@@ -25,6 +25,7 @@ int hover_button_tick(object_t *object, engine_t *engine)
     if (sfFloatRect_contains(&rect, position_mouse_relative.x, position_mouse_relative.y))
         rect_texture.left = *width;
     sfSprite_setTextureRect(object->entity->sprite, rect_texture);
+    return 0;
 }
 
 int init_hover_button_addons(engine_t *engine)
