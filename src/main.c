@@ -5,7 +5,9 @@
 ** main.c
 */
 
+#include "game.h"
+
 int main(int argc, char **argv)
 {
-    
+    return load_game();
 }
