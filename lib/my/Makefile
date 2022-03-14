@@ -36,6 +36,8 @@ SRC		=		math/my_compute_power_rec.c \
 				string/my_strncpy.c \
 				string/my_strstr.c \
 				string/my_strupcase.c \
+				string/my_strdup.c 	\
+				string/replace_str.c \
 				number/my_swap.c \
 				number/get_length_long.c \
 				number/get_valid_int.c
@@ -54,4 +56,7 @@ clean:
 		rm -f $(OBJ)
 
 fclean:
-		rm -rf $(NAME)
+		rm -f $(NAME)
+		rm	-f ../$(NAME)
+
+re: fclean all

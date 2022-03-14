@@ -8,7 +8,9 @@
 #ifndef GAME_ENGINE_H
     #define GAME_ENGINE_H
     #include <SFML/Graphics.h>
+    #include <stdlib.h>
     #include "linked_list.h"
+    #include "json_parser.h"
     #define ERROR 84
 
 typedef struct scene_s {
@@ -16,10 +18,10 @@ typedef struct scene_s {
     list_t *canvas;
 } scene_t;
 
-typedef struct time_s {
+typedef struct times_s {
     sfClock *delta;
     sfClock *time;
-} time_t;
+} times_t;
 
 typedef struct text_s {
     list_t *fonts;
@@ -28,7 +30,7 @@ typedef struct text_s {
 
 typedef struct engine_s {
     list_t *scenes;
-    int actual_scene;
+    scene_t *actual_scene;
     scene_t *const_scene;
     sfRenderWindow *window;
     sfEvent event;
@@ -36,7 +38,7 @@ typedef struct engine_s {
     sfView *view;
     list_t *print_sprites;
     list_t *addons;
-    time_t time;
+    times_t time;
     list_t *functions;
 } engine_t;
 
@@ -50,6 +52,7 @@ typedef struct entity_s {
 typedef struct object_s {
     sfBool isActive;
     list_t *addons;
+    list_t *addons_data;
     entity_t *entity;
 } object_t;
 
@@ -64,28 +67,65 @@ typedef struct addon_s {
     event_functions_t on_scene_loaded;
 } addon_t;
 
-engine_t *init_game(sfVideoMode *video, char const *title);
+engine_t *init_game(sfVideoMode video, char const *title);
 int open_game(engine_t *engine, int fps);
-sfBool change_scene(char const *name, engine_t *engine);
 int destroy_game(engine_t *engine);
-int destroy_print_list(engine_t *engine);
-int destroy_functions(engine_t *engine);
-int destroy_addons(list_t *addon);
+
+void *get_addon(char const *name, int type, object_t *object);
+sfBool create_addon(char const *name, addon_t *addon, engine_t *engine);
+sfBool add_addon(char const *name, object_t *object, engine_t *engine);
+int destroy_addons(list_t *addon, sfBool bool);
+
+typedef struct print_text_s {
+    const sfFont *font;
+    char const *text;
+    sfVector2f position;
+} print_text_t;
+
+typedef struct print_node_s {
+    print_text_t *print_text;
+    entity_t *print_entity;
+    int order;
+} print_node_t;
+
+int print_list(engine_t *engine);
+sfBool add_print(print_text_t *print, entity_t *entity, int order, engine_t *engine);
+int destroy_print_list(engine_t *engine, sfBool final);
+
 int init_text(engine_t *engine);
-sfBool add_font(char const *font, engine_t *engine);
-sfBool print_text(char const *text, sfVector2f position, engine_t *engine);
-sfBool draw_text(char const *text, sfVector2f position, engine_t *engine);
+sfBool add_font(char const *font, char const *name, engine_t *engine);
+sfBool print_text(char const *text, sfVector2f position, int order,
+    engine_t *engine);
+sfBool draw_text(print_text_t *data, engine_t *engine);
 int destroy_text(engine_t *engine);
-int init_scene(char const *name, sfBool const_scene, engine_t *engine);
+sfBool change_font(char const *name, engine_t *engine);
+
+scene_t *init_scene(char const *name, sfBool const_scene, engine_t *engine);
+sfBool change_scene(char const *name, engine_t *engine);
 int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine);
-int destroy_scene(scene_t *scene, engine_t *engine);
-int create_object(char const *name, engine_t *engine);
-int create_object_by_list(list_t *object, engine_t *engine);
-int destroy_object(object_t *object, engine_t *engine);
-int init_entity(char const *texture, object_t *object);
-int destroy_entity(object_t *object);
+int destroy_scene(scene_t *scene);
+
+object_t *create_object(char const *name, list_t *scene);
+int add_object_by_list(list_t *object, list_t *scene, engine_t *engine);
+int destroy_object(object_t *object);
 sfBool set_active(sfBool value, object_t *object, engine_t *engine);
-sfBool add_function(event_functions_t functions, float time);
+
+int init_entity(int order, char const *texture, object_t *object);
+int init_entity_by_list(list_t *entity_list, object_t *object);
+int print_entity(object_t *object, engine_t *engine);
+int destroy_entity(object_t *object);
+
+typedef struct execute_function_s {
+    float time;
+    event_functions_t function;
+    object_t *object;
+} execute_function_t;
+
+sfBool add_function(event_functions_t function, float time, object_t *object, engine_t *engine);
+int execute_functions(engine_t *engine);
+int destroy_functions(engine_t *engine);
+
 float get_delta(engine_t *engine);
+int set_time(engine_t *engine);
 
 #endif
