@@ -11,8 +11,10 @@ SRC				=		src/main.c	\
 						src/app/load_fonts.c	\
 						src/app/load_game.c	\
 						src/app/scenes/main_menu/main_menu.c	\
+						src/app/scenes/stage_01/stage_01.c	\
 						src/app/addons/position/position.c	\
 						src/app/addons/hover_button/hover_button.c	\
+						src/app/addons/click_button/click_button.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
