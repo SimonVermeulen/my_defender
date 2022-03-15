@@ -9,6 +9,17 @@
             }
         },
         {
+            "name": "BuildSelector",
+            "entity": {
+                "texture": "./templates/Images/towers/tower_menu.png",
+                "order": 1
+            },
+            "addons": ["origin", "builder_selector"],
+            "addon_data": {
+                "Origin": 0
+            }
+        },
+        {
             "name": "background",
             "entity": {
                 "texture": "./templates/Images/in_game/stage01/background.png",
@@ -18,6 +29,14 @@
             "addon_data": {
                 "PositionX": 0,
                 "PositionY": 0
+            }
+        },
+        {
+            "name": "SlotTowerA",
+            "addons": ["tower_builder"],
+            "addon_data": {
+                "PositionX": 646,
+                "PositionY": 430
             }
         }
     ]
