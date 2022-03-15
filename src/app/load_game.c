@@ -7,7 +7,9 @@
 
 #include "game.h"
 
-const int (*load_scene[])(engine_t *) = {init_main_menu, NULL};
+const init_scene_function_t scenes[] = {init_main_menu, init_main_menus, NULL};
+const char *name_scenes[] = {"MainMenu", "MainMenus", NULL};
+
 const int (*load_addon[])(engine_t *) = {init_position_addons,
     init_hover_button_addons, NULL};
 
@@ -21,7 +23,8 @@ int load_game(void)
     engine_t *engine = init_game((sfVideoMode) {width, height, 32}, title);
 
     if (engine == NULL || load_addons(engine, load_addon) == 84 ||
-        load_scenes(engine, load_scene) == 84 || load_fonts(engine) == 84)
+        load_scenes(engine, name_scenes, scenes) == 84 ||
+        load_fonts(engine) == 84)
         return 84;
     sfView_setCenter(engine->view, (sfVector2f) {(width / 2), (height / 2)});
     sfView_setSize(engine->view, (sfVector2f) {width, height});
