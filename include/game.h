@@ -21,5 +21,6 @@ scene_t *init_stage_01(engine_t *engine);
 int init_position_addons(engine_t *engine);
 int init_hover_button_addons(engine_t *engine);
 int init_click_button_addons(engine_t *engine);
+int init_view_drag_addons(engine_t *engine);
 
 #endif /* !GAME_H_ */
