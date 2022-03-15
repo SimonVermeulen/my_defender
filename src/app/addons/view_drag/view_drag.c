@@ -23,13 +23,26 @@ int start_view_drag(object_t *object, engine_t *engine)
 }
 
 sfVector2f left_mouse_drag(sfVector2i *hit_position,
-    sfVector2i *position_mouse)
+    sfVector2i *position_mouse, engine_t *engine, sfFloatRect rect)
 {
     sfVector2f direction;
+    sfVector2u window = sfRenderWindow_getSize(engine->window);
+    sfVector2f view_position =
+        sfRenderWindow_mapPixelToCoords(engine->window,
+        (sfVector2i) {0, 0}, engine->view);
 
-    direction.x = (position_mouse->x - hit_position->x) * -1;
-    direction.y = (position_mouse->y - hit_position->y) * -1;
-    printf("%f, %f\n", direction.x, direction.y);
+    direction.x = ((position_mouse->x - hit_position->x) * -1) / 15;
+    direction.y = ((position_mouse->y - hit_position->y) * -1) / 15;
+    direction.x += ((view_position.x + direction.x + window.x) >
+        (rect.left + rect.width)) ? -((view_position.x + direction.x +
+        window.x) - (rect.left + rect.width)) : 0;
+    direction.y += ((view_position.y + direction.y + window.y) >
+        (rect.top + rect.height)) ? -((view_position.y + direction.y +
+        window.y) - (rect.top + rect.height)) : 0;
+    direction.x += ((view_position.x + direction.x) < 0) ?
+        -(view_position.x + direction.x) : 0;
+    direction.y += ((view_position.y + direction.y) < 0) ?
+        -(view_position.y + direction.y) : 0;
     return direction;
 }
 
@@ -38,20 +51,22 @@ int event_view_drag(object_t *object, engine_t *engine)
     sfVector2i *hit_position = get_addon("hit_position", 5, object);
     sfVector2i position_mouse_relative =
         sfMouse_getPositionRenderWindow(engine->window);
-    sfVector2i view_position =
-        sfRenderWindow_mapCoordsToPixel(engine->window,
-        (sfVector2f) {0, 0}, engine->view);
+    static sfBool is_pressed = sfFalse;
 
     if (engine->event.type == sfEvtMouseButtonPressed &&
         engine->event.mouseButton.button == sfMouseRight) {
         hit_position->x = position_mouse_relative.x;
         hit_position->y = position_mouse_relative.y;
+        is_pressed = sfTrue;
+    }
+    if (is_pressed == sfTrue) {
+        sfView_move(engine->view, left_mouse_drag(hit_position,
+            &position_mouse_relative, engine, sfSprite_getGlobalBounds(object->entity->sprite)));
+        sfRenderWindow_setView(engine->window, engine->view);
     }
     if (engine->event.type == sfEvtMouseButtonReleased &&
         engine->event.mouseButton.button == sfMouseRight) {
-        sfView_move(engine->view, left_mouse_drag(hit_position,
-            &position_mouse_relative));
-        sfRenderWindow_setView(engine->window, engine->view);
+        is_pressed = sfFalse;
     }
 }
 
