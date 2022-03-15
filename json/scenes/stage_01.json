@@ -1,6 +1,14 @@
 {
     "objects": [
         {
+            "name": "ResponsiveController",
+            "addons": ["responsive_window"],
+            "addon_data": {
+                "MaxWidth": 1920,
+                "MaxHeight": 1080
+            }
+        },
+        {
             "name": "background",
             "entity": {
                 "texture": "./templates/Images/in_game/stage01/background.png",
