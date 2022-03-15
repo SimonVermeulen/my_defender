@@ -1,7 +1,0 @@
-{
-    "name": "BuildSelector",
-    "entity": {
-        "texture": "./templates/Images/towers/tower_menu.png",
-        "order": 1
-    }
-}

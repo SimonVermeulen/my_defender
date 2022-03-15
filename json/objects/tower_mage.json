@@ -1,0 +1,7 @@
+{
+    "name": "TowerMage",
+    "entity": {
+        "texture": "./assets/images/towers/mage/level01/00.png",
+        "order": 1
+    }
+}
