@@ -33,21 +33,18 @@ int get_objects_by_list(char const *name, list_t *objects, list_t *scene, engine
     return add_objects_by_list(node, scene, engine);
 }
 
-int init_scene_by_list(list_t *object, sfBool const_scene, engine_t *engine)
+scene_t *init_scene_by_list(list_t *object, engine_t *engine)
 {
     scene_t *scene = NULL;
     node_t *node = NULL;
     int code = 0;
 
     if (object == NULL || engine == NULL)
-        return ERROR;
-    node = search_from_key(object, "name");
-    if (node == NULL || node->type != 4)
-        return ERROR;
-    scene = init_scene(node->value, const_scene, engine);
+        return NULL;
+    scene = init_scene(engine);
     if (scene == NULL)
-        return ERROR;
+        return NULL;
     code += get_objects_by_list("objects", object, scene->objects, engine);
     code += get_objects_by_list("canvas", object, scene->canvas, engine);
-    return (code != 0) ? 84 : 0;
+    return (code != 0) ? NULL : scene;
 }
