@@ -7,11 +7,11 @@
 
 #include "game.h"
 
-const init_scene_function_t scenes[] = {init_main_menu, init_main_menus, NULL};
-const char *name_scenes[] = {"MainMenu", "MainMenus", NULL};
+const init_scene_function_t scenes[] = {init_main_menu, init_stage_01, NULL};
+const char *name_scenes[] = {"MainMenu", "Stage01", NULL};
 
 const int (*load_addon[])(engine_t *) = {init_position_addons,
-    init_hover_button_addons, NULL};
+    init_hover_button_addons, init_click_button_addons, NULL};
 
 const int width = 1920;
 const int height = 1080;

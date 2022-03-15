@@ -1,0 +1,16 @@
+{
+    "objects": [
+        {
+            "name": "background",
+            "entity": {
+                "texture": "./templates/Images/in_game/stage01/background.png",
+                "order": 0
+            },
+            "addons": ["position"],
+            "addon_data": {
+                "PositionX": 0,
+                "PositionY": 0
+            }
+        }
+    ]
+}
