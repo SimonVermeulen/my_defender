@@ -23,6 +23,7 @@ engine_t *init_game(sfVideoMode video, char const *title)
 
     if (instance == NULL)
         return NULL;
+    instance->code = 0;
     instance->scenes = create_empty_list();
     instance->print_sprites = create_empty_list();
     instance->addons = create_empty_list();
@@ -39,6 +40,7 @@ engine_t *init_game(sfVideoMode video, char const *title)
 
 void destroy_engine(engine_t *engine)
 {
+    destroy_scene(engine->actual_scene);
     destroy_scene(engine->const_scene);
     destroy_text(engine);
     destroy_addons(engine->addons, sfFalse);
@@ -55,12 +57,16 @@ int destroy_game(engine_t *engine)
     if (engine == NULL)
         return ERROR;
     while (engine->scenes->nb_elements != 0) {
-        node = engine->scenes->head;
-        destroy_scene(node->value);
         shift_element(engine->scenes);
     }
     free(engine->scenes);
     destroy_engine(engine);
     free(engine);
     return 0;
+}
+
+void exit_game(engine_t *engine, int code)
+{
+    engine->code = code;
+    sfRenderWindow_close(engine->window);
 }
