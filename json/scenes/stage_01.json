@@ -20,6 +20,14 @@
             }
         },
         {
+            "name": "ValidBuild",
+            "entity": {
+                "texture": "./assets/images/towers/logo/buy.png",
+                "order": 2
+            },
+            "addons": ["valid_build"]
+        },
+        {
             "name": "background",
             "entity": {
                 "texture": "./assets/images/in_game/stage01/background.png",
@@ -35,8 +43,8 @@
             "name": "SlotTowerA",
             "addons": ["tower_builder"],
             "addon_data": {
-                "PositionX": 646,
-                "PositionY": 430
+                "PositionX": 640,
+                "PositionY": 420
             }
         }
     ]
