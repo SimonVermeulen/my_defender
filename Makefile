@@ -20,6 +20,8 @@ SRC				=		src/main.c	\
 						src/app/addons/tower_builder/tower_builder.c	\
 						src/app/addons/origin/origin.c	\
 						src/app/addons/builder_selector/builder_selector.c	\
+						src/app/addons/builder_selector/tick_builder_selector.c	\
+						src/app/addons/builder_selector/tower_selector.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
