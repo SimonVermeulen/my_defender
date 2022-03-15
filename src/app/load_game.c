@@ -12,7 +12,7 @@ const char *name_scenes[] = {"MainMenu", "Stage01", NULL};
 
 const int (*load_addon[])(engine_t *) = {init_position_addons,
     init_hover_button_addons, init_click_button_addons,
-    init_view_drag_addons, NULL};
+    init_view_drag_addons, init_responsive_window_addons, NULL};
 
 const int width = 1920;
 const int height = 1080;
