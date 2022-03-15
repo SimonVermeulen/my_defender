@@ -17,6 +17,9 @@ SRC				=		src/main.c	\
 						src/app/addons/click_button/click_button.c	\
 						src/app/addons/view_drag/view_drag.c	\
 						src/app/addons/responsive_window/responsive_window.c	\
+						src/app/addons/tower_builder/tower_builder.c	\
+						src/app/addons/origin/origin.c	\
+						src/app/addons/builder_selector/builder_selector.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
