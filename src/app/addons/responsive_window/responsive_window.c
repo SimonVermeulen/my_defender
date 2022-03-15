@@ -28,10 +28,8 @@ int event_responsive_window(object_t *object, engine_t *engine)
     if (width == NULL || height == NULL)
         return 0;
     if (engine->event.type == sfEvtResized) {
-        printf("%d, %d\n", *width, *height);
         x = engine->event.size.width;
         y = engine->event.size.height;
-        printf("[%d, %d]\n", x, y);
         if (x > *width || y > *height) {
             x = (x > *width) ? *width : x;
             y = (y > *height) ? *height : y;
