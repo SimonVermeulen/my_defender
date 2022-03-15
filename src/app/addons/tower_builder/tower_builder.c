@@ -24,6 +24,7 @@ int event_tower_builder_addons(object_t *object, engine_t *engine)
     if (engine->event.type == sfEvtMouseButtonPressed
         && engine->event.mouseButton.button == sfMouseLeft && 
         sfFloatRect_contains(&rect, mouse.x, mouse.y) == sfTrue) {
+        search_from_key(selector->addons_data, "SlotTower")->value = object;
         set_active(sfTrue, selector, engine);
         sfSprite_setPosition(selector->entity->sprite, (sfVector2f)
             {*position_x, *position_y});
@@ -35,7 +36,7 @@ int position_cursor(object_t *object, engine_t *engine)
     sfVector2f mouse = sfRenderWindow_mapPixelToCoords(engine->window,
         sfMouse_getPositionRenderWindow(engine->window), engine->view);
 
-    printf("%f, %f\n", mouse.x, mouse.y);
+    //printf("%f, %f\n", mouse.x, mouse.y);
 }
 
 int init_tower_builder_addons(engine_t *engine)
