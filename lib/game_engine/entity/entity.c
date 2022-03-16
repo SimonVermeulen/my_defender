@@ -28,7 +28,9 @@ int init_entity(int order, char const *texture_name, object_t *object)
     entity_t *entity = NULL;
 
     sprite = sfSprite_create();
-    texture = sfTexture_createFromFile(texture_name, NULL);
+    texture = NULL;
+    if (texture_name != NULL)
+        texture = sfTexture_createFromFile(texture_name, NULL);
     clock = sfClock_create();
     if (sprite == NULL || texture == NULL || clock == NULL || object == NULL)
         return 84;
@@ -37,7 +39,6 @@ int init_entity(int order, char const *texture_name, object_t *object)
     if (entity == NULL)
         return 84;
     entity->order = order;
-    entity->clock = clock;
     entity->sprite = sprite;
     entity->texture = texture;
     object->entity = entity;
@@ -46,9 +47,10 @@ int init_entity(int order, char const *texture_name, object_t *object)
 
 int print_entity(object_t *object, engine_t *engine)
 {
-    if (object == NULL || object->isActive == sfFalse || object->entity == NULL)
+    if (object == NULL || object->isActive == sfFalse ||
+        object->entity == NULL)
         return 84;
-    return add_print(NULL, object->entity, object->entity->order, engine);
+    return add_print(object->entity->sprite, 0, object->entity->order, engine);
 }
 
 int destroy_entity(object_t *object)
@@ -57,7 +59,19 @@ int destroy_entity(object_t *object)
         return 84;
     sfSprite_destroy(object->entity->sprite);
     sfTexture_destroy(object->entity->texture);
-    sfClock_destroy(object->entity->clock);
     free(object->entity);
+    return 0;
+}
+
+int change_texture(object_t *object, char const *path)
+{
+    if (object == NULL || path == NULL || object->entity)
+        return 84;
+    sfTexture_destroy(object->entity->texture);
+    object->entity->texture = sfTexture_createFromFile(path, NULL);
+    if (object->entity->texture == NULL)
+        return 84;
+    sfSprite_setTexture(object->entity->sprite, object->entity->texture,
+        sfTrue);
     return 0;
 }
