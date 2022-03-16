@@ -21,7 +21,7 @@ void set_position_ghost_tower(object_t *object, int x, int y)
 int print_ghost_tower(object_t *object, engine_t *engine)
 {
     list_t *tower = get_addon("Tower", 0, object);
-    object_t *slot_tower = get_addon("SlotTower", 0, object);
+    object_t *slot_tower = get_addon("SlotTower", 6, object);
     object_t *tower_object = NULL;
     node_t *node = NULL;
     int *position_x = get_addon("PositionX", 3, slot_tower);
