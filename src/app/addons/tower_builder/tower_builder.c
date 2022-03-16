@@ -31,6 +31,40 @@ int event_tower_builder_addons(object_t *object, engine_t *engine)
     }
 }
 
+int create_build_tower(int type, engine_t *engine, sfVector2f position,
+    list_t *scene)
+{
+    list_t *build_tower = launch_parsing("./json/objects/build_tower.json");
+    object_t *build_tower_object = NULL;
+    int *type_build = NULL;
+
+    if (build_tower == NULL ||
+        add_object_by_list(build_tower, scene, engine) == 84) {
+        exit_game(engine, 84);
+        return 0;
+    }
+    build_tower_object = scene->head->prev->value;
+    sfSprite_setPosition(build_tower_object->entity->sprite, position);
+    type_build = get_addon("type", 3, build_tower_object);
+    *type_build = type;
+    return 0;
+}
+
+int on_disable_tower_builder(object_t *object, engine_t *engine)
+{
+    object_t *valid = seach_object(engine, "ValidBuild");
+    int *type = get_addon("type", 3, valid);
+    int *position_x = get_addon("PositionX", 3, object);
+    int *position_y = get_addon("PositionY", 3, object);
+
+    switch (*type) {
+        case 0:
+            create_build_tower(*type, engine, (sfVector2f) {*position_x,
+                *position_y}, object->actual_scene);
+            break;
+    }
+}
+
 int position_cursor(object_t *object, engine_t *engine)
 {
     sfVector2f mouse = sfRenderWindow_mapPixelToCoords(engine->window,
@@ -46,7 +80,7 @@ int init_tower_builder_addons(engine_t *engine)
     if (addon == NULL)
         return 84;
     addon->on_enable = NULL;
-    addon->on_disable = NULL;
+    addon->on_disable = on_disable_tower_builder;
     addon->on_end = NULL;
     addon->on_start = NULL;
     addon->on_event = event_tower_builder_addons;

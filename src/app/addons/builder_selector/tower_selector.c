@@ -14,6 +14,7 @@ int on_click_tower_a(object_t *object, engine_t *engine, sfFloatRect rect,
     node_t *tower = search_from_key(get_addon("Tower", 0, object),
         "TowerArcher");
     object_t *valid = seach_object(engine, "ValidBuild");
+    int *type = 0;
 
     if (valid == NULL)
         return 0;
@@ -21,7 +22,10 @@ int on_click_tower_a(object_t *object, engine_t *engine, sfFloatRect rect,
         set_active(sfTrue, tower->value, engine);
         sfSprite_setPosition(valid->entity->sprite, (sfVector2f)
             {button.left, button.top});
+        sfClock_restart(valid->entity->clock);
         set_active(sfTrue, valid, engine);
+        type = get_addon("type", 3, valid);
+        *type = 0;
     }
     return 0;
 }
