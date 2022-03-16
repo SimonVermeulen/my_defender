@@ -17,13 +17,7 @@ SRC				=		src/main.c	\
 						src/app/addons/click_button/click_button.c	\
 						src/app/addons/view_drag/view_drag.c	\
 						src/app/addons/responsive_window/responsive_window.c	\
-						src/app/addons/tower_builder/tower_builder.c	\
 						src/app/addons/origin/origin.c	\
-						src/app/addons/builder_selector/builder_selector.c	\
-						src/app/addons/builder_selector/tick_builder_selector.c	\
-						src/app/addons/builder_selector/tower_selector.c	\
-						src/app/addons/valid_build/valid_build.c	\
-						src/app/addons/tower_build/tower_build.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
