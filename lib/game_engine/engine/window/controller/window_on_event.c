@@ -29,7 +29,7 @@ int loop_track_on_event(list_t *scene, engine_t *engine)
     node = scene->head;
     for (int i = 0; i < scene->nb_elements; i++, node = node->next) {
         object = node->value;
-        if (object->addons != NULL || object->isActive == sfTrue)
+        if (object->addons != NULL && object->isActive == sfTrue)
             loop_execution_on_event(object, engine);
     }
     return 0;
