@@ -15,14 +15,14 @@ int start_builder_selector(object_t *object, engine_t *engine)
 {
     list_t *tower = create_empty_list();
     int code = push_element(object->addons_data,
-        create_new_node(NULL, 0, 0, "SlotTower"));
+        create_new_node(NULL, 6, 0, "SlotTower"));
     object_t *tower_object = NULL;
     node_t *node = NULL;
     
     code += add_object_by_list(
-        launch_parsing("./json/objects/tower_archer.json"), tower, engine);
+        launch_parsing("./json/objects/ghost_tower_archer.json"), tower, engine);
     code += add_object_by_list(
-        launch_parsing("./json/objects/tower_mage.json"), tower, engine);
+        launch_parsing("./json/objects/ghost_tower_mage.json"), tower, engine);
     code += push_element(object->addons_data,
         create_new_node(tower, 0, 0, "Tower"));
     if (code >= 84)
