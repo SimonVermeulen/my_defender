@@ -23,7 +23,6 @@ SRC	=	addon/addon.c	\
 		scene/init_scene/init_scene.c	\
 		scene/scene.c	\
 		text/text.c	\
-		text/change_font.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -16,8 +16,8 @@ int start_view_drag(object_t *object, engine_t *engine)
         exit_game(84, engine);
         return 0;
     }
-    if (push_element(object->addons_data,
-    create_new_node(hit_position, 5, 0, "hit_position")) == 84)
+    if (create_new_node(hit_position, 5, "hit_position", object->addons_data)
+    == NULL)
         exit_game(84, engine);
     return 0;
 }
