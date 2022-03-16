@@ -49,21 +49,16 @@ sfBool set_const_scene(char const *name, engine_t *engine)
     return sfTrue;
 }
 
-int destroy_scene(scene_t *scene)
+int destroy_scene(list_t *scene)
 {
     node_t *node = NULL;
 
     if (scene == NULL)
         return ERROR;
-    while (scene->objects->nb_elements != 0) {
-        node = scene->objects->head;
+    while (scene->nb_elements != 0) {
+        node = scene->head;
         destroy_object(node->value);
     }
-    free(scene->objects);
-    while (scene->canvas->nb_elements != 0) {
-        node = scene->canvas->head;
-        destroy_object(node->value);
-    }
-    free(scene->canvas);
+    free(scene);
     return 0;
 }

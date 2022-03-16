@@ -15,8 +15,8 @@ int load_scenes(engine_t *engine, char **name,
 int load_game(void);
 int load_fonts(engine_t *engine);
 
-scene_t *init_main_menu(engine_t *engine);
-scene_t *init_stage_01(engine_t *engine);
+list_t *init_main_menu(engine_t *engine);
+list_t *init_stage_01(engine_t *engine);
 
 int init_position_addons(engine_t *engine);
 int init_hover_button_addons(engine_t *engine);

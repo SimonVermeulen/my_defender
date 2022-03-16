@@ -9,10 +9,9 @@
 
 int check_init_game(engine_t *instance)
 {
-    if (instance->scenes == NULL || instance->print_sprites == NULL ||
-        instance->addons == NULL || instance->functions == NULL ||
-        instance->view == NULL || instance->window == NULL ||
-        init_text(instance) == ERROR)
+    if (instance->scenes == NULL || instance->addons == NULL ||
+        instance->functions == NULL || instance->view == NULL ||
+        instance->window == NULL || instance->fonts == NULL)
         return 84;
     return 0;
 }
@@ -25,9 +24,10 @@ engine_t *init_game(sfVideoMode video, char const *title)
         return NULL;
     instance->code = 0;
     instance->scenes = create_empty_list();
-    instance->print_sprites = create_empty_list();
     instance->addons = create_empty_list();
+    instance->print = create_empty_list();
     instance->functions = create_empty_list();
+    instance->fonts = create_empty_list();
     instance->view = sfView_create();
     instance->window = sfRenderWindow_create(video, title,
         sfClose | sfResize, NULL);
@@ -40,12 +40,11 @@ engine_t *init_game(sfVideoMode video, char const *title)
 
 void destroy_engine(engine_t *engine)
 {
+    destroy_fonts(engine);
     destroy_scene(engine->actual_scene);
     destroy_scene(engine->const_scene);
-    destroy_text(engine);
     destroy_addons(engine->addons, sfFalse);
     destroy_functions(engine);
-    destroy_print_list(engine, sfTrue);
     sfRenderWindow_destroy(engine->window);
     sfView_destroy(engine->view);
 }
