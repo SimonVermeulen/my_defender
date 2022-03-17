@@ -26,6 +26,12 @@
             "addon_data": {
                 "PositionX": 640,
                 "PositionY": 420,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/archer/level01/01.png"
+                ],
                 "stats": 0,
                 "type": 0
             },
