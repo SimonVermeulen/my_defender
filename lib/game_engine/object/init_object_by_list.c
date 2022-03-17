@@ -41,6 +41,8 @@ object_t *add_object_child(list_t *object_list, object_t *object, engine_t *engi
     if (scene == NULL)
         return object;
     object->childs = init_scene_by_list(scene, engine, object);
+    if (object->childs == NULL)
+        return NULL;
     return object;
 }
 
@@ -59,8 +61,10 @@ object_t *create_object_list(list_t *list, list_t *scene, engine_t *engine,
         return NULL;
     object->parent = parent;
     entity = search_from_key(list, "entity");
-    if (entity != NULL && entity->type == 1)
-        init_entity_by_list(entity->value, object);
+    if (entity != NULL && entity->type == 1) {
+        if (init_entity_by_list(entity->value, object) == 84)
+            return NULL;
+    }
     add_addon_by_list(list, engine, object);
     add_addon_data(list, object);
     return add_object_child(list, object, engine);

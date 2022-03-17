@@ -33,7 +33,8 @@ int window_on_end(list_t *scene, engine_t *engine)
         object = node->value;
         if (object->addons != NULL || object->isActive == sfTrue)
             loop_execution_end(object, engine);
-        on_end(object->childs, engine);
+        if (object->isActive == sfTrue)
+            on_start(object->childs, engine);
     }
     return 0;
 }

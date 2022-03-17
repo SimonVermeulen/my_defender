@@ -108,6 +108,7 @@ object_t *create_object_list(list_t *list, list_t *scene, engine_t *engine,
     object_t *parent);
 int destroy_object(object_t *object);
 object_t *seach_object(engine_t *engine, char const *name);
+object_t *seek_object_scene(list_t *scene, char const *name);
 sfBool set_active(sfBool value, object_t *object, engine_t *engine);
 object_t **stock_object(object_t *object);
 
@@ -131,5 +132,7 @@ int destroy_functions(engine_t *engine);
 float get_delta(engine_t *engine);
 int set_time(engine_t *engine);
 void exit_game(engine_t *engine, int code);
+
+sfVector2f get_mouse_position(engine_t *engine);
 
 #endif
