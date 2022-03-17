@@ -61,7 +61,8 @@ int event_view_drag(object_t *object, engine_t *engine)
     }
     if (is_pressed == sfTrue) {
         sfView_move(engine->view, left_mouse_drag(hit_position,
-            &position_mouse_relative, engine, sfSprite_getGlobalBounds(object->entity->sprite)));
+            &position_mouse_relative, engine,
+            sfSprite_getGlobalBounds(object->entity->sprite)));
         sfRenderWindow_setView(engine->window, engine->view);
     }
     if (engine->event.type == sfEvtMouseButtonReleased &&

@@ -9,13 +9,25 @@
 
 int set_position_canvas(object_t *object, engine_t *engine, int x, int y)
 {
-    sfVector2i position_camera;
+    sfVector2f position_camera = sfRenderWindow_mapPixelToCoords(
+        engine->window, (sfVector2i) {0, 0}, engine->view);
 
-    position_camera = sfRenderWindow_mapCoordsToPixel(engine->window,
-    (sfVector2f) {0, 0}, engine->view);
-    sfSprite_setPosition(object->entity->sprite, (sfVector2f)
-    {position_camera.x, position_camera.y});
+    sfSprite_setPosition(object->entity->sprite, position_camera);
     sfSprite_move(object->entity->sprite, (sfVector2f) {x, y});
+}
+
+int start_position(object_t *object, engine_t *engine)
+{
+    int *x = get_addon("PositionX", 3, object->parent);
+    int *y = get_addon("PositionY", 3, object->parent);
+    int *pos_x = get_addon("PositionX", 3, object);
+    int *pos_y = get_addon("PositionY", 3, object); 
+
+    if (object->parent == NULL || x == NULL || y == NULL)
+        return 0;
+    *pos_x = *x + *pos_x;
+    *pos_y = *y + *pos_y;
+    return 0;
 }
 
 int position_tick_event(object_t *object, engine_t *engine)
@@ -43,7 +55,7 @@ int init_position_addons(engine_t *engine)
     addon->on_enable = NULL;
     addon->on_disable = NULL;
     addon->on_end = NULL;
-    addon->on_start = NULL;
+    addon->on_start = start_position;
     addon->on_event = NULL;
     addon->on_tick = position_tick_event;
     if (create_addon("position", addon, engine) == sfFalse)
