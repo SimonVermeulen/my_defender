@@ -14,6 +14,7 @@ SRC	=	addon/addon.c	\
 		engine/engine.c	\
 		engine/functions.c	\
 		engine/time.c	\
+		engine/util/get_mouse_position.c	\
 		entity/entity.c	\
 		object/init_object_by_list.c	\
 		object/object.c	\

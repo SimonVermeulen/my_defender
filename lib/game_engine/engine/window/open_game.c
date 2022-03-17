@@ -12,7 +12,7 @@ int window_on_event(list_t *scene, engine_t *engine);
 
 int execute_game(list_t *scene, engine_t *engine)
 {
-    int (*event[])(list_t *, engine_t *) = {window_on_tick, window_on_event,
+    int (*event[])(list_t *, engine_t *) = {window_on_event, window_on_tick,
         NULL};
 
     for (int i = 0; event[i] != NULL; i++) {
@@ -23,9 +23,6 @@ int execute_game(list_t *scene, engine_t *engine)
 
 int core_game(engine_t *engine)
 {
-    int (*event[])(list_t *, engine_t *) = {window_on_tick, window_on_event,
-        NULL};
-    
     execute_functions(engine);
     if (engine->prev_scene != NULL) {
         destroy_scene(engine->prev_scene);
