@@ -20,32 +20,29 @@ int start_tower(object_t *object, engine_t *engine)
     return 0;
 }
 
-int tick_tower_build(object_t *object, engine_t *engine)
-{
-    
-}
+int tick_tower_build(object_t *object, engine_t *engine);
 
 int tick_tower(object_t *object, engine_t *engine)
 {
+    int *stats = get_addon("stats", 3, object);
 
+    switch (*stats) {
+        case 1:
+            tick_tower_build(object, engine);
+            break;
+    }
 }
+
+int event_tower_selector(object_t *object, engine_t *engine);
 
 int event_tower(object_t *object, engine_t *engine)
 {
     int *stats = get_addon("stats", 3, object);
-    int *position_x = get_addon("PositionX", 3, object);
-    int *position_y = get_addon("PositionY", 3, object);
-    object_t *selector = seek_object_scene(object->childs, "BuildSelector");
-    sfFloatRect rect = (sfFloatRect) {(*position_x - 50), (*position_y - 50),
-        100, 100};
-    sfVector2f mouse = get_mouse_position(engine);
 
-    if (*stats > 0)
-        return 0;
-    if (engine->event.type == sfEvtMouseButtonPressed
-        && engine->event.mouseButton.button == sfMouseLeft && 
-        sfFloatRect_contains(&rect, mouse.x, mouse.y) == sfTrue) {
-        set_active(sfTrue, selector, engine);
+    switch (*stats) {
+        case 0:
+            event_tower_selector(object, engine);
+            break;
     }
 }
 
@@ -60,7 +57,7 @@ int init_tower_addons(engine_t *engine)
     addon->on_end = NULL;
     addon->on_start = start_tower;
     addon->on_event = event_tower;
-    addon->on_tick = NULL;
+    addon->on_tick = tick_tower;
     if (create_addon("tower", addon, engine) == sfFalse)
         return 84;
     return 0;
