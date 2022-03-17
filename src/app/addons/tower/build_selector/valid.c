@@ -37,7 +37,9 @@ int event_build_valid_selector(object_t *object, engine_t *engine)
         exit_game(engine, 84);
         return 0;
     }
-    if (!sfFloatRect_contains(&rect_valid, mouse.x, mouse.y) &&
+    if (engine->event.type == sfEvtMouseButtonPressed
+        && engine->event.mouseButton.button == sfMouseLeft &&
+        sfFloatRect_contains(&rect_valid, mouse.x, mouse.y) &&
         sfClock_getElapsedTime(object->clock).microseconds > 100000) {
         disable_build_items(tower, object, engine);
         *stats = 1; 
