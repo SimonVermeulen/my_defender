@@ -66,11 +66,11 @@ int destroy_entity(object_t *object)
 int change_texture(object_t *object, char const *path)
 {
     if (object == NULL || path == NULL || object->entity)
-        return 84;
+        return 83;
     sfTexture_destroy(object->entity->texture);
     object->entity->texture = sfTexture_createFromFile(path, NULL);
     if (object->entity->texture == NULL)
-        return 84;
+        return 86;
     sfSprite_setTexture(object->entity->sprite, object->entity->texture,
         sfTrue);
     return 0;

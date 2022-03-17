@@ -7,13 +7,13 @@
 
 #include "game_engine.h"
 
-object_t *seek_object_in_scene(list_t *scene, char const *name)
+object_t *seek_object_scene(list_t *scene, char const *name)
 {
     node_t *node = NULL;
-    node_t *value = NULL;
+    object_t *value = NULL;
     object_t *object = NULL;
 
-    if (scene == NULL)
+    if (scene == NULL || name == NULL)
         return NULL;
     node = search_from_key(scene, name);
     if (node != NULL)
@@ -21,9 +21,9 @@ object_t *seek_object_in_scene(list_t *scene, char const *name)
     node = scene->head;
     for (int i = 0; i < scene->nb_elements; i++) {
         object = node->value;
-        value = seek_object_in_scene(object->childs, name);
+        value = seek_object_scene(object->childs, name);
         if (value != NULL)
-            return value->value;
+            return value;
         node = node->next;
     }
     return NULL;
@@ -33,8 +33,8 @@ object_t *seach_object(engine_t *engine, char const *name)
 {
     object_t *object = NULL;
 
-    object = seek_object_in_scene(engine->actual_scene, name);
+    object = seek_object_scene(engine->actual_scene, name);
     if (object == NULL)
-        object = seek_object_in_scene(engine->const_scene, name);
+        object = seek_object_scene(engine->const_scene, name);
     return object;
 }

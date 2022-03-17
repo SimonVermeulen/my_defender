@@ -31,8 +31,7 @@ int click_button_event(object_t *object, engine_t *engine)
 {
     int *width = get_addon("HoverButton_Width", 3, object);
     int *height = get_addon("HoverButton_Height", 3, object);
-    sfVector2i position_mouse_relative =
-        sfMouse_getPositionRenderWindow(engine->window);
+    sfVector2f mouse = get_mouse_position(engine);
     sfVector2f position_object = sfSprite_getPosition(object->entity->sprite);
     sfFloatRect rect;
 
@@ -42,7 +41,7 @@ int click_button_event(object_t *object, engine_t *engine)
         *height};
     if (engine->event.type == sfEvtMouseButtonPressed
         && engine->event.mouseButton.button == sfMouseLeft &&
-        sfFloatRect_contains(&rect, position_mouse_relative.x, position_mouse_relative.y))
+        sfFloatRect_contains(&rect, mouse.x, mouse.y))
         on_click_button(object, engine);
     return 0;
 }

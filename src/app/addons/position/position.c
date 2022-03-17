@@ -21,9 +21,9 @@ int start_position(object_t *object, engine_t *engine)
     int *x = get_addon("PositionX", 3, object->parent);
     int *y = get_addon("PositionY", 3, object->parent);
     int *pos_x = get_addon("PositionX", 3, object);
-    int *pos_y = get_addon("PositionY", 3, object); 
+    int *pos_y = get_addon("PositionY", 3, object);
 
-    if (object->parent == NULL || x == NULL || y == NULL)
+    if (!object->parent || !x || !y || !pos_x || !pos_y)
         return 0;
     *pos_x = *x + *pos_x;
     *pos_y = *y + *pos_y;
