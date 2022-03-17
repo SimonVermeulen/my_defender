@@ -13,7 +13,8 @@ const char *name_scenes[] = {"MainMenu", "Stage01", NULL};
 const int (*load_addon[])(engine_t *) = {init_position_addons,
     init_hover_button_addons, init_click_button_addons,
     init_view_drag_addons, init_responsive_window_addons,
-    init_origin_addons, NULL};
+    init_origin_addons, init_tower_addons, init_build_selector_addons,
+    init_build_valid_selector, NULL};
 
 const int width = 1920;
 const int height = 1080;
@@ -32,6 +33,7 @@ int load_game(void)
     sfView_setSize(engine->view, (sfVector2f) {width, height});
     sfView_zoom(engine->view, 0.98);
     sfRenderWindow_setView(engine->window, engine->view);
-    change_scene("MainMenu", engine);
+    if (!change_scene("MainMenu", engine))
+        return 84;
     return open_game(engine, fps);
 }
