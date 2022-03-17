@@ -90,6 +90,7 @@ sfBool set_active(sfBool value, object_t *object, engine_t *engine)
         return sfFalse;
     object->isActive = value;
     node = object->addons->head;
+    sfClock_restart(object->clock);
     for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
         addon = node->value;
         if (object->isActive == sfTrue) {
