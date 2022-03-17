@@ -36,7 +36,7 @@ int add_addon_data(list_t *object_list, object_t *object)
 
 object_t *add_object_child(list_t *object_list, object_t *object, engine_t *engine)
 {
-    list_t *scene = get_value_list(object_list, "children", 10);
+    list_t *scene = get_value_list(object_list, "children", 1);
 
     if (scene == NULL)
         return object;
