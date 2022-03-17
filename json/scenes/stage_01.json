@@ -9,25 +9,6 @@
             }
         },
         {
-            "name": "BuildSelector",
-            "entity": {
-                "texture": "./assets/images/towers/logo/tower_menu.png",
-                "order": 1
-            },
-            "addons": ["origin", "builder_selector"],
-            "addon_data": {
-                "Origin": 0
-            }
-        },
-        {
-            "name": "ValidBuild",
-            "entity": {
-                "texture": "./assets/images/towers/logo/buy.png",
-                "order": 2
-            },
-            "addons": ["valid_build"]
-        },
-        {
             "name": "background",
             "entity": {
                 "texture": "./assets/images/in_game/stage01/background.png",
@@ -40,11 +21,44 @@
             }
         },
         {
-            "name": "SlotTowerA",
-            "addons": ["tower_builder"],
+            "name": "SlotTower",
+            "addons": ["position"],
             "addon_data": {
                 "PositionX": 640,
                 "PositionY": 420
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 1
+                        },
+                        "addons": ["position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0,
+                            "PositionY": 0
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "ValidBuild",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 2
+                                    },
+                                    "addons": ["position"],
+                                    "addon_data": {
+                                        "PositionX": 0,
+                                        "PositionY": 0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
             }
         }
     ]
