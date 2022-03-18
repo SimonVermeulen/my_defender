@@ -10,13 +10,13 @@
 void disable_build_items(object_t *tower, object_t *object, engine_t *engine)
 {
     object_t *selector = seek_object_scene(tower->childs, "BuildSelector");
+    object_t *loader = seek_object_scene(tower->childs, "TowerLoad");
 
-    if (!selector) {
-        exit_game(engine, 84);
-        return 0;
-    }
+    if (!selector)
+        return exit_game(engine, 84);
     set_active(sfFalse, selector, engine);
     set_active(sfFalse, object, engine);
+    set_active(sfTrue, loader, engine);
     return 0;
 }
 
@@ -27,16 +27,12 @@ int event_build_valid_selector(object_t *object, engine_t *engine)
     sfVector2f mouse = get_mouse_position(engine);
     int *stats = NULL;
 
-    if (!object->parent || !object->parent->parent) {
-        exit_game(engine, 84);
-        return 0;
-    }
+    if (!object->parent || !object->parent->parent)
+        return exit_game(engine, 84);
     tower = object->parent->parent;
     stats = get_addon("stats", 3, tower);
-    if (stats == NULL) {
-        exit_game(engine, 84);
-        return 0;
-    }
+    if (stats == NULL)
+        return exit_game(engine, 84);
     if (engine->event.type == sfEvtMouseButtonPressed
         && engine->event.mouseButton.button == sfMouseLeft &&
         sfFloatRect_contains(&rect_valid, mouse.x, mouse.y) &&
