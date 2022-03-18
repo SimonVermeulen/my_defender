@@ -24,15 +24,17 @@ int enable_tower_level(object_t *object, engine_t *engine)
     node_t *info = NULL;
     char **path = NULL;
     int *type = get_addon("type", 3, object->parent);
+    list_t *json = NULL;
 
     if (!node_path || node_path->type != 40 ||
         node_path->len != 4 || !type) {
         return exit_game(engine, 84);
     }
     path = node_path->value;
-    info = create_new_node(launch_parsing(path[*type]), 1, "Info",
+    json = launch_parsing(path[*type]);
+    info = create_new_node(json, 1, "Info",
         object->addons_data);
-    if (info == NULL)
+    if (!info || !json)
         return exit_game(engine, 84);
     return load_sprite_tower(object, engine);
 }

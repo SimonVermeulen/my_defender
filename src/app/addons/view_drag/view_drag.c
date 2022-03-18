@@ -23,7 +23,7 @@ int start_view_drag(object_t *object, engine_t *engine)
 }
 
 sfVector2f left_mouse_drag(sfVector2i *hit_position,
-    sfVector2i *position_mouse, engine_t *engine, sfFloatRect rect)
+    sfVector2f *position_mouse, engine_t *engine, sfFloatRect rect)
 {
     sfVector2f direction;
     sfVector2u window = sfRenderWindow_getSize(engine->window);
