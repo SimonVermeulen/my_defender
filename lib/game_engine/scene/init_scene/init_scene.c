@@ -20,20 +20,8 @@ int init_primitive_scene(engine_t *engine, init_scene_function_t init,
     if (primitive == NULL)
         return 84;
     primitive->init = init;
-    node = create_new_node(primitive, 0, 0, name);
+    node = create_new_node(primitive, 0, name, engine->scenes);
     if (node == NULL)
         return 84;
-    push_element(engine->scenes, node);
     return 0;
-}
-
-scene_t *init_scene(engine_t *engine)
-{
-    scene_t *scene = malloc(sizeof(scene_t));
-
-    if (scene == NULL)
-        return NULL;
-    scene->canvas = create_empty_list();
-    scene->objects = create_empty_list();
-    return scene;
 }
