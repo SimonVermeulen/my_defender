@@ -1,7 +1,0 @@
-{
-    "name": "TowerArcher",
-    "entity": {
-        "texture": "./assets/images/towers/archer/level01/00.png",
-        "order": 1
-    }
-}

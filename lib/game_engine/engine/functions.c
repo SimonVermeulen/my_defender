@@ -7,12 +7,14 @@
 
 #include "game_engine.h"
 
-sfBool add_function(event_functions_t function, float time, object_t *object, engine_t *engine)
+sfBool add_function(event_functions_t function, float time, object_t *object,
+    engine_t *engine)
 {
     execute_function_t *execute = malloc(sizeof(execute_function_t));
     node_t *node = malloc(sizeof(node_t));
 
-    if (execute == NULL || node == NULL || engine == NULL || object == NULL || function == NULL)
+    if (execute == NULL || node == NULL || engine == NULL || object == NULL ||
+        function == NULL)
         return sfFalse;
     execute->function = function;
     execute->time = time;

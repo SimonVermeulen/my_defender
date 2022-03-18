@@ -16,14 +16,14 @@ int start_view_drag(object_t *object, engine_t *engine)
         exit_game(84, engine);
         return 0;
     }
-    if (push_element(object->addons_data,
-    create_new_node(hit_position, 5, 0, "hit_position")) == 84)
+    if (create_new_node(hit_position, 5, "hit_position", object->addons_data)
+    == NULL)
         exit_game(84, engine);
     return 0;
 }
 
 sfVector2f left_mouse_drag(sfVector2i *hit_position,
-    sfVector2i *position_mouse, engine_t *engine, sfFloatRect rect)
+    sfVector2f *position_mouse, engine_t *engine, sfFloatRect rect)
 {
     sfVector2f direction;
     sfVector2u window = sfRenderWindow_getSize(engine->window);
@@ -49,19 +49,19 @@ sfVector2f left_mouse_drag(sfVector2i *hit_position,
 int event_view_drag(object_t *object, engine_t *engine)
 {
     sfVector2i *hit_position = get_addon("hit_position", 5, object);
-    sfVector2i position_mouse_relative =
-        sfMouse_getPositionRenderWindow(engine->window);
+    sfVector2f mouse = get_mouse_position(engine);
     static sfBool is_pressed = sfFalse;
 
     if (engine->event.type == sfEvtMouseButtonPressed &&
         engine->event.mouseButton.button == sfMouseRight) {
-        hit_position->x = position_mouse_relative.x;
-        hit_position->y = position_mouse_relative.y;
+        hit_position->x = mouse.x;
+        hit_position->y = mouse.y;
         is_pressed = sfTrue;
     }
     if (is_pressed == sfTrue) {
         sfView_move(engine->view, left_mouse_drag(hit_position,
-            &position_mouse_relative, engine, sfSprite_getGlobalBounds(object->entity->sprite)));
+            &mouse, engine,
+            sfSprite_getGlobalBounds(object->entity->sprite)));
         sfRenderWindow_setView(engine->window, engine->view);
     }
     if (engine->event.type == sfEvtMouseButtonReleased &&
