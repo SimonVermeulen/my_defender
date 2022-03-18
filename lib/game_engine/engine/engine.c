@@ -64,8 +64,9 @@ int destroy_game(engine_t *engine)
     return 0;
 }
 
-void exit_game(engine_t *engine, int code)
+int exit_game(engine_t *engine, int code)
 {
     engine->code = code;
     sfRenderWindow_close(engine->window);
+    return code;
 }
