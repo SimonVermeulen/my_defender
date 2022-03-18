@@ -11,8 +11,7 @@ int hover_button_tick(object_t *object, engine_t *engine)
 {
     int *width = get_addon("HoverButton_Width", 3, object);
     int *height = get_addon("HoverButton_Height", 3, object);
-    sfVector2i position_mouse_relative =
-        sfMouse_getPositionRenderWindow(engine->window);
+    sfVector2f mouse = get_mouse_position(engine);
     sfVector2f position_object = sfSprite_getPosition(object->entity->sprite);
     sfFloatRect rect;
     sfIntRect rect_texture;
@@ -22,7 +21,7 @@ int hover_button_tick(object_t *object, engine_t *engine)
     rect = (sfFloatRect) {position_object.x, position_object.y, *width,
         *height};
     rect_texture = (sfIntRect) {0, 0, *width, *height};
-    if (sfFloatRect_contains(&rect, position_mouse_relative.x, position_mouse_relative.y))
+    if (sfFloatRect_contains(&rect, mouse.x, mouse.y))
         rect_texture.left = *width;
     sfSprite_setTextureRect(object->entity->sprite, rect_texture);
     return 0;
