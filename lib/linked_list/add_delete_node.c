@@ -39,14 +39,18 @@ node_t *create_newnode(void *value, int type, int len)
     return (new_node);
 }
 
-node_t *create_new_node(void *value, int type, int length, const char *name)
+node_t *create_new_node(void *value, int type, const char *name, list_t *list)
 {
-    node_t *new_node = create_newnode(value, type, length);
+    node_t *new_node = create_newnode(value, type, 0);
 
     if (new_node == NULL)
         return NULL;
     new_node->key = my_strdup(name);
     if (new_node->key == NULL) {
+        free(new_node);
+        return NULL;
+    }
+    if (push_element(list, new_node) > 1) {
         free(new_node);
         return NULL;
     }

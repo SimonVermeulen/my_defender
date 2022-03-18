@@ -34,6 +34,8 @@ int window_on_tick(list_t *scene, engine_t *engine)
         if (object->addons != NULL && object->isActive == sfTrue)
             loop_execution_tick(object, engine);
         print_entity(object, engine);
+        if (object->isActive == sfTrue)
+            window_on_tick(object->childs, engine);
     }
     return 0;
 }

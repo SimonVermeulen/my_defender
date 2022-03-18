@@ -17,13 +17,15 @@ SRC				=		src/main.c	\
 						src/app/addons/click_button/click_button.c	\
 						src/app/addons/view_drag/view_drag.c	\
 						src/app/addons/responsive_window/responsive_window.c	\
-						src/app/addons/tower_builder/tower_builder.c	\
 						src/app/addons/origin/origin.c	\
-						src/app/addons/builder_selector/builder_selector.c	\
-						src/app/addons/builder_selector/tick_builder_selector.c	\
-						src/app/addons/builder_selector/tower_selector.c	\
-						src/app/addons/valid_build/valid_build.c	\
-						src/app/addons/tower_build/tower_build.c	\
+						src/app/addons/tower/tower.c	\
+						src/app/addons/tower/build_selector/build_selector.c	\
+						src/app/addons/tower/build_selector/valid.c	\
+						src/app/addons/tower/tower_build.c	\
+						src/app/addons/tower/tower_selector.c	\
+						src/app/addons/tower/load.c	\
+						src/app/addons/active/active.c	\
+						src/app/addons/tower/tower_level.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
