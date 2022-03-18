@@ -41,6 +41,7 @@ object_t *create_object(char const *name, list_t *scene)
     object->name = string;
     object->actual_scene = scene;
     object->addons = create_empty_list();
+    object->addons_data = NULL;
     if (create_secondary_step_object(object, node , string, scene) == 84)
         return NULL;
     return object;

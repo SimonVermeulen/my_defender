@@ -27,5 +27,8 @@ int init_origin_addons(engine_t *engine);
 int init_tower_addons(engine_t *engine);
 int init_build_selector_addons(engine_t *engine);
 int init_build_valid_selector(engine_t *engine);
+int init_load_build_addons(engine_t *engine);
+int init_active_addons(engine_t *engine);
+int init_tower_level_addons(engine_t *engine);
 
 #endif /* !GAME_H_ */

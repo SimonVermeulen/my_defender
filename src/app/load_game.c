@@ -14,7 +14,8 @@ const int (*load_addon[])(engine_t *) = {init_position_addons,
     init_hover_button_addons, init_click_button_addons,
     init_view_drag_addons, init_responsive_window_addons,
     init_origin_addons, init_tower_addons, init_build_selector_addons,
-    init_build_valid_selector, NULL};
+    init_build_valid_selector, init_load_build_addons,
+    init_active_addons, init_tower_level_addons, NULL};
 
 const int width = 1920;
 const int height = 1080;
