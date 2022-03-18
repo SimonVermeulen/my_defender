@@ -131,7 +131,7 @@ int destroy_functions(engine_t *engine);
 
 float get_delta(engine_t *engine);
 int set_time(engine_t *engine);
-void exit_game(engine_t *engine, int code);
+int exit_game(engine_t *engine, int code);
 
 sfVector2f get_mouse_position(engine_t *engine);
 

@@ -23,6 +23,9 @@ SRC				=		src/main.c	\
 						src/app/addons/tower/build_selector/valid.c	\
 						src/app/addons/tower/tower_build.c	\
 						src/app/addons/tower/tower_selector.c	\
+						src/app/addons/tower/load.c	\
+						src/app/addons/active/active.c	\
+						src/app/addons/tower/tower_level.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 

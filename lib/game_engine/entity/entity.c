@@ -65,7 +65,7 @@ int destroy_entity(object_t *object)
 
 int change_texture(object_t *object, char const *path)
 {
-    if (object == NULL || path == NULL || object->entity)
+    if (!object || !path || !object->entity)
         return 84;
     sfTexture_destroy(object->entity->texture);
     object->entity->texture = sfTexture_createFromFile(path, NULL);

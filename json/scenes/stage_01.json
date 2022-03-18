@@ -38,6 +38,32 @@
             "children": {
                 "objects": [
                     {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 6
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0,
+                            "PositionY": 0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/archer.json",
+                                "./json/objects/archer.json",
+                                "./json/objects/archer.json"
+                            ]
+                        }
+                    },
+                    {
                         "name": "SpriteTower",
                         "entity": {
                             "texture": "./assets/images/towers/archer/level01/00.png",
