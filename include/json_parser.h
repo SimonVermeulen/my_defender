@@ -23,7 +23,7 @@
 * @param path the path to the file
 * @return list_t* the list with all data parsed 
 */
-list_t *launch_parsing(char*path);
+list_t *launch_parsing(char *path);
 
 /**
 * @brief Get the content of the JSON file at path 
@@ -31,7 +31,7 @@ list_t *launch_parsing(char*path);
 * @param path the path to the JSON file
 * @return char* Content of the JSON file 
 */
-char *get_buffer(char*path);
+char *get_buffer(char *path);
 
 /**
 * @brief Stringifies the JSON content
@@ -39,7 +39,7 @@ char *get_buffer(char*path);
 * @param buffer the buffer to stringify
 * @return int 1 if error 0 if no error
 */
-int stringify(char**buffer);
+int stringify(char **buffer);
 
 /**
 * @brief Extracts the data from the given stringify buffer
@@ -47,7 +47,7 @@ int stringify(char**buffer);
 * @param buffer the stringified buffer you need to extract the data from
 * @return list_t* the data extracted stocked in a linked list
 */
-list_t *get_data(char*buffer);
+list_t *get_data(char *buffer);
 
 /*----------TYPE_CHECKERS-----------*/
 
@@ -64,7 +64,7 @@ list_t *get_data(char*buffer);
 *
 * @param tmp the node to fill with the type
 */
-void check_type(const char*buff, node_t*tmp);
+void check_type(const char *buff, node_t *tmp);
 
 /**
 * @brief check if the data at the current index of buffer is an array in JSON
@@ -72,7 +72,7 @@ void check_type(const char*buff, node_t*tmp);
 * @param buff the buffer to check
 * @return int 1 if it's an array 0 if not
 */
-int check_array(const char*buff);
+int check_array(const char *buff);
 
 /**
 * @brief check if the data at the current index of buffer is an object in JSON
@@ -80,7 +80,7 @@ int check_array(const char*buff);
 * @param buff the buffer to check
 * @return int 1 if it's an object 0 if not
 */
-int check_object(const char*buff);
+int check_object(const char *buff);
 
 /**
 * @brief check if the data at the current index of buffer is a double in JSON
@@ -88,7 +88,7 @@ int check_object(const char*buff);
 * @param buff the buffer to check
 * @return int 1 if it's a double 0 if not
 */
-int check_double(const char*buff);
+int check_double(const char *buff);
 
 /**
 * @brief check if the data at the current index of buffer is an int in JSON
@@ -96,7 +96,7 @@ int check_double(const char*buff);
 * @param buff the buffer to check
 * @return int 1 if it's an int 0 if not
 */
-int check_int(const char*buff);
+int check_int(const char *buff);
 
 /**
 * @brief check if the data at the current index of buffer is a string in JSON
@@ -104,7 +104,7 @@ int check_int(const char*buff);
 * @param buff the buffer to check
 * @return int 1 if it's a string 0 if not
 */
-int check_string(const char*buff);
+int check_string(const char *buff);
 
 /*----------VALUE_GETTERS-----------*/
 
@@ -116,7 +116,7 @@ int check_string(const char*buff);
 * @param tmp the node to stock value in
 * @return int the index after reading the value
 */
-int get_value(const char*buffer, int index, node_t*tmp);
+int get_value(const char *buffer, int index, node_t *tmp);
 
 /**
 * @brief Get the key of the current data in buffer
@@ -126,7 +126,7 @@ int get_value(const char*buffer, int index, node_t*tmp);
 * @param tmp the node to stock value in
 * @return int the index after reading the value
 */
-int get_key(const char*buffer, int index, node_t*tmp);
+int get_key(const char *buffer, int index, node_t *tmp);
 
 /**
 * @brief Get the array from the current index of buffer
@@ -136,7 +136,7 @@ int get_key(const char*buffer, int index, node_t*tmp);
 * @param tmp the node to stock the array in
 * @return int the index after reading the array values
 */
-int get_array(const char*buff, node_t*new_node, int nb_elements);
+int get_array(const char *buff, node_t *new_node, int nb_elements);
 
 /**
 * @brief Get the object from the current index of buffer
@@ -147,7 +147,7 @@ int get_array(const char*buff, node_t*new_node, int nb_elements);
 * @return int the index after reading the object
 */
 
-int get_object(const char*buff, node_t*new_node, int nb_elements);
+int get_object(const char *buff, node_t *new_node, int nb_elements);
 
 /**
 * @brief Get the double from the current index of buffer
@@ -157,7 +157,7 @@ int get_object(const char*buff, node_t*new_node, int nb_elements);
 * @param tmp the node to stock the double in
 * @return int the index after reading the double
 */
-int get_double(const char*buff, node_t*new_node, int nb_elements);
+int get_double(const char *buff, node_t *new_node, int nb_elements);
 
 /**
 * @brief Get the int from the current index of buffer
@@ -167,7 +167,7 @@ int get_double(const char*buff, node_t*new_node, int nb_elements);
 * @param tmp the node to stock the int in
 * @return int the index after reading the int
 */
-int get_int(const char*buff, node_t*new_node, int nb_elements);
+int get_int(const char *buff, node_t *new_node, int nb_elements);
 
 /**
 * @brief Get the string from the current index of buffer
@@ -177,7 +177,7 @@ int get_int(const char*buff, node_t*new_node, int nb_elements);
 * @param tmp the node to stock the string in
 * @return int the index after reading the string
 */
-int get_string(const char*buff, node_t*new_node, int nb_elements);
+int get_string(const char *buff, node_t *new_node, int nb_elements);
 
 /*****************WRITING*****************/
 
