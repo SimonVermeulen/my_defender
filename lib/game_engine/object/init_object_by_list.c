@@ -29,7 +29,7 @@ int add_addon_data(list_t *object_list, object_t *object)
     node = search_from_key(object_list, "addon_data");
     if (node == NULL || node->type != 1)
         return ERROR;
-    object->addons_data = node->value;
+    object->addons_data = copy_list(node->value);
     return 0;
 }
 
