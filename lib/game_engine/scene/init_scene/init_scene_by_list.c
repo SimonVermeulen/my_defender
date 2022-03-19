@@ -26,7 +26,6 @@ list_t *init_scene_by_list(list_t *object, engine_t *engine, object_t *parent)
 {
     list_t *scene = NULL;
     node_t *node = NULL;
-    int code = 0;
 
     if (object == NULL || engine == NULL)
         return NULL;

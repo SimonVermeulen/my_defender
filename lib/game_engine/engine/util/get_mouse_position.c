@@ -9,8 +9,6 @@
 
 sfVector2f get_mouse_position(engine_t *engine)
 {
-    sfVector2f mouse;
-
     if (engine == NULL)
         return (sfVector2f) {0, 0};
     return sfRenderWindow_mapPixelToCoords(engine->window,
