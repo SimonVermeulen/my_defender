@@ -23,14 +23,13 @@ list_t *create_empty_list(void)
 
 void free_list(list_t *list)
 {
-    node_t *current = list->head->prev;
+    node_t *current = list->head;
     node_t *tmp = NULL;
 
-    while (current != list->head) {
-        tmp = current->prev;
+    for (int i = 0; i < list->nb_elements; i++) {
+        tmp = current->next;
         free_node(current);
         current = tmp;
     }
-    free_node(list->head);
     free(list);
 }
