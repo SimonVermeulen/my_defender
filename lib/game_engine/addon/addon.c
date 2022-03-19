@@ -28,6 +28,7 @@ sfBool create_addon(char const *name, addon_t *addon, engine_t *engine)
     if (addon == NULL || engine == NULL || node == NULL)
         return sfFalse;
     node->value = addon;
+    node->len = 0;
     node->key = my_strdup(name);
     push_element(engine->addons, node);
     return sfTrue;
@@ -46,6 +47,7 @@ sfBool add_addon(char const *name, object_t *object, engine_t *engine)
     new = malloc(sizeof(node_t));
     if (new == NULL)
         return sfFalse;
+    node->len = 0;
     new->key = node->key;
     new->value = node->value;
     push_element(object->addons, new);

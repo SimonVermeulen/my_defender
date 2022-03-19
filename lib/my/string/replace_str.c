@@ -5,6 +5,9 @@
 ** replace_str.c
 */
 
+#include <stdlib.h>
+#include "my.h"
+
 char *replace_str(char *str, char const *replace, int start, int end)
 {
     char *tmp = my_strdup(str);

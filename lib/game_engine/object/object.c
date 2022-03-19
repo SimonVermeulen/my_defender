@@ -22,6 +22,7 @@ int create_secondary_step_object(object_t *object, node_t *node,
         return 84;
     node->value = object;
     node->key = name;
+    node->len = 0;
     return push_element(scene, node);
 }
 

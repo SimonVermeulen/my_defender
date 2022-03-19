@@ -16,6 +16,7 @@ sfBool add_function(event_functions_t function, float time, object_t *object,
     if (execute == NULL || node == NULL || engine == NULL || object == NULL ||
         function == NULL)
         return sfFalse;
+    node->len = 0;
     execute->function = function;
     execute->time = time;
     execute->object = object;
