@@ -30,12 +30,16 @@
                 "texture": "./assets/images/menu/start.png",
                 "order": 2
             },
-            "addons": ["hover_button", "position"],
+            "addons": ["hover_button", "position", "click_button"],
             "addon_data": {
                 "HoverButton_Width": 372,
                 "HoverButton_Height": 380,
                 "PositionX": 775,
-                "PositionY": 360
+                "PositionY": 360,
+                "OnClick": {
+                    "type": 0,
+                    "value": "Stage01"
+                }
             }
         }
     ]

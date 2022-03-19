@@ -136,6 +136,8 @@ node_t *search_from_key(list_t *list, char *key);
 
 void *get_value_list(list_t *list, const char *name, int type);
 
-node_t *create_new_node(void *value, int type, int length, const char *name);
+int set_value_list(list_t *list, const char *name, void *value);
+
+node_t *create_new_node(void *value, int type, const char *name, list_t *list);
 
 #endif

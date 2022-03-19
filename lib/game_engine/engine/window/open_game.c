@@ -10,26 +10,26 @@
 int window_on_tick(list_t *scene, engine_t *engine);
 int window_on_event(list_t *scene, engine_t *engine);
 
+int execute_game(list_t *scene, engine_t *engine)
+{
+    int (*event[])(list_t *, engine_t *) = {window_on_event, window_on_tick,
+        NULL};
+
+    for (int i = 0; event[i] != NULL; i++) {
+        (*event[i])(scene, engine);
+    }
+    return 0;
+}
+
 int core_game(engine_t *engine)
 {
-    int (*event[])(list_t *, engine_t *) = {window_on_tick, window_on_event,
-        NULL};
-    
     execute_functions(engine);
     if (engine->prev_scene != NULL) {
         destroy_scene(engine->prev_scene);
         engine->prev_scene = NULL;
     }
-    for (int i = 0; event[i] != NULL; i++) {
-        if (engine->actual_scene != NULL) {
-            (*event[i])(engine->actual_scene->objects, engine);
-            (*event[i])(engine->actual_scene->canvas, engine);
-        }
-        if (engine->const_scene != NULL) {
-            (*event[i])(engine->const_scene->objects, engine);
-            (*event[i])(engine->const_scene->canvas, engine);
-        }
-    }
+    execute_game(engine->actual_scene, engine);
+    execute_game(engine->const_scene, engine);
     print_list(engine);
     return 0;
 }

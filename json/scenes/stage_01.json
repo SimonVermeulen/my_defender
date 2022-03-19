@@ -1,0 +1,218 @@
+{
+    "objects": [
+        {
+            "name": "ResponsiveController",
+            "addons": ["responsive_window"],
+            "addon_data": {
+                "MaxWidth": 1920,
+                "MaxHeight": 1080
+            }
+        },
+        {
+            "name": "background",
+            "entity": {
+                "texture": "./assets/images/in_game/stage01/background.png",
+                "order": 0
+            },
+            "addons": ["position", "view_drag"],
+            "addon_data": {
+                "PositionX": 0,
+                "PositionY": 0
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 640,
+                "PositionY": 420,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/archer/level01/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 6
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0,
+                            "PositionY": 0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/archer.json",
+                                "./json/objects/archer.json",
+                                "./json/objects/archer.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 2
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0,
+                            "PositionY": 0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 1
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0,
+                            "PositionY": 0,
+                            "Towers": [
+                                {
+                                    "PositionX": 0,
+                                    "PositionY": 0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 0,
+                                    "PositionY": 0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": 0,
+                                    "PositionY": 0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 0,
+                                    "PositionY": 0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 2
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0,
+                                        "PositionY": 0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "mobsSpawner",
+            "addons": ["mobs_spawner"],
+            "addon_data": {
+                "SpawnPositionY": 0,
+                "SpawnPositionX": 0,
+                "TimeSpawn": 60,
+                "mobs": [
+                    {
+                        "name": "LittleGobellin",
+                        "entity": {
+                            "texture": "./assets/images/mobs/little_gobelin/little_gobelin.png",
+                            "order": 4
+                        },
+                        "addons": ["position", "mobs_animation", "mobs_movement"],
+                        "addon_data": {
+                            "PositionX": 60,
+                            "PositionY": 60,
+                            "Width": 34,
+                            "Height": 34,
+                            "AnimationTime": 100000,
+                            "AnimationStep": 0,
+                            "MovementAnimation": [33, 34, 35, 36, 37],
+                            "PositionStep": 0,
+                            "Paths": [
+                                {
+                                    "x": 150,
+                                    "y": 150
+                                },
+                                {
+                                    "x": 380,
+                                    "y": 50
+                                },
+                                {
+                                    "x": 380,
+                                    "y": 890
+                                }
+                            ],
+                            "Speed": 10
+                        }
+                    },
+                    {
+                        "name": "MediumGobellin",
+                        "entity": {
+                            "texture": "./assets/images/mobs/medium_gobelin/medium_gobelin.png",
+                            "order": 4
+                        },
+                        "addons": ["position", "mobs_animation", "mobs_movement"],
+                        "addon_data": {
+                            "PositionX": 70,
+                            "PositionY": 70,
+                            "Width": 41,
+                            "Height": 35,
+                            "AnimationTime": 100000,
+                            "AnimationStep": 0,
+                            "MovementAnimation": [30, 31, 32, 33],
+                            "AnimationTime": 100000,
+                            "AnimationStep": 0,
+                            "MovementAnimation": [33, 34, 35, 36, 37],
+                            "PositionStep": 0,
+                            "Paths": [
+                                {
+                                    "x": 150,
+                                    "y": 150
+                                },
+                                {
+                                    "x": 380,
+                                    "y": 50
+                                },
+                                {
+                                    "x": 380,
+                                    "y": 890
+                                }
+                            ],
+                            "Speed": 1
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
