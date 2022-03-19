@@ -11,7 +11,6 @@ int add_addon_by_list(list_t *object_list, engine_t *engine, object_t *object)
 {
     char **addons_array = NULL;
     node_t *addons = NULL;
-    int nbr = 0;
 
     addons = search_from_key(object_list, "addons");
     if (object_list == NULL || object == NULL || addons == NULL || addons->type != 40)

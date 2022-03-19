@@ -47,7 +47,6 @@ int print_list(engine_t *engine)
 {
     node_t *current = NULL;
     print_node_t *print_node = NULL;
-    entity_t *entity = NULL;
 
     make_bubble_sort_print(engine->print);
     current = engine->print->head;
@@ -78,8 +77,6 @@ sfBool add_print(void *data, int type, int order, engine_t *engine)
 
 int destroy_print_list(engine_t *engine, sfBool final)
 {
-    node_t *node = NULL;
-
     if (engine == NULL)
         return ERROR;
     while (engine->print->nb_elements != 0) {

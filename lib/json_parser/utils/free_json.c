@@ -9,7 +9,9 @@
 #include "linked_list.h"
 #include "json_parser.h"
 
-int free_object(node_t *current)
+static int free_json_recursive(list_t *object);
+
+static int free_object(node_t *current)
 {
     list_t **object_array = NULL;
     int len = current->len;

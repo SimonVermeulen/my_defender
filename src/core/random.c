@@ -5,6 +5,7 @@
 ** random
 */
 
+#include <stdlib.h>
 #include <stdio.h>
 
 int set_random(FILE *file)
@@ -16,7 +17,6 @@ int set_random(FILE *file)
     if (fread(&seed, sizeof seed, 1, file) == 1) {
         fclose(file);
         srand(seed);
-        printf("%d", seed);
         return 0;
     }
     fclose(file);
