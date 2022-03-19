@@ -20,7 +20,7 @@ static int cmp(char const *s1, char const *s2)
     return (result);
 }
 
-node_t *search_from_key(list_t *list, char *key)
+node_t *search_from_key(list_t *list, const char *key)
 {
     node_t *current = NULL;
 
