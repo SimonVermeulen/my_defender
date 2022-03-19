@@ -6,7 +6,9 @@
 */
 
 #include <stdlib.h>
+#include "my.h"
 #include "linked_list.h"
+#include "json_parser.h"
 
 static node_t *copy_node(node_t *src)
 {
@@ -15,9 +17,9 @@ static node_t *copy_node(node_t *src)
     dest = create_emptynode();
     if (!dest)
         return (NULL);
-    if (copy_value(dest, src) < 9)
+    if (copy_value(src, dest) < 0)
         return (NULL);
-    dest->key = src->key;
+    dest->key = my_strdup(src->key);
     dest->len = src->len;
     dest->type = src->type;
     return (dest);
@@ -33,7 +35,7 @@ list_t *copy_list(list_t *src)
     if (!dest)
         return (NULL);
     current = src->head;
-    for (int i = 0; i < dest->nb_elements; i++) {
+    for (int i = 0; i < src->nb_elements; i++) {
         new_node = copy_node(current);
         if (!new_node)
             return (NULL);
