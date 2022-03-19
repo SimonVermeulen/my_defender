@@ -15,7 +15,9 @@ static int get_nb(const char *buff, int index, double *result)
 {
     int len = 0;
 
-    for (; buff[len] && is_number(buff[len]) || buff[len] == '.'; len++);
+    for (; buff[len] &&
+        (is_number(buff[len]) || buff[len] == '.' || buff[len] == '-');
+        len++);
     result[index] = atof(buff);
     return (len);
 }
