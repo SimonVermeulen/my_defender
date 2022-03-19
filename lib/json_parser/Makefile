@@ -31,7 +31,7 @@ SRC	=	parsing/json_parser.c						\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS = -I../../include -Wall -Wextra -pedantic
+CFLAGS = -I../../include -Wall -Wextra -pedantic -g3
 
 LFLAGS =	-L./lib -llist
 

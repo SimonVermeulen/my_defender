@@ -19,7 +19,7 @@ int copy_int(node_t *src, node_t *dest)
 {
     int *copy_value = NULL;
     int *to_copy_value = src->value;
-    int len = (src->value == 0) ? 1 : src->value; 
+    int len = (src->len == 0) ? 1 : src->len;
 
     copy_value = malloc(sizeof(int) * len);
     if (!copy_value)

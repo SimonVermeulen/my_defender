@@ -55,6 +55,8 @@ int free_json_object(list_t *object)
 {
     int value = 0;
 
+    if (object == NULL)
+        return 84;
     value = free_json_recursive(object);
     return (value);
 }
