@@ -22,7 +22,12 @@ SRC	=	parsing/json_parser.c						\
 		parsing/value_getters/get_double.c			\
 		parsing/value_getters/get_int.c				\
 		parsing/value_getters/get_string.c			\
-		utils/free_json.c
+		utils/free_json.c							\
+		utils/copy/copy_double.c					\
+		utils/copy/copy_int.c						\
+		utils/copy/copy_json.c						\
+		utils/copy/copy_string.c					\
+		utils/copy/copy_value.c						\
 
 OBJ	=	$(SRC:.c=.o)
 

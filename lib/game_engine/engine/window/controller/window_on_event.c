@@ -7,6 +7,8 @@
 
 #include "game_engine.h"
 
+int loop_track_on_event(list_t *scene, engine_t *engine);
+
 int loop_execution_on_event(object_t *object, engine_t *engine)
 {
     addon_t *addon = NULL;
