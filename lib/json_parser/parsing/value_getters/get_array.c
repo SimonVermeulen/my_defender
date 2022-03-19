@@ -76,7 +76,7 @@ int get_array(const char *buff, node_t *new_node, int useless)
     useless++;
     check_type(&buff[1], new_node);
     nb_elements = get_nb_elements(buff, new_node);
-    if (nb_elements < 0)
+    if (nb_elements <= 0)
         return (-1);
     len = getters[new_node->type](&buff[1], new_node, nb_elements);
     if (len < 0)
