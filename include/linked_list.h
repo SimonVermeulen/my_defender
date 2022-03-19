@@ -55,7 +55,7 @@ list_t *create_empty_list(void);
  * 
  * @param list the list to delete
  */
-void delete_list(list_t *list);
+void free_list(list_t *list);
 
 /*---------------ELEMENT--------------*/
 
