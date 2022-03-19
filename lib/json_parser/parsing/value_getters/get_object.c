@@ -83,7 +83,7 @@ int get_object(const char *buff, node_t *new_node, int nb_elements)
     int len = 0;
     list_t **list_array = NULL;
 
-    new_node->len = (nb_elements == 0) ? 1 : nb_elements;
+    new_node->len = nb_elements;
     if (nb_elements == 0) {
         len = get_single_object(buff, new_node) + 1;
     } else {
@@ -93,5 +93,6 @@ int get_object(const char *buff, node_t *new_node, int nb_elements)
         len = get_object_array(&buff[0], new_node, nb_elements, list_array);
         new_node->value = list_array;
     }
+    new_node->len = (nb_elements == 0) ? 0 : nb_elements;
     return (len);
 }

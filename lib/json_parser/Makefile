@@ -5,23 +5,24 @@
 ## Makefile
 ##
 
-SRC	=	json_parser.c						\
-		get_buffer.c						\
-		stringify.c							\
-		get_data.c							\
-		get_key.c							\
-		type_checkers/check_type.c			\
-		type_checkers/check_array.c			\
-		type_checkers/check_object.c		\
-		type_checkers/check_double.c		\
-		type_checkers/check_int.c			\
-		type_checkers/check_string.c		\
-		value_getters/get_value.c			\
-		value_getters/get_array.c			\
-		value_getters/get_object.c			\
-		value_getters/get_double.c			\
-		value_getters/get_int.c				\
-		value_getters/get_string.c
+SRC	=	parsing/json_parser.c						\
+		parsing/get_buffer.c						\
+		parsing/stringify.c							\
+		parsing/get_data.c							\
+		parsing/get_key.c							\
+		parsing/type_checkers/check_type.c			\
+		parsing/type_checkers/check_array.c			\
+		parsing/type_checkers/check_object.c		\
+		parsing/type_checkers/check_double.c		\
+		parsing/type_checkers/check_int.c			\
+		parsing/type_checkers/check_string.c		\
+		parsing/value_getters/get_value.c			\
+		parsing/value_getters/get_array.c			\
+		parsing/value_getters/get_object.c			\
+		parsing/value_getters/get_double.c			\
+		parsing/value_getters/get_int.c				\
+		parsing/value_getters/get_string.c			\
+		utils/free_json.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -48,4 +49,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re fclean clean fclean_lib clean_lib build build_lib all
+.PHONY: re fclean clean build all

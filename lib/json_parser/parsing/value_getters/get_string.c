@@ -77,5 +77,6 @@ int get_string(const char *buff, node_t *new_node, int nb_elements)
         len = get_single_string(buff, new_node);
     else
         len = get_string_array(buff, new_node, nb_elements);
+    new_node->len = (nb_elements == 0) ? 0 : nb_elements;
     return (len);
 }
