@@ -33,15 +33,16 @@ int window_on_start(list_t *scene, engine_t *engine)
         object = node->value;
         if (object->addons != NULL || object->isActive == sfTrue)
             loop_execution_start(object, engine);
+        if (object->isActive == sfTrue)
+            on_start(object->childs, engine);
     }
     return 0;
 }
 
-int on_start(scene_t *scene, engine_t *engine)
+int on_start(list_t *scene, engine_t *engine)
 {
     if (scene == NULL || engine == NULL)
         return 84;
-    window_on_start(scene->canvas, engine);
-    window_on_start(scene->objects, engine);
+    window_on_start(scene, engine);
     return 0;
 }

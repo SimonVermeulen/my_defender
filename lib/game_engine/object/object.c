@@ -15,7 +15,10 @@ int create_secondary_step_object(object_t *object, node_t *node,
     object->addons_data = NULL;
     object->isActive = sfTrue;
     object->entity = NULL;
-    if (object->addons == NULL)
+    object->parent = NULL;
+    object->childs = NULL;
+    object->clock = sfClock_create();
+    if (object->addons == NULL || object->clock == NULL)
         return 84;
     node->value = object;
     node->key = name;
@@ -38,6 +41,7 @@ object_t *create_object(char const *name, list_t *scene)
     object->name = string;
     object->actual_scene = scene;
     object->addons = create_empty_list();
+    object->addons_data = NULL;
     if (create_secondary_step_object(object, node , string, scene) == 84)
         return NULL;
     return object;
@@ -53,6 +57,7 @@ int destroy_object(object_t *object)
     destroy_addons(object->addons, sfTrue);
     destroy_addons(object->addons_data, sfFalse);
     destroy_entity(object);
+    destroy_scene(object->childs);
     node = search_from_key(object->actual_scene, object->name);
     next = object->actual_scene->head;
     for (int i = 0; i < object->actual_scene->nb_elements; i++) {
@@ -65,6 +70,18 @@ int destroy_object(object_t *object)
     return 84;
 }
 
+object_t **stock_object(object_t *object)
+{
+    object_t **stock = malloc(sizeof(object_t *));
+
+    if (stock == NULL || object == NULL) {
+        free(stock);
+        return NULL;
+    }
+    *stock = object;
+    return stock;
+}
+
 sfBool set_active(sfBool value, object_t *object, engine_t *engine)
 {
     node_t *node = NULL;
@@ -74,6 +91,7 @@ sfBool set_active(sfBool value, object_t *object, engine_t *engine)
         return sfFalse;
     object->isActive = value;
     node = object->addons->head;
+    sfClock_restart(object->clock);
     for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
         addon = node->value;
         if (object->isActive == sfTrue) {

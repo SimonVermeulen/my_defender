@@ -31,43 +31,47 @@ void make_bubble_sort_print(list_t *stack)
     }
 }
 
+void print_type(print_node_t *node, sfRenderWindow *win)
+{
+    switch (node->type) {
+        case 0:
+            sfRenderWindow_drawSprite(win, node->data, NULL);
+            break;
+        case 1:
+            sfRenderWindow_drawText(win, node->data, NULL);
+            break;
+    }
+}
+
 int print_list(engine_t *engine)
 {
     node_t *current = NULL;
     print_node_t *print_node = NULL;
     entity_t *entity = NULL;
 
-    make_bubble_sort_print(engine->print_sprites);
-    current = engine->print_sprites->head;
-    for (int i = 0; i < engine->print_sprites->nb_elements; i++,
+    make_bubble_sort_print(engine->print);
+    current = engine->print->head;
+    for (int i = 0; i < engine->print->nb_elements; i++,
         current = current->next) {
         print_node = current->value;
-        if (print_node->print_entity == NULL && print_node->print_text == NULL)
-            continue;
-        if (print_node->print_text == NULL) {
-            entity = print_node->print_entity;
-            sfRenderWindow_drawSprite(engine->window, entity->sprite, NULL);
-            continue;
-        }
-        draw_text(print_node->print_text, engine);
+        print_type(print_node, engine->window);
     }
     return destroy_print_list(engine, sfFalse);
 }
 
-sfBool add_print(print_text_t *print, entity_t *entity, int order,
-    engine_t *engine)
+sfBool add_print(void *data, int type, int order, engine_t *engine)
 {
     print_node_t *print_node = malloc(sizeof(print_node_t));
     node_t *node = malloc(sizeof(node_t));
 
     if (print_node == NULL || node == NULL)
         return sfFalse;
-    print_node->print_entity = entity;
-    print_node->print_text = print;
+    print_node->data = data;
+    print_node->type = type;
     print_node->order = order;
     node->value = print_node;
     node->key = NULL;
-    push_element(engine->print_sprites, node);
+    push_element(engine->print, node);
     return sfTrue;
 }
 
@@ -77,10 +81,12 @@ int destroy_print_list(engine_t *engine, sfBool final)
 
     if (engine == NULL)
         return ERROR;
-    while (engine->print_sprites->nb_elements != 0) {
-        shift_element(engine->print_sprites);
+    while (engine->print->nb_elements != 0) {
+        engine->print->head->key = NULL;
+        engine->print->head->value = NULL;
+        shift_element(engine->print);
     }
     if (final == sfTrue)
-        free(engine->print_sprites);
+        free(engine->print);
     return 0;
 }
