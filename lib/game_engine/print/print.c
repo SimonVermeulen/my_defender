@@ -71,6 +71,7 @@ sfBool add_print(void *data, int type, int order, engine_t *engine)
     print_node->order = order;
     node->value = print_node;
     node->key = NULL;
+    node->len = 0;
     push_element(engine->print, node);
     return sfTrue;
 }

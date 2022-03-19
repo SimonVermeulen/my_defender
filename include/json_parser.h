@@ -269,7 +269,7 @@ void write_string(node_t *current_node, int level, FILE *fp);
 * @param recursive 1 for recursive 0 elseway
 * @return int 0 if no problems 1 if error
 */
-int free_json_object(list_t *object, int recursive);
+int free_json_object(list_t *object);
 
 /**
 * @brief copies a json_object

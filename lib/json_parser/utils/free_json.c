@@ -28,7 +28,7 @@ int free_object(node_t *current)
     return (len);
 }
 
-int free_json_recursive(list_t *object)
+static int free_json_recursive(list_t *object)
 {
     node_t *current = object->head;
     node_t *tmp = NULL;
@@ -49,7 +49,7 @@ int free_json_recursive(list_t *object)
     return (0);
 }
 
-int free_json_object(list_t *object, int recursive)
+int free_json_object(list_t *object)
 {
     int value = 0;
 

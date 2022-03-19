@@ -17,6 +17,7 @@ sfBool add_font(char const *font_name, char const *name, engine_t *engine)
         return sfFalse;
     node->value = font;
     node->key = my_strdup(name);
+    node->len = 0;
     push_element(engine->fonts, node);
     return sfTrue;
 }

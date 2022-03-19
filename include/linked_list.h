@@ -132,7 +132,7 @@ void free_node(node_t *node);
 * @param key the key we need to find
 * @return node_t* NULL if not found or the node we are looking for
 */
-node_t *search_from_key(list_t *list, char *key);
+node_t *search_from_key(list_t *list, const char *key);
 
 void *get_value_list(list_t *list, const char *name, int type);
 
