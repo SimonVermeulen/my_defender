@@ -74,14 +74,16 @@ void splice(list_t *list, int index)
     list->nb_elements--;
 }
 
-//à coder
-static void free_value(node_t *node);
-
 void free_node(node_t *node)
 {
+    void **value = NULL;
+
     if (node) {
+        value = node->value;
         free(node->key);
-        free(node->value);
+        for (int i = 0; i < node->len && node->len != 0; i++)
+            free(value[i]);
+        free(value);
         free(node);
     }
 }

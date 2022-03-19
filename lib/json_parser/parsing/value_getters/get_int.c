@@ -15,7 +15,7 @@ static int get_nb(const char *buff, int index, int *array)
 {
     int len = 0;
 
-    for (; buff[len] && is_number(buff[len]); len++);
+    for (; buff[len] && (is_number(buff[len]) || buff[len] == '-'); len++);
     array[index] = atoi(buff);
     return (len);
 }
@@ -50,5 +50,6 @@ int get_int(const char *buff, node_t *new_node, int nb_elements)
     else
         len = get_int_array(buff, nb_elements, result) + 1;
     new_node->value = result;
+    new_node->len = (nb_elements == 0) ? 0 : nb_elements;
     return (len);
 }
