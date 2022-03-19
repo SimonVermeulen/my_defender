@@ -271,4 +271,48 @@ void write_string(node_t *current_node, int level, FILE *fp);
 */
 int free_json_object(list_t *object, int recursive);
 
+/**
+* @brief copies a json_object
+*
+* @param src the source json_object
+* @return list_t* the copied json_object (NULL if error)
+*/
+list_t *copy_list(list_t *src);
+
+/**
+* @brief chooses the good copy_function to launch
+*
+* @param src the source value
+* @param dest the dest value
+* @return int 0 if no errors -1 if error
+*/
+int copy_value(node_t *src, node_t *dest);
+
+/**
+* @brief copies a double from src value to dest value
+*
+* @param src the source value
+* @param dest the dest value
+* @return int 0 if no errors -1 if error
+*/
+int copy_double(node_t *src, node_t *dest);
+
+/**
+* @brief copies an int from src value to dest value
+*
+* @param src the source value
+* @param dest the dest value
+* @return int 0 if no errors -1 if error
+*/
+int copy_int(node_t *src, node_t *dest);
+
+/**
+* @brief copies a string from src value to dest value
+*
+* @param src the source value
+* @param dest the dest value
+* @return int 0 if no errors -1 if error
+*/
+int copy_string(node_t *src, node_t *dest);
+
 #endif

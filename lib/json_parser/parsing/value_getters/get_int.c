@@ -15,7 +15,7 @@ static int get_nb(const char *buff, int index, int *array)
 {
     int len = 0;
 
-    for (; buff[len] && is_number(buff[len]); len++);
+    for (; buff[len] && (is_number(buff[len]) || buff[len] == '-'); len++);
     array[index] = atoi(buff);
     return (len);
 }
