@@ -59,6 +59,7 @@ int destroy_addons(list_t *addon, sfBool boolean)
     if (addon == NULL)
         return ERROR;
     while (addon->nb_elements != 0) {
+        addon->head->len = 0;
         if (boolean == sfTrue) {
             addon->head->key = NULL;
             addon->head->value = NULL;

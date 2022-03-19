@@ -56,7 +56,7 @@ int destroy_object(object_t *object)
     if (object == NULL)
         return 84;
     destroy_addons(object->addons, sfTrue);
-    destroy_addons(object->addons_data, sfFalse);
+    free_json_object(object->addons_data);
     destroy_entity(object);
     destroy_scene(object->childs);
     node = search_from_key(object->actual_scene, object->name);
