@@ -14,6 +14,7 @@ SRC	=	addon/addon.c	\
 		engine/engine.c	\
 		engine/functions.c	\
 		engine/time.c	\
+		engine/util/get_mouse_position.c	\
 		entity/entity.c	\
 		object/init_object_by_list.c	\
 		object/object.c	\
@@ -23,7 +24,6 @@ SRC	=	addon/addon.c	\
 		scene/init_scene/init_scene.c	\
 		scene/scene.c	\
 		text/text.c	\
-		text/change_font.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

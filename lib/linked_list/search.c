@@ -46,3 +46,18 @@ void *get_value_list(list_t *list, const char *name, int type)
         return NULL;
     return node->value;
 }
+
+int set_value_list(list_t *list, const char *name, void *value)
+{
+    node_t *node = NULL;
+
+    if (list == NULL || name == NULL)
+        return 84;
+    node = search_from_key(list, name);
+    if (node == NULL)
+        node = create_new_node(value, 0, name, list);
+    if (node == NULL)
+        return 84;
+    node->value = value;
+    return 0;
+}
