@@ -26,12 +26,16 @@ SRC				=		src/main.c	\
 						src/app/addons/tower/load.c	\
 						src/app/addons/active/active.c	\
 						src/app/addons/tower/tower_level.c	\
+						src/core/random.c	\
+						src/app/addons/mobs_spawner/mobs_spawner.c	\
+						src/app/addons/mobs/mobs_animation.c	\
+						src/app/addons/mobs/mobs_movement.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
 NAME 			= 		my_defender
 
-LIBFLAG 		= 		lib/game_engine.a -Lcsfml-window -lcsfml-graphics -lcsfml-system lib/liblist.a lib/libjson_parser.a lib/libmy.a
+LIBFLAG 		= 		lib/game_engine.a -Lcsfml-window -lcsfml-graphics -lcsfml-system lib/liblist.a lib/libjson_parser.a lib/libmy.a -lm
 
 CFLAGS 			+= 		-I ./include -g3
 
