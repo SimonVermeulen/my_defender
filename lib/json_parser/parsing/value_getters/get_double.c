@@ -15,7 +15,9 @@ static int get_nb(const char *buff, int index, double *result)
 {
     int len = 0;
 
-    for (; buff[len] && is_number(buff[len]) || buff[len] == '.'; len++);
+    for (; buff[len] &&
+        (is_number(buff[len]) || buff[len] == '.' || buff[len] == '-');
+        len++);
     result[index] = atof(buff);
     return (len);
 }
@@ -50,5 +52,6 @@ int get_double(const char *buff, node_t *new_node, int nb_elements)
     else
         len = get_double_array(buff, nb_elements, result);
     new_node->value = result;
+    new_node->len = (nb_elements == 0) ? 0 : nb_elements;
     return (len);
 }
