@@ -9,6 +9,8 @@
     #define GAME_H_
     #include "game_engine.h"
 
+int get_random(void);
+
 int load_addons(engine_t *engine, const int (*init_addon[])(engine_t *));
 int load_scenes(engine_t *engine, char **name,
     init_scene_function_t *function);
@@ -30,5 +32,8 @@ int init_build_valid_selector(engine_t *engine);
 int init_load_build_addons(engine_t *engine);
 int init_active_addons(engine_t *engine);
 int init_tower_level_addons(engine_t *engine);
+int init_mobs_spawner_addons(engine_t *engine);
+int init_mobs_animation_addons(engine_t *engine);
+int init_mobs_movement_addons(engine_t *engine);
 
 #endif /* !GAME_H_ */

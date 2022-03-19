@@ -15,7 +15,9 @@ const int (*load_addon[])(engine_t *) = {init_position_addons,
     init_view_drag_addons, init_responsive_window_addons,
     init_origin_addons, init_tower_addons, init_build_selector_addons,
     init_build_valid_selector, init_load_build_addons,
-    init_active_addons, init_tower_level_addons, NULL};
+    init_active_addons, init_tower_level_addons,
+    init_mobs_spawner_addons, init_mobs_animation_addons,
+    init_mobs_movement_addons, NULL};
 
 const int width = 1920;
 const int height = 1080;
@@ -30,6 +32,7 @@ int load_game(void)
         load_scenes(engine, name_scenes, scenes) == 84 ||
         load_fonts(engine) == 84)
         return 84;
+    get_random();
     sfView_setCenter(engine->view, (sfVector2f) {(width / 2), (height / 2)});
     sfView_setSize(engine->view, (sfVector2f) {width, height});
     sfView_zoom(engine->view, 0.98);
