@@ -27,7 +27,6 @@ sfBool add_function(event_functions_t function, float time, object_t *object,
 
 int execute_functions(engine_t *engine)
 {
-    float delta = get_delta(engine);
     node_t *node = NULL;
     execute_function_t *execute = NULL;
 

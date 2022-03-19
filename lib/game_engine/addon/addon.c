@@ -56,8 +56,6 @@ sfBool add_addon(char const *name, object_t *object, engine_t *engine)
 
 int destroy_addons(list_t *addon, sfBool boolean)
 {
-    node_t *node = NULL;
-
     if (addon == NULL)
         return ERROR;
     while (addon->nb_elements != 0) {
