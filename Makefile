@@ -55,7 +55,7 @@ clean:
 		$(MAKE) -C ./lib/json_parser clean
 		rm -f $(OBJ)
 
-fclean:
+fclean:	clean
 		$(MAKE) -C ./lib/game_engine fclean
 		$(MAKE) -C ./lib/my fclean
 		$(MAKE) -C ./lib/linked_list fclean
