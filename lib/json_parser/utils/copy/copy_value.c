@@ -12,12 +12,16 @@
 int copy_value(node_t *src, node_t *dest)
 {
     int (*copy_func[3])(node_t *, node_t *) = {copy_double,
-        &copy_int, &copy_string};
+        copy_int, copy_string};
+    int type = 0;
 
     if (src->type == 1 || src->type == 10)
         dest->value = copy_list(src->value);
-    else
-        copy_func[src->type % 10](src, dest);
+    else {
+        type = (src->type > 10) ? src->type / 10 : src->type;
+        type -= 2;
+        copy_func[type](src, dest);
+    }
     if (!dest->value)
         return (-1);
     return (0);
