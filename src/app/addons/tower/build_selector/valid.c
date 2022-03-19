@@ -7,7 +7,7 @@
 
 #include "game_engine.h"
 
-void disable_build_items(object_t *tower, object_t *object, engine_t *engine)
+int disable_build_items(object_t *tower, object_t *object, engine_t *engine)
 {
     object_t *selector = seek_object_scene(tower->childs, "BuildSelector");
     object_t *loader = seek_object_scene(tower->childs, "TowerLoad");

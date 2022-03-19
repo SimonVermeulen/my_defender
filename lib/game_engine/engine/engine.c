@@ -51,8 +51,6 @@ void destroy_engine(engine_t *engine)
 
 int destroy_game(engine_t *engine)
 {
-    node_t *node = NULL;
-
     if (engine == NULL)
         return ERROR;
     while (engine->scenes->nb_elements != 0) {

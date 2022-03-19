@@ -13,12 +13,12 @@ int start_view_drag(object_t *object, engine_t *engine)
     node_t *node = NULL;
 
     if (hit_position == NULL) {
-        exit_game(84, engine);
+        exit_game(engine, 84);
         return 0;
     }
     if (create_new_node(hit_position, 5, "hit_position", object->addons_data)
     == NULL)
-        exit_game(84, engine);
+        exit_game(engine, 84);
     return 0;
 }
 

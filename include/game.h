@@ -12,7 +12,7 @@
 int get_random(void);
 
 int load_addons(engine_t *engine, const int (*init_addon[])(engine_t *));
-int load_scenes(engine_t *engine, char **name,
+int load_scenes(engine_t *engine, const char **name,
     init_scene_function_t *function);
 int load_game(void);
 int load_fonts(engine_t *engine);
