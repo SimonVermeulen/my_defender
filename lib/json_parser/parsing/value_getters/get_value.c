@@ -25,9 +25,8 @@ int get_value(const char *buffer, int index, node_t *tmp)
     index += return_value;
     if (return_value < 0)
         return (-1);
-    if ((buffer[index] && buffer[index] != ',' &&
-        buffer[index + 1] && buffer[index + 1] != '}') &&
-        (buffer[index] != '}')) {
+    if ((buffer[index] && buffer[index] != ',' && (buffer[index] != '}')
+        && buffer[index + 1] && buffer[index + 1] != '}')) {
         write(2, "Error: expected a ','\n", 23);
         return (-1);
     }

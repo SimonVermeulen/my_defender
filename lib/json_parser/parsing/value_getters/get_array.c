@@ -28,7 +28,7 @@ static int get_nb_elements_others(const char *buff)
 
 static int check_stop(int array_level, char c)
 {
-    if (c == ']' && array_level == 1) 
+    if (c == ']' && array_level == 1)
         return (1);
     return (0);
 }
