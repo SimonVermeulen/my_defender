@@ -29,10 +29,10 @@ list_t *copy_list(list_t *src)
     node_t *current = NULL;
     node_t *new_node = NULL;
 
-    dest = malloc(sizeof(list_t));
+    dest = create_empty_list();
     if (!dest)
         return (NULL);
-    current = dest->head;
+    current = src->head;
     for (int i = 0; i < dest->nb_elements; i++) {
         new_node = copy_node(current);
         if (!new_node)
