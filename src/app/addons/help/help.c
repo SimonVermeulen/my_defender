@@ -19,6 +19,11 @@ int start_help(object_t *object, engine_t *engine)
         return exit_game(engine, 84);
     sfSprite_setTextureRect(object->entity->sprite, (sfIntRect) {0, 0,
         *width, *height});
+    object->music = sfMusic_createFromFile(
+        "./assets/sounds/in_game/encyclopedie/Sound_NotificationOpen.ogg");
+    sfMusic_setLoop(object->music, sfFalse);
+    if (object->music == NULL)
+        return exit_game(engine, 84);
     window_pause(object->actual_scene, engine, object, sfTrue);
     return 0;
 }
@@ -49,6 +54,7 @@ int event_help(object_t *object, engine_t *engine)
     if (engine->event.type == sfEvtMouseButtonPressed
         && engine->event.mouseButton.button == sfMouseLeft &&
         sfFloatRect_contains(&rect, mouse.x, mouse.y)) {
+        sfMusic_play(object->music);
         box.left += *width;
         sfSprite_setTextureRect(object->entity->sprite, box);
         check_if_finish(object, engine, box, *width);
