@@ -7,6 +7,8 @@
 
 #include "game_engine.h"
 
+void print_type(print_node_t *node, sfRenderWindow *win);
+
 void switch_element_sort_print(node_t *i, node_t *j)
 {
     print_node_t *temp_a = i->value;
@@ -29,18 +31,6 @@ void make_bubble_sort_print(list_t *stack)
             traveler_b->next)
             switch_element_sort_print(traveler_a, traveler_b);
         traveler_b = stack->head;
-    }
-}
-
-void print_type(print_node_t *node, sfRenderWindow *win)
-{
-    switch (node->type) {
-        case 0:
-            sfRenderWindow_drawSprite(win, node->data, NULL);
-            break;
-        case 1:
-            sfRenderWindow_drawText(win, node->data, NULL);
-            break;
     }
 }
 

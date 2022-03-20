@@ -47,7 +47,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -161,7 +162,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -275,7 +277,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -389,7 +392,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -503,7 +507,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -617,7 +622,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -731,7 +737,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -845,7 +852,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -959,7 +967,8 @@
                         "addon_data": {
                             "Enable": 0,
                             "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionY": 0.0,
+                            "Time": 0.0
                         }
                     },
                     {
@@ -1052,7 +1061,7 @@
             "addon_data": {
                 "SpawnPositionY": 0.0,
                 "SpawnPositionX": 0.0,
-                "TimeSpawn": 60,
+                "TimeSpawn": 20,
                 "mobs": [
                     {
                         "name": "LittleGobellin",
@@ -1209,8 +1218,10 @@
                 "order": 7,
                 "texture": "./assets/images/in_game/pause_button.png"
             },
-            "addons": ["pause_button", "position"],
+            "addons": ["pause_button", "position", "hover_button"],
             "addon_data": {
+                "HoverButton_Width": 80,
+                "HoverButton_Height": 80,
                 "PositionX": 100.0,
                 "PositionY": 100.0
             },
@@ -1228,7 +1239,7 @@
                                     "name": "BoutonLeave",
                                     "entity": {
                                         "order": 15,
-                                        "texture": "./assets/images/in_game/parameters/Button_quit.png"
+                                        "texture": "./assets/images/in_game/parameters/Button_main_menu.png"
                                     },
                                     "addons": ["hover_button", "click_button", "position"],
                                     "addon_data": {

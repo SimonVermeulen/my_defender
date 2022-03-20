@@ -24,6 +24,7 @@ SRC	=	addon/addon.c	\
 		scene/init_scene/init_scene.c	\
 		scene/scene.c	\
 		text/text.c	\
+		print/print_type.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
