@@ -22,7 +22,7 @@ const int (*load_addon[])(engine_t *) = {init_position_addons,
 const int width = 1920;
 const int height = 1080;
 const int fps = 60;
-const char title[] = "titre";
+const char title[] = "defender tar les fous";
 
 int load_game(void)
 {
