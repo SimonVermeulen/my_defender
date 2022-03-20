@@ -11,6 +11,7 @@ int start_hover_button(object_t *object, engine_t *engine)
 {
     object->music = sfMusic_createFromFile(
         "./assets/sounds/gui/Sound_ButtonCommon.ogg");
+    sfMusic_setLoop(object->music, sfFalse);
     if (object->music == NULL)
         return exit_game(engine, 84);
     return 0;
@@ -24,6 +25,7 @@ int hover_button_tick(object_t *object, engine_t *engine)
     sfVector2f position_object = sfSprite_getPosition(object->entity->sprite);
     sfFloatRect rect;
     sfIntRect rect_texture;
+    static sfBool is_music = sfFalse;
 
     if (width == NULL || height == NULL || !object->music)
         return 0;
@@ -31,8 +33,14 @@ int hover_button_tick(object_t *object, engine_t *engine)
         *height};
     rect_texture = (sfIntRect) {0, 0, *width, *height};
     if (sfFloatRect_contains(&rect, mouse.x, mouse.y)) {
-        sfMusic_play(object->music);
+        if (is_music) {
+            sfMusic_play(object->music);
+            is_music = sfTrue;
+        }
         rect_texture.left = *width;
+    } else {
+        is_music = sfFalse;
+        sfMusic_stop(object->music);
     }
     sfSprite_setTextureRect(object->entity->sprite, rect_texture);
     return 0;
