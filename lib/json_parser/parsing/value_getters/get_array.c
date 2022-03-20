@@ -14,8 +14,9 @@ static int get_nb_elements_others(const char *buff)
 {
     int is_quote = 0;
     int nb_elements = 0;
+    int i = 0;
 
-    for (int i = 0; buff[i] && buff[i] != ']'; i++) {
+    for (; buff[i] && buff[i] != ']'; i++) {
         if (buff[i] == '"' && !is_quote)
             is_quote = 1;
         else if (buff[i] == '"' && is_quote)
@@ -23,7 +24,7 @@ static int get_nb_elements_others(const char *buff)
         nb_elements += (buff[i] == ',' && !is_quote) ? 1 : 0;
     }
     nb_elements++;
-    nb_elements = (nb_elements == 1) ? -1 : 0;
+    nb_elements = (i == 1) ? -1 : nb_elements;
     return (nb_elements);
 }
 
