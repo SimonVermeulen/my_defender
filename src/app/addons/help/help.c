@@ -23,9 +23,10 @@ int start_help(object_t *object, engine_t *engine)
 void check_if_finish(object_t *object, engine_t *engine, sfIntRect box,
     int width)
 {
-    if (box.left >= (width * 3))
+    if (box.left >= (width * 3)) {
         add_function(destroy_object, 0, object, engine);
-    window_pause(object->actual_scene, engine, object, sfFalse);
+        window_pause(object->actual_scene, engine, object, sfFalse);
+    }
 }
 
 int event_help(object_t *object, engine_t *engine)
