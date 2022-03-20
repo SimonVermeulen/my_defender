@@ -29,10 +29,12 @@ int event_pause_button(object_t *object, engine_t *engine)
 {
     sfFloatRect rect = sfSprite_getGlobalBounds(object->entity->sprite);
     sfVector2f mouse = get_mouse_position(engine);
-    static sfBool stats = sfFalse;
     object_t *pause_menu = seek_object_scene(object->childs, "PauseMenu");
+    int *width = get_addon("HoverButton_Width", 3, object);
+    int *height = get_addon("HoverButton_Height", 3, object);
+    static sfBool stats = sfFalse;
 
-    if (!pause_menu)
+    if (!pause_menu || !width || !height)
         return exit_game(engine, 84);
     if ((sfFloatRect_contains(&rect, mouse.x, mouse.y) &&
         engine->event.type == sfEvtMouseButtonPressed
@@ -43,6 +45,8 @@ int event_pause_button(object_t *object, engine_t *engine)
         window_pause(engine->actual_scene, engine, object, stats);
         window_pause(engine->const_scene, engine, object, stats);
         set_active(stats, pause_menu, engine);
+        sfSprite_setTextureRect(object->entity->sprite, (sfIntRect)
+            {*width * 2, 0, *width, *height});
     }
 }
 
