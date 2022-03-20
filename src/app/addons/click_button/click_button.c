@@ -23,6 +23,9 @@ int on_click_button(object_t *object, engine_t *engine)
         case 0:
             change_scene(value, engine);
             break;
+        case 1:
+            exit_game(engine, 0);
+            break;
     }
     return 0;
 }
