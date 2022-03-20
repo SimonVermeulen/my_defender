@@ -21,25 +21,25 @@ int hover_button_tick(object_t *object, engine_t *engine)
 {
     int *width = get_addon("HoverButton_Width", 3, object);
     int *height = get_addon("HoverButton_Height", 3, object);
+    int *is_music = get_addon("IsPlaying", 3, object);
     sfVector2f mouse = get_mouse_position(engine);
     sfVector2f position_object = sfSprite_getPosition(object->entity->sprite);
     sfFloatRect rect;
     sfIntRect rect_texture;
-    static sfBool is_music = sfFalse;
 
-    if (width == NULL || height == NULL || !object->music)
+    if (width == NULL || height == NULL || !object->music || !is_music)
         return 0;
     rect = (sfFloatRect) {position_object.x, position_object.y, *width,
         *height};
     rect_texture = (sfIntRect) {0, 0, *width, *height};
     if (sfFloatRect_contains(&rect, mouse.x, mouse.y)) {
-        if (is_music) {
+        if (!*is_music) {
             sfMusic_play(object->music);
-            is_music = sfTrue;
+            *is_music = sfTrue;
         }
         rect_texture.left = *width;
     } else {
-        is_music = sfFalse;
+        *is_music = sfFalse;
         sfMusic_stop(object->music);
     }
     sfSprite_setTextureRect(object->entity->sprite, rect_texture);
