@@ -18,7 +18,7 @@ const int (*load_addon[])(engine_t *) = {init_position_addons,
     init_active_addons, init_tower_level_addons,
     init_mobs_spawner_addons, init_mobs_animation_addons,
     init_mobs_movement_addons, init_pause_button_addons,
-    init_help_addons, NULL};
+    init_help_addons, init_background_sound_addons, NULL};
 
 const int width = 1920;
 const int height = 1080;

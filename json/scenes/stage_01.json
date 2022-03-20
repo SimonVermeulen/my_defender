@@ -14,7 +14,7 @@
                 "texture": "./assets/images/in_game/stage01/background.png",
                 "order": 0
             },
-            "addons": ["position", "view_drag"],
+            "addons": ["position", "view_drag", "background_sound"],
             "addon_data": {
                 "PositionX": 0.0,
                 "PositionY": 0.0
