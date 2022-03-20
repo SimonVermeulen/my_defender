@@ -56,7 +56,7 @@
                         "addon_data": {
                             "Enable": 0,
                             "JsonTowerPath": [
-                                "./json/objects/cher.json",
+                                "./json/objects/archer.json",
                                 "./json/objects/bomb.json",
                                 "./json/objects/mage.json",
                                 "./json/objects/viking.json"
@@ -1198,6 +1198,69 @@
                                 }
                             ],
                             "Speed": 10
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "PauseButton",
+            "entity": {
+                "order": 7,
+                "texture": "./assets/images/in_game/pause_button.png"
+            },
+            "addons": ["pause_button", "position"],
+            "addon_data": {
+                "PositionX": 100.0,
+                "PositionY": 100.0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "PauseMenu",
+                        "addons": ["active"],
+                        "addon_data": {
+                            "Enable": 0
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "BoutonLeave",
+                                    "entity": {
+                                        "order": 15,
+                                        "texture": "./assets/images/in_game/parameters/Button_quit.png"
+                                    },
+                                    "addons": ["hover_button", "click_button", "position"],
+                                    "addon_data": {
+                                        "PositionX": 500.0,
+                                        "PositionY": 500.0,
+                                        "HoverButton_Width": 400,
+                                        "HoverButton_Height": 142,
+                                        "OnClick": {
+                                            "type": 0,
+                                            "value": "MainMenu"
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "BoutonQuit",
+                                    "entity": {
+                                        "order": 15,
+                                        "texture": "./assets/images/in_game/parameters/Button_quit.png"
+                                    },
+                                    "addons": ["hover_button", "click_button", "position"],
+                                    "addon_data": {
+                                        "PositionX": 500.0,
+                                        "PositionY": 700.0,
+                                        "HoverButton_Width": 400,
+                                        "HoverButton_Height": 142,
+                                        "OnClick": {
+                                            "type": 1,
+                                            "value": "Quit"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 ]
