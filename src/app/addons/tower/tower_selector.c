@@ -9,8 +9,8 @@
 
 int event_tower_selector(object_t *object, engine_t *engine)
 {
-    int *position_x = get_addon("PositionX", 3, object);
-    int *position_y = get_addon("PositionY", 3, object);
+    double *position_x = get_addon("PositionX", 2, object);
+    double *position_y = get_addon("PositionY", 2, object);
     object_t *selector = seek_object_scene(object->childs, "BuildSelector");
     sfFloatRect rect = (sfFloatRect) {(*position_x - 50), (*position_y - 50),
         100, 100};
