@@ -46,7 +46,7 @@ int init_entity(int order, char const *texture_name, object_t *object)
 
 int print_entity(object_t *object, engine_t *engine)
 {
-    if (object == NULL || object->isActive == sfFalse ||
+    if (object == NULL || object->is_active == sfFalse ||
         object->entity == NULL)
         return 84;
     return add_print(object->entity->sprite, 0, object->entity->order, engine);

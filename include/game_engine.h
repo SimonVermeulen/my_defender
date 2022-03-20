@@ -41,7 +41,8 @@ typedef struct entity_s {
 } entity_t;
 
 typedef struct object_s {
-    sfBool isActive;
+    sfBool is_pause;
+    sfBool is_active;
     sfClock *clock;
     list_t *addons;
     list_t *addons_data;
