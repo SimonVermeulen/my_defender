@@ -25,6 +25,17 @@ int window_pause(list_t *scene, engine_t *engine, object_t *skip, sfBool boole)
     return 0;
 }
 
+int start_pause_button(object_t *object, engine_t *engine)
+{
+    int *width = get_addon("HoverButton_Width", 3, object);
+    int *height = get_addon("HoverButton_Height", 3, object);
+
+    if (!width || !height)
+        return exit_game(engine, 84);
+    sfSprite_setTextureRect(object->entity->sprite, (sfIntRect)
+        {0, 0, *width, *height});
+}
+
 int event_pause_button(object_t *object, engine_t *engine)
 {
     sfFloatRect rect = sfSprite_getGlobalBounds(object->entity->sprite);
@@ -59,7 +70,7 @@ int init_pause_button_addons(engine_t *engine)
     addon->on_enable = NULL;
     addon->on_disable = NULL;
     addon->on_end = NULL;
-    addon->on_start = NULL;
+    addon->on_start = start_pause_button;
     addon->on_event = event_pause_button;
     addon->on_tick = NULL;
     if (create_addon("pause_button", addon, engine) == sfFalse)
