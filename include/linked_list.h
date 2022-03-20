@@ -46,7 +46,7 @@ typedef struct list_s {
 /**
 * @brief Create and allocate an empty linked_list
 *
-* @return list_t* the allocated empty list
+* @return list_t * the allocated empty list
 */
 list_t *create_empty_list(void);
 
@@ -64,12 +64,12 @@ void free_list(list_t *list);
 *
 * @param list the list where to add a node
 * @param data the node to add
-* @return int 0 or -1 in case of error 
+* @return int 0 or -1 in case of error
 */
 int push_element(list_t *list, node_t *data);
 
 /**
-* @brief Adds a node at the begining of a given list  
+* @brief Adds a node at the begining of a given list
 *
 * @param list the list where to add a node
 * @param data the node to add
@@ -96,7 +96,7 @@ int shift_element(list_t *list);
 /**
 * @brief Create an empty_node to fill
 *
-* @return node_t* the empty node created and allocated
+* @return node_t * the empty node created and allocated
 */
 node_t *create_emptynode(void);
 
@@ -106,7 +106,7 @@ node_t *create_emptynode(void);
 * @param value the value of the node
 * @param type the type of the node
 * @param len the len of the node if it's an array
-* @return node_t* the node created
+* @return node_t * the node created
 */
 node_t *create_newnode(void *value, int type, int len);
 
@@ -130,7 +130,7 @@ void free_node(node_t *node);
 *
 * @param list the list where to search the node
 * @param key the key we need to find
-* @return node_t* NULL if not found or the node we are looking for
+* @return node_t * NULL if not found or the node we are looking for
 */
 node_t *search_from_key(list_t *list, const char *key);
 

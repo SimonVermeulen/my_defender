@@ -8,6 +8,7 @@
 #include "game_engine.h"
 
 int window_on_tick(list_t *scene, engine_t *engine);
+
 int window_on_event(list_t *scene, engine_t *engine);
 
 int execute_game(list_t *scene, engine_t *engine)
