@@ -59,7 +59,6 @@ int event_help(object_t *object, engine_t *engine)
         sfSprite_setTextureRect(object->entity->sprite, box);
         check_if_finish(object, engine, box, *width);
     }
-    return 0;
 }
 
 int init_help_addons(engine_t *engine)
