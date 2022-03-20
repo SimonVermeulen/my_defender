@@ -14,7 +14,7 @@ int set_random(FILE *file)
 
     if (!file)
         return 84;
-    if (fread(&seed, sizeof seed, 1, file) == 1) {
+    if (fread(&seed, sizeof(seed), 1, file) == 1) {
         fclose(file);
         srand(seed);
         return 0;
