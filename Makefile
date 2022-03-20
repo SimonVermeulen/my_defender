@@ -37,7 +37,7 @@ OBJ 			=		$(SRC:.c=.o)
 
 NAME 			= 		my_defender
 
-LIBFLAG 		= 		lib/game_engine.a -Lcsfml-window -lcsfml-graphics -lcsfml-system lib/liblist.a lib/libjson_parser.a lib/libmy.a -lm
+LIBFLAG 		= 		lib/game_engine.a -Lcsfml-window -lcsfml-graphics -lcsfml-system -lcsfml-audio lib/liblist.a lib/libjson_parser.a lib/libmy.a -lm
 
 CFLAGS 			+= 		-I ./include -g3
 
