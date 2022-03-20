@@ -33,7 +33,7 @@ int copy_value(node_t *src, node_t *dest)
     int type = 0;
 
     if (src->type == 1 || src->type == 10) {
-        if (copy_list(src->value < 0))
+        if (copy_object(dest, src) < 0)
             return (-1);
     } else {
         type = (src->type > 10) ? src->type / 10 : src->type;
