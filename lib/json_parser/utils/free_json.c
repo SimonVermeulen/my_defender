@@ -32,22 +32,28 @@ static int free_object(node_t *current)
 
 static int free_json_recursive(list_t *object)
 {
-    node_t *current = object->head;
+    node_t *current = NULL;
     node_t *tmp = NULL;
     int len = 0;
 
-    for (int i = 0; i < object->nb_elements; i++) {
-        tmp = current->next;
-        if (current->type == 1 || current->type == 10) {
-            current->prev->next = current->next;
-            current->next->prev = current->prev;
-            len = free_object(current);
-            object->nb_elements -= len;
-            i -= len;
+    while (object->nb_elements != 0) {
+        current = object->head;
+        if (current->type == 1) {
+            free_json_recursive(current->value);
+            free(current->value);
+            current->value = NULL;
         }
-        current = tmp;
+        if (current->type == 10) {
+            for (int i = 0; i < current->len; i++) {
+                free_json_recursive(((list_t **) current->value)[i]);
+                free(((list_t **) current->value)[i]);
+            }
+            free(current->value);
+            current->value = NULL;
+            current->len = 0;
+        }
+        shift_element(object);
     }
-    free_list(object);
     return (0);
 }
 
@@ -58,5 +64,6 @@ int free_json_object(list_t *object)
     if (object == NULL)
         return 84;
     value = free_json_recursive(object);
+    free(object);
     return (value);
 }

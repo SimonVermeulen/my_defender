@@ -81,7 +81,8 @@ void free_node(node_t *node)
     if (node) {
         value = node->value;
         free(node->key);
-        for (int i = 0; i < node->len && node->len != 0; i++)
+        for (int i = 0; i < node->len && node->len != 0
+            && node->type != 20 && node->type != 30; i++)
             free(value[i]);
         free(value);
         free(node);

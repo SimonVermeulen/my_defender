@@ -42,6 +42,11 @@ int move_mob(object_t *object, engine_t *engine, list_t *position, int *step)
     return 0;
 }
 
+int destroy_after_game(object_t *object, engine_t *engine)
+{
+    destroy_object(object);
+}
+
 int tick_mobs_movement(object_t *object, engine_t *engine)
 {
     int *position_step = get_addon("PositionStep", 3, object);
@@ -49,12 +54,12 @@ int tick_mobs_movement(object_t *object, engine_t *engine)
     list_t **position_list = NULL;
 
     if (!positions || positions->type != 10 || !position_step ||
-        *position_step >= (positions->len))
+        *position_step >= positions->len)
         return 0;
     position_list = positions->value;
     move_mob(object, engine, position_list[*position_step], position_step);
-    // if (*position_step >= (positions->len - 1))
-    //     destroy_object(object);
+    if (*position_step >= positions->len)
+        add_function(destroy_object, 0, object, engine);
     return 0;
 }
 
