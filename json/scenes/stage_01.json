@@ -1064,7 +1064,7 @@
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
                             "PositionX": 928.0,
-                            "PositionY": -37.0,
+                            "PositionY": -50.0,
                             "Width": 34,
                             "Height": 34,
                             "AnimationTime": 100000,
@@ -1137,7 +1137,7 @@
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
                             "PositionX": 928.0,
-                            "PositionY": -37.0,
+                            "PositionY": -50.0,
                             "Width": 41,
                             "Height": 34,
                             "AnimationTime": 100000,
