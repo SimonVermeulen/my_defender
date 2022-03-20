@@ -19,7 +19,7 @@ int loop_execution_on_event(object_t *object, engine_t *engine)
         addon = node->value;
         if (addon->on_event != NULL)
             addon->on_event(object, engine);
-        if (object->isActive == sfTrue)
+        if (object->is_active == sfTrue && object->is_pause == sfFalse)
             loop_track_on_event(object->childs, engine);
     }
     return 0;
@@ -35,7 +35,8 @@ int loop_track_on_event(list_t *scene, engine_t *engine)
     node = scene->head;
     for (int i = 0; i < scene->nb_elements; i++, node = node->next) {
         object = node->value;
-        if (object->addons != NULL && object->isActive == sfTrue)
+        if (object->addons != NULL && object->is_active == sfTrue &&
+            object->is_pause == sfFalse)
             loop_execution_on_event(object, engine);
     }
     return 0;
