@@ -7,6 +7,9 @@
 
 #include "game.h"
 
+int window_pause(list_t *scene, engine_t *engine, object_t *skip,
+    sfBool boole);
+
 int start_help(object_t *object, engine_t *engine)
 {
     int *width = get_addon("HoverButton_Width", 3, object);
