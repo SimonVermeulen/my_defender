@@ -24,6 +24,7 @@ int end_background_sound(object_t *object, engine_t *engine)
 {
     if (!object->music)
         return exit_game(engine, 84);
+    sfMusic_setLoop(object->music, sfFalse);
     sfMusic_stop(object->music);
     return 0;
 }
