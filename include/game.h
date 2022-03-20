@@ -36,5 +36,6 @@ int init_mobs_spawner_addons(engine_t *engine);
 int init_mobs_animation_addons(engine_t *engine);
 int init_mobs_movement_addons(engine_t *engine);
 int init_pause_button_addons(engine_t *engine);
+int init_help_addons(engine_t *engine);
 
 #endif /* !GAME_H_ */
