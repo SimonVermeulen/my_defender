@@ -34,7 +34,7 @@ int enable_load_build(object_t *object, engine_t *engine)
     sfColor *pixels = malloc(sizeof(sfColor) * WIDTH * HEIGHT);
 
     if (!object->entity || !load || !pixels)
-        return exit_game(engine, 82);
+        return exit_game(engine, 84);
     for (int x = 0; x < WIDTH; x++)
         for (int y = 0; y < HEIGHT; y++)
             pixels[y * WIDTH + x] = sfBlack;
@@ -49,14 +49,14 @@ int enable_load_build(object_t *object, engine_t *engine)
     return 0;
 }
 
-int get_load_finish(object_t *object, engine_t *engine, int time)
+int get_load_finish(object_t *object, engine_t *engine, double time)
 {
     int *stats = get_addon("stats", 3, object->parent);
     object_t *level = seek_object_scene(object->actual_scene, "TowerLevel");
 
     if (!object->parent || !stats || !level)
-        return exit_game(engine, 83);
-    if (time >= 2000000) {
+        return exit_game(engine, 84);
+    if (time >= 2000) {
         set_active(sfFalse, object, engine);
         *stats = 2;
         set_active(sfTrue, level, engine);
@@ -66,19 +66,24 @@ int get_load_finish(object_t *object, engine_t *engine, int time)
 
 int tick_load_build(object_t *object, engine_t *engine)
 {
-    int time = sfClock_getElapsedTime(object->clock).microseconds;
-    int width = (time * WIDTH) / 2000000;
-    sfColor *pixels = malloc(sizeof(sfColor) * width * HEIGHT);
+    double *time = get_addon("Time", 2, object);
+    int width = 0;
+    sfColor *pixels = NULL;
 
-    if (!pixels || !object->entity->texture)
-        return exit_game(engine, 85);
+    if (!object->entity->texture || !time)
+        return exit_game(engine, 84);
+    *time = *time + get_delta(engine);
+    width = (*time * WIDTH) / 2000;
+    pixels = malloc(sizeof(sfColor) * width * HEIGHT);
+    if (!pixels)
+        return exit_game(engine, 84);
     for (int x = 0; x < width; x++)
         for (int y = 0; y < HEIGHT; y++)
             pixels[y * width + x] = sfRed;
     sfTexture_updateFromPixels(object->entity->texture,
         (sfUint8 *) pixels, width, HEIGHT, 0, 0);
     free(pixels);
-    return get_load_finish(object, engine, time);
+    return get_load_finish(object, engine, *time);
 }
 
 int init_load_build_addons(engine_t *engine)
