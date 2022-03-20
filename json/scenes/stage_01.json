@@ -1222,6 +1222,7 @@
             "addon_data": {
                 "HoverButton_Width": 80,
                 "HoverButton_Height": 80,
+                "IsPlaying": 0,
                 "PositionX": 100.0,
                 "PositionY": 100.0
             },
@@ -1247,6 +1248,7 @@
                                         "PositionY": 500.0,
                                         "HoverButton_Width": 400,
                                         "HoverButton_Height": 142,
+                                        "IsPlaying": 0,
                                         "OnClick": {
                                             "type": 0,
                                             "value": "MainMenu"
@@ -1265,6 +1267,7 @@
                                         "PositionY": 700.0,
                                         "HoverButton_Width": 400,
                                         "HoverButton_Height": 142,
+                                        "IsPlaying": 0,
                                         "OnClick": {
                                             "type": 1,
                                             "value": "Quit"
