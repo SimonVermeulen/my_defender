@@ -37,7 +37,7 @@ int event_build_selector(object_t *object, engine_t *engine)
 
     if (engine->event.type == sfEvtMouseButtonPressed
         && engine->event.mouseButton.button == sfMouseLeft &&
-        valid->isActive == sfFalse) {
+        valid->is_active == sfFalse) {
         for (int i = 0; i < length; i++) {
             print_ghost(tower_list[i], object, engine, (sfFloatRect)
                 {*x, *y, 100, 100});

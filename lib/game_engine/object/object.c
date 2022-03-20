@@ -13,7 +13,8 @@ int create_secondary_step_object(object_t *object, node_t *node,
     char *name, list_t *scene)
 {
     object->addons_data = NULL;
-    object->isActive = sfTrue;
+    object->is_active = sfTrue;
+    object->is_pause = sfFalse;
     object->entity = NULL;
     object->parent = NULL;
     object->childs = NULL;
@@ -88,14 +89,14 @@ sfBool set_active(sfBool value, object_t *object, engine_t *engine)
     node_t *node = NULL;
     addon_t *addon = NULL;
 
-    if (object == NULL || engine == NULL || object->isActive == value)
+    if (object == NULL || engine == NULL || object->is_active == value)
         return sfFalse;
-    object->isActive = value;
+    object->is_active = value;
     node = object->addons->head;
     sfClock_restart(object->clock);
     for (int i = 0; i < object->addons->nb_elements; i++, node = node->next) {
         addon = node->value;
-        if (object->isActive == sfTrue) {
+        if (object->is_active == sfTrue) {
             add_function(addon->on_enable, 0, object, engine);
             continue;
         }

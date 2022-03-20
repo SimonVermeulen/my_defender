@@ -27,7 +27,7 @@ int move_mob(object_t *object, engine_t *engine, list_t *position, int *step)
     sfVector2f normal;
     sfFloatRect rect;
 
-    if (!position_x || !position_y || !x || !y)
+    if (!position_x || !position_y || !x || !y || !speed || *speed <= 0)
         return exit_game(engine, 84);
     normal = get_normalize_vector((sfVector2f) {*position_x, *position_y},
         (sfVector2f) {*x, *y});
