@@ -26,9 +26,9 @@ int check_resize(object_t *object, engine_t *engine, int *x, int *y)
 
     if (!width || !height || !min_height || !min_width)
         return exit_game(engine, 84);
-    if (*x > *width || *y > *height) {
-        *x = (*x > *width || *x < min_width) ? *width : *x;
-        *y = (*y > *height || *x < min_height) ? *height : *y;
+    if (*x > *width || *y > *height || *x < *min_width || *y < *min_height) {
+        *x = (*x > *width || *x < *min_width) ? *width : *x;
+        *y = (*y > *height || *x < *min_height) ? *height : *y;
         sfRenderWindow_setSize(engine->window, (sfVector2u) {*x, *y});
     }
     return 0;
