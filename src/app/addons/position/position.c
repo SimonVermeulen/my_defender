@@ -18,10 +18,10 @@ int set_position_canvas(object_t *object, engine_t *engine, int x, int y)
 
 int start_position(object_t *object, engine_t *engine)
 {
-    int *x = get_addon("PositionX", 3, object->parent);
-    int *y = get_addon("PositionY", 3, object->parent);
-    int *pos_x = get_addon("PositionX", 3, object);
-    int *pos_y = get_addon("PositionY", 3, object);
+    double *x = get_addon("PositionX", 2, object->parent);
+    double *y = get_addon("PositionY", 2, object->parent);
+    double *pos_x = get_addon("PositionX", 2, object);
+    double *pos_y = get_addon("PositionY", 2, object);
 
     if (!object->parent || !x || !y || !pos_x || !pos_y)
         return 0;
@@ -32,8 +32,8 @@ int start_position(object_t *object, engine_t *engine)
 
 int position_tick_event(object_t *object, engine_t *engine)
 {
-    int *x = get_addon("PositionX", 3, object);
-    int *y = get_addon("PositionY", 3, object);
+    double *x = get_addon("PositionX", 2, object);
+    double *y = get_addon("PositionY", 2, object);
     int *is_canvas = get_addon("IsCanvas", 3, object);
 
     if (object->entity == NULL || x == NULL || y == NULL)

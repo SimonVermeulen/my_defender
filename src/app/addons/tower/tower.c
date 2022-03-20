@@ -12,8 +12,8 @@ int start_tower(object_t *object, engine_t *engine)
     object_t *selector = seek_object_scene(object->childs, "BuildSelector");
 
     if (!get_addon("stats", 3, object) || !get_addon("type", 3, object) ||
-        !get_addon("PositionX", 3, object) ||
-        !get_addon("PositionY", 3, object) ||
+        !get_addon("PositionX", 2, object) ||
+        !get_addon("PositionY", 2, object) ||
         !selector) {
         exit_game(engine, 84);
     }
