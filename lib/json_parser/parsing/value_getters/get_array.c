@@ -23,6 +23,7 @@ static int get_nb_elements_others(const char *buff)
         nb_elements += (buff[i] == ',' && !is_quote) ? 1 : 0;
     }
     nb_elements++;
+    nb_elements = (nb_elements == 1) ? -1 : 0;
     return (nb_elements);
 }
 
@@ -48,6 +49,7 @@ static int get_nb_elements_object(const char *buff)
         array_level += (buff[i] == '[') ? 1 : 0;
         array_level -= (buff[i] == ']' && array_level) ? 1 : 0;
     }
+    nb_elements = (nb_elements == 0) ? -1 : nb_elements;
     return (nb_elements);
 }
 
@@ -76,7 +78,7 @@ int get_array(const char *buff, node_t *new_node, int useless)
     useless++;
     check_type(&buff[1], new_node);
     nb_elements = get_nb_elements(buff, new_node);
-    if (nb_elements <= 0 || (new_node->type != 10 && nb_elements -1 <= 0))
+    if (nb_elements < 0)
         return (-1);
     len = getters[new_node->type](&buff[1], new_node, nb_elements);
     if (len < 0)
