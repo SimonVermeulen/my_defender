@@ -16,6 +16,7 @@ int create_secondary_step_object(object_t *object, node_t *node,
     object->is_active = sfTrue;
     object->is_pause = sfFalse;
     object->entity = NULL;
+    object->music = NULL;
     object->parent = NULL;
     object->childs = NULL;
     object->clock = sfClock_create();
@@ -56,6 +57,8 @@ int destroy_object(object_t *object)
 
     if (object == NULL)
         return 84;
+    sfClock_destroy(object->clock);
+    sfMusic_destroy(object->music);
     destroy_addons(object->addons, sfTrue);
     free_json_object(object->addons_data);
     destroy_entity(object);
