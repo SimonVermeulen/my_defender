@@ -13,7 +13,7 @@ int load_sprite_tower(object_t *object, engine_t *engine)
     list_t *info = get_addon("Info", 1, object);
     char *path = get_value_list(info, "Path", 4);
 
-    if (!path || !sprite || change_texture(sprite, path) == 84)
+    if (!info || !path || !sprite || change_texture(sprite, path) == 84)
         return exit_game(engine, 84);
     return 0;
 }
@@ -27,14 +27,15 @@ int enable_tower_level(object_t *object, engine_t *engine)
     list_t *json = NULL;
 
     if (!node_path || node_path->type != 40 ||
-        node_path->len != 4 || !type) {
+        node_path->len != 4 || !type)
         return exit_game(engine, 84);
-    }
     path = node_path->value;
     json = launch_parsing(path[*type]);
+    if (!json)
+        return exit_game(engine, 84);
     info = create_new_node(json, 1, "Info",
         object->addons_data);
-    if (!info || !json)
+    if (!info)
         return exit_game(engine, 84);
     return load_sprite_tower(object, engine);
 }
