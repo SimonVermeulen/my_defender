@@ -18,5 +18,8 @@ int set_time(engine_t *engine)
 
 float get_delta(engine_t *engine)
 {
-    return sfClock_getElapsedTime(engine->time.delta).microseconds;
+    float a = sfClock_getElapsedTime(engine->time.delta).microseconds;
+    float b = 1000;
+
+    return a / b;
 }

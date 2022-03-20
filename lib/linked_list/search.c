@@ -20,7 +20,7 @@ static int cmp(char const *s1, char const *s2)
     return (result);
 }
 
-node_t *search_from_key(list_t *list, char *key)
+node_t *search_from_key(list_t *list, const char *key)
 {
     node_t *current = NULL;
 
@@ -28,11 +28,36 @@ node_t *search_from_key(list_t *list, char *key)
         return (NULL);
     current = list->head;
     for (int i = 0; i < list->nb_elements; i++) {
-        if (cmp(key, current->key))
+        if (!cmp(key, current->key))
             return (current);
         current = current->next;
     }
-    write(2, "Error: can't find node with this key\n", 38);
     return (NULL);
 }
 
+void *get_value_list(list_t *list, const char *name, int type)
+{
+    node_t *node = NULL;
+
+    if (list == NULL || name == NULL)
+        return NULL;
+    node = search_from_key(list, name);
+    if (node == NULL || node->type != type)
+        return NULL;
+    return node->value;
+}
+
+int set_value_list(list_t *list, const char *name, void *value)
+{
+    node_t *node = NULL;
+
+    if (list == NULL || name == NULL)
+        return 84;
+    node = search_from_key(list, name);
+    if (node == NULL)
+        node = create_new_node(value, 0, name, list);
+    if (node == NULL)
+        return 84;
+    node->value = value;
+    return 0;
+}

@@ -7,55 +7,64 @@
 
 #include "game_engine.h"
 
+int check_init_game(engine_t *instance)
+{
+    if (instance->scenes == NULL || instance->addons == NULL ||
+        instance->functions == NULL || instance->view == NULL ||
+        instance->window == NULL || instance->fonts == NULL)
+        return 84;
+    return 0;
+}
+
 engine_t *init_game(sfVideoMode video, char const *title)
 {
     engine_t *instance = malloc(sizeof(engine_t));
 
     if (instance == NULL)
         return NULL;
+    instance->code = 0;
     instance->scenes = create_empty_list();
-    instance->print_sprites = create_empty_list();
     instance->addons = create_empty_list();
+    instance->print = create_empty_list();
     instance->functions = create_empty_list();
+    instance->fonts = create_empty_list();
     instance->view = sfView_create();
     instance->window = sfRenderWindow_create(video, title,
         sfClose | sfResize, NULL);
-    if (instance->scenes == NULL || instance->print_sprites == NULL ||
-        instance->addons == NULL || instance->functions == NULL ||
-        instance->view == NULL || instance->window == NULL ||
-        instance->time.delta == NULL || instance->time.time == NULL ||
-        init_text(instance) == ERROR || init_scene("const_scene", sfTrue,
-        instance) == ERROR)
+    instance->actual_scene = NULL;
+    instance->const_scene = NULL;
+    if (check_init_game(instance) == 84)
         return NULL;
-    instance->actual_scene = 0;
     return instance;
 }
 
 void destroy_engine(engine_t *engine)
 {
+    destroy_fonts(engine);
+    destroy_scene(engine->actual_scene);
     destroy_scene(engine->const_scene);
-    destroy_text(engine);
-    destroy_addons(engine->addons);
-    destroy_functions(engine->functions);
-    destroy_print_list(engine, sfTrue);
+    destroy_addons(engine->addons, sfFalse);
+    destroy_functions(engine);
     sfRenderWindow_destroy(engine->window);
     sfView_destroy(engine->view);
 }
 
 int destroy_game(engine_t *engine)
 {
-    node_t *node = NULL;
-
     if (engine == NULL)
         return ERROR;
     while (engine->scenes->nb_elements != 0) {
-        node = engine->scenes->head;
-        destroy_scene(engine->scenes->head);
-        free(node->key);
         shift_element(engine->scenes);
     }
     free(engine->scenes);
     destroy_engine(engine);
     free(engine);
     return 0;
+}
+
+int exit_game(engine_t *engine, int code)
+{
+    engine->code = code;
+    sfRenderWindow_close(engine->window);
+    return code;
 }

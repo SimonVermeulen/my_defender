@@ -1,9 +1,0 @@
-
-my_strdup.o:
-                 U malloc
-0000000000000000 T my_strdup
-
-replace_str.o:
-                 U free
-                 U my_strdup
-0000000000000000 T replace_str
