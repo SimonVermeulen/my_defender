@@ -1276,6 +1276,20 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "HelpMenu",
+            "addons": ["position", "help"],
+            "entity": {
+                "texture": "./assets/images/tutoriel/all_page.png",
+                "order": 50
+            },
+            "addon_data": {
+                "HoverButton_Width": 1273,
+                "HoverButton_Height": 920,
+                "PositionX": 100.0,
+                "PositionY": 100.0
+            }
         }
     ]
 }
