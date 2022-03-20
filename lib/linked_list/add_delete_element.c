@@ -27,6 +27,8 @@ int push_element(list_t *list, node_t *data)
 {
     node_t *tmp = NULL;
 
+    if (data == NULL)
+        return 84;
     if (check_error(list, 0))
         return (-1);
     if (list->nb_elements == 0) {
@@ -48,6 +50,8 @@ int unshift_element(list_t *list, node_t *data)
 {
     node_t *tmp = NULL;
 
+    if (data == NULL)
+        return 84;
     if (check_error(list, 0))
         return (-1);
     if (list->nb_elements == 0) {
