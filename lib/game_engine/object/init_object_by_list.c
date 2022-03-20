@@ -13,7 +13,8 @@ int add_addon_by_list(list_t *object_list, engine_t *engine, object_t *object)
     node_t *addons = NULL;
 
     addons = search_from_key(object_list, "addons");
-    if (object_list == NULL || object == NULL || addons == NULL || addons->type != 40)
+    if (object_list == NULL || object == NULL ||
+        addons == NULL || addons->type != 40)
         return ERROR;
     addons_array = addons->value;
     for (int i = 0; i < addons->len; i++) {
@@ -33,7 +34,8 @@ int add_addon_data(list_t *object_list, object_t *object)
     return 0;
 }
 
-object_t *add_object_child(list_t *object_list, object_t *object, engine_t *engine)
+object_t *add_object_child(list_t *object_list,
+    object_t *object, engine_t *engine)
 {
     list_t *scene = get_value_list(object_list, "children", 1);
 
