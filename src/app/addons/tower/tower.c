@@ -20,19 +20,6 @@ int start_tower(object_t *object, engine_t *engine)
     return 0;
 }
 
-int tick_tower_build(object_t *object, engine_t *engine);
-
-int tick_tower(object_t *object, engine_t *engine)
-{
-    int *stats = get_addon("stats", 3, object);
-
-    switch (*stats) {
-        case 1:
-            tick_tower_build(object, engine);
-            break;
-    }
-}
-
 int event_tower_selector(object_t *object, engine_t *engine);
 
 int event_tower(object_t *object, engine_t *engine)
@@ -57,7 +44,7 @@ int init_tower_addons(engine_t *engine)
     addon->on_end = NULL;
     addon->on_start = start_tower;
     addon->on_event = event_tower;
-    addon->on_tick = tick_tower;
+    addon->on_tick = NULL;
     if (create_addon("tower", addon, engine) == sfFalse)
         return 84;
     return 0;

@@ -56,7 +56,7 @@
                         "addon_data": {
                             "Enable": 0,
                             "JsonTowerPath": [
-                                "./json/objects/archer.json",
+                                "./json/objects/cher.json",
                                 "./json/objects/bomb.json",
                                 "./json/objects/mage.json",
                                 "./json/objects/viking.json"
