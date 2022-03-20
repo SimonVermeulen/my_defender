@@ -16,16 +16,16 @@
             },
             "addons": ["position", "view_drag"],
             "addon_data": {
-                "PositionX": 0.0,
-                "PositionY": 0.0
+                "PositionX": 0,
+                "PositionY": 0
             }
         },
         {
             "name": "SlotTower",
             "addons": ["position", "tower"],
             "addon_data": {
-                "PositionX": 640.0,
-                "PositionY": 420.0,
+                "PositionX": 640,
+                "PositionY": 420,
                 "BuildPath": [
                     "./assets/images/towers/archer/level01/01.png",
                     "./assets/images/towers/archer/level01/01.png",
@@ -46,8 +46,8 @@
                         "addons": ["active", "load_build", "position"],
                         "addon_data": {
                             "Enable": 0,
-                            "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionX": 0,
+                            "PositionY": 0
                         }
                     },
                     {
@@ -72,8 +72,8 @@
                         "addons": ["origin", "position"],
                         "addon_data": {
                             "Origin": 0,
-                            "PositionX": 0.0,
-                            "PositionY": 0.0
+                            "PositionX": 0,
+                            "PositionY": 0
                         }
                     },
                     {
@@ -85,30 +85,30 @@
                         "addons": ["position", "origin", "build_selector"],
                         "addon_data": {
                             "Origin": 0,
-                            "PositionX": 0.0,
-                            "PositionY": 0.0,
+                            "PositionX": 0,
+                            "PositionY": 0,
                             "Towers": [
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
+                                    "PositionX": 0,
+                                    "PositionY": 0,
                                     "Path": "./assets/images/towers/archer/level01/00.png",
                                     "type": 0
                                 },
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
+                                    "PositionX": 0,
+                                    "PositionY": 0,
                                     "Path": "./assets/images/towers/archer/level01/00.png",
                                     "type": 1
                                 },
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
+                                    "PositionX": 0,
+                                    "PositionY": 0,
                                     "Path": "./assets/images/towers/archer/level01/00.png",
                                     "type": 2
                                 },
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
+                                    "PositionX": 0,
+                                    "PositionY": 0,
                                     "Path": "./assets/images/towers/archer/level01/00.png",
                                     "type": 3
                                 }
@@ -124,8 +124,8 @@
                                     },
                                     "addons": ["position", "build_valid_selector"],
                                     "addon_data": {
-                                        "PositionX": 0.0,
-                                        "PositionY": 0.0
+                                        "PositionX": 0,
+                                        "PositionY": 0
                                     }
                                 }
                             ]
@@ -138,8 +138,8 @@
             "name": "mobsSpawner",
             "addons": ["mobs_spawner"],
             "addon_data": {
-                "SpawnPositionY": 0.0,
-                "SpawnPositionX": 0.0,
+                "SpawnPositionY": 0,
+                "SpawnPositionX": 0,
                 "TimeSpawn": 60,
                 "mobs": [
                     {
@@ -150,8 +150,8 @@
                         },
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
-                            "PositionX": 60.0,
-                            "PositionY": 60.0,
+                            "PositionX": 60,
+                            "PositionY": 60,
                             "Width": 34,
                             "Height": 34,
                             "AnimationTime": 100000,
@@ -183,8 +183,8 @@
                         },
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
-                            "PositionX": 70.0,
-                            "PositionY": 70.0,
+                            "PositionX": 70,
+                            "PositionY": 70,
                             "Width": 41,
                             "Height": 34,
                             "AnimationTime": 100000,

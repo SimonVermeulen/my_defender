@@ -8,8 +8,8 @@
             },
             "addons": ["position"],
             "addon_data": {
-                "PositionX": 0.0,
-                "PositionY": 0.0
+                "PositionX": 0,
+                "PositionY": 0
             }
         },
         {
@@ -20,8 +20,8 @@
             },
             "addons": ["position"],
             "addon_data": {
-                "PositionX": 610.0,
-                "PositionY": 50.0
+                "PositionX": 610,
+                "PositionY": 50
             }
         },
         {
@@ -34,8 +34,8 @@
             "addon_data": {
                 "HoverButton_Width": 372,
                 "HoverButton_Height": 380,
-                "PositionX": 775.0,
-                "PositionY": 360.0,
+                "PositionX": 775,
+                "PositionY": 360,
                 "OnClick": {
                     "type": 0,
                     "value": "Stage01"

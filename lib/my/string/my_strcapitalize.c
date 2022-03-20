@@ -16,7 +16,7 @@ void check_uppercase(char *c, int *start)
 
 void check_lowercase(char *c, int *start)
 {
-    if (*start == 1){
+    if (*start == 1) {
         *c = *c - 32;
         *start = 0;
     }

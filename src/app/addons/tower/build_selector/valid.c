@@ -38,7 +38,7 @@ int event_build_valid_selector(object_t *object, engine_t *engine)
         sfFloatRect_contains(&rect_valid, mouse.x, mouse.y) &&
         sfClock_getElapsedTime(object->clock).microseconds > 100000) {
         disable_build_items(tower, object, engine);
-        *stats = 1; 
+        *stats = 1;
     }
     return 0;
 }
