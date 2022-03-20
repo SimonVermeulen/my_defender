@@ -28,7 +28,6 @@ int init_entity(int order, char const *texture_name, object_t *object)
     entity_t *entity = NULL;
 
     sprite = sfSprite_create();
-    texture = NULL;
     if (texture_name != NULL)
         texture = sfTexture_createFromFile(texture_name, NULL);
     clock = sfClock_create();

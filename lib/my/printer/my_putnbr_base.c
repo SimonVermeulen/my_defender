@@ -29,8 +29,7 @@ int my_putnbr_base(unsigned long nbr, char const *base)
 {
     long i;
 
-    for ( i = 0; base[i] != '\0'; i++){
-    }
+    for (i = 0; base[i] != '\0'; i++);
     if (nbr < 0) {
         my_putchar('-');
         nbr = nbr * -1;
