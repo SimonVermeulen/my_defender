@@ -43,7 +43,7 @@ node_t *create_new_node(void *value, int type, const char *name, list_t *list)
 {
     node_t *new_node = create_newnode(value, type, 0);
 
-    if (new_node == NULL)
+    if (new_node == NULL || list == NULL)
         return NULL;
     new_node->key = my_strdup(name);
     if (new_node->key == NULL) {
