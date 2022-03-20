@@ -50,16 +50,12 @@ int tick_build_valid_selector(object_t *object, engine_t *engine)
     sfFloatRect rect_valid = sfSprite_getGlobalBounds(object->entity->sprite);
     sfVector2f mouse = get_mouse_position(engine);
 
-    if (!object->parent || !object->parent->parent) {
-        exit_game(engine, 84);
-        return 0;
-    }
+    if (!object->parent || !object->parent->parent)
+        return exit_game(engine, 84);
     tower = object->parent->parent;
     sprite = seek_object_scene(tower->actual_scene, "SpriteTower");
-    if (!sprite) {
-        exit_game(engine, 84);
-        return 0;
-    }
+    if (!sprite)
+        return exit_game(engine, 84);
     if (!sfFloatRect_contains(&rect_valid, mouse.x, mouse.y) &&
         sfClock_getElapsedTime(object->clock).microseconds > 100000) {
         set_active(sfFalse, object, engine);
