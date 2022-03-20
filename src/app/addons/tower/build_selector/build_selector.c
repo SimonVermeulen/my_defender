@@ -37,10 +37,8 @@ int print_ghost(list_t *tower, object_t *object, engine_t *engine,
     int *type_parent = get_addon("type", 3, object->parent);
     sfVector2f mouse = get_mouse_position(engine);
 
-    if (!position_x || !position_y || !path || !type_parent) {
-        exit_game(engine, 84);
-        return 0;
-    }
+    if (!position_x || !position_y || !path || !type_parent)
+        return exit_game(engine, 84);
     rect.left = rect.left + *position_x;
     rect.top = rect.top + *position_y;
     if (sfFloatRect_contains(&rect, mouse.x, mouse.y)) {
@@ -49,10 +47,8 @@ int print_ghost(list_t *tower, object_t *object, engine_t *engine,
         *x = rect.left;
         *y = rect.top;
         *type_parent = *type;
-        if (change_texture(sprite, path) == 84) {
-            exit_game(engine, 84);
-            return 0;
-        }
+        if (change_texture(sprite, path) == 84)
+            return exit_game(engine, 84);
     }
     return 0;
 }
@@ -71,7 +67,7 @@ int event_build_selector(object_t *object, engine_t *engine)
         valid->isActive == sfFalse) {
         for (int i = 0; i < length; i++) {
             print_ghost(tower_list[i], object, engine, (sfFloatRect)
-                {*x, *y, 50, 50});
+                {*x, *y, 100, 100});
         }
     }
 }

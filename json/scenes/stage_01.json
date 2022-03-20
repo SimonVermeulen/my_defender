@@ -28,9 +28,9 @@
                 "PositionY": 420.0,
                 "BuildPath": [
                     "./assets/images/towers/archer/level01/01.png",
-                    "./assets/images/towers/archer/level01/01.png",
-                    "./assets/images/towers/archer/level01/01.png",
-                    "./assets/images/towers/archer/level01/01.png"
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
                 ],
                 "stats": 0,
                 "type": 0
@@ -57,9 +57,9 @@
                             "Enable": 0,
                             "JsonTowerPath": [
                                 "./json/objects/archer.json",
-                                "./json/objects/archer.json",
-                                "./json/objects/archer.json",
-                                "./json/objects/archer.json"
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
                             ]
                         }
                     },
@@ -89,27 +89,27 @@
                             "PositionY": 0.0,
                             "Towers": [
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
                                     "Path": "./assets/images/towers/archer/level01/00.png",
                                     "type": 0
                                 },
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
-                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
                                     "type": 1
                                 },
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
-                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
                                     "type": 2
                                 },
                                 {
-                                    "PositionX": 0.0,
-                                    "PositionY": 0.0,
-                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
                                     "type": 3
                                 }
                             ]
@@ -150,8 +150,8 @@
                         },
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
-                            "PositionX": 60.0,
-                            "PositionY": 60.0,
+                            "PositionX": 928.0,
+                            "PositionY": -37.0,
                             "Width": 34,
                             "Height": 34,
                             "AnimationTime": 100000,
@@ -160,19 +160,59 @@
                             "PositionStep": 0,
                             "Paths": [
                                 {
-                                    "x": 150,
-                                    "y": 150
+                                    "x": 928,
+                                    "y": 37
                                 },
                                 {
-                                    "x": 380,
-                                    "y": 50
+                                    "x": 901,
+                                    "y": 420
                                 },
                                 {
-                                    "x": 380,
-                                    "y": 890
+                                    "x": 769,
+                                    "y": 534
+                                },
+                                {
+                                    "x": 691,
+                                    "y": 584
+                                },
+                                {
+                                    "x": 634,
+                                    "y": 698
+                                },
+                                {
+                                    "x": 648,
+                                    "y": 827
+                                },
+                                {
+                                    "x": 713,
+                                    "y": 931
+                                },
+                                {
+                                    "x": 1012,
+                                    "y": 915
+                                },
+                                {
+                                    "x": 1173,
+                                    "y": 989
+                                },
+                                {
+                                    "x": 1273,
+                                    "y": 939
+                                },
+                                {
+                                    "x": 1389,
+                                    "y": 789
+                                },
+                                {
+                                    "x": 1887,
+                                    "y": 757
+                                },
+                                {
+                                    "x": 2000,
+                                    "y": 757
                                 }
                             ],
-                            "Speed": 10
+                            "Speed": 15
                         }
                     },
                     {
@@ -183,8 +223,8 @@
                         },
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
-                            "PositionX": 70.0,
-                            "PositionY": 70.0,
+                            "PositionX": 928.0,
+                            "PositionY": -37.0,
                             "Width": 41,
                             "Height": 34,
                             "AnimationTime": 100000,
@@ -193,19 +233,59 @@
                             "PositionStep": 0,
                             "Paths": [
                                 {
-                                    "x": 150,
-                                    "y": 150
+                                    "x": 928,
+                                    "y": 37
                                 },
                                 {
-                                    "x": 380,
-                                    "y": 50
+                                    "x": 901,
+                                    "y": 420
                                 },
                                 {
-                                    "x": 380,
-                                    "y": 890
+                                    "x": 769,
+                                    "y": 534
+                                },
+                                {
+                                    "x": 691,
+                                    "y": 584
+                                },
+                                {
+                                    "x": 634,
+                                    "y": 698
+                                },
+                                {
+                                    "x": 648,
+                                    "y": 827
+                                },
+                                {
+                                    "x": 713,
+                                    "y": 931
+                                },
+                                {
+                                    "x": 1012,
+                                    "y": 915
+                                },
+                                {
+                                    "x": 1173,
+                                    "y": 989
+                                },
+                                {
+                                    "x": 1273,
+                                    "y": 939
+                                },
+                                {
+                                    "x": 1389,
+                                    "y": 789
+                                },
+                                {
+                                    "x": 1887,
+                                    "y": 757
+                                },
+                                {
+                                    "x": 2000,
+                                    "y": 757
                                 }
                             ],
-                            "Speed": 20
+                            "Speed": 10
                         }
                     }
                 ]
