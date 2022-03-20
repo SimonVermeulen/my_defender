@@ -41,6 +41,48 @@
                     "value": "Stage01"
                 }
             }
+        },
+        {
+            "name": "chain1",
+            "entity": {
+                "texture": "./assets/images/menu/parameters/chain.png",
+                "order": 0
+            },
+            "addons": ["position"],
+            "addon_data": {
+                "PositionX": 800.0,
+                "PositionY": 660.0
+            }
+        },
+        {
+            "name": "chain2",
+            "entity": {
+                "texture": "./assets/images/menu/parameters/chain.png",
+                "order": 0
+            },
+            "addons": ["position"],
+            "addon_data": {
+                "PositionX": 1065.0,
+                "PositionY": 660.0
+            }
+        },
+        {
+            "name": "QuitButton",
+            "entity": {
+                "texture": "./assets/images/menu/credits.png",
+                "order": 1
+            },
+            "addons": ["hover_button", "position", "click_button"],
+            "addon_data": {
+                "HoverButton_Width": 326,
+                "HoverButton_Height": 200,
+                "PositionX": 785.0,
+                "PositionY": 750.0,
+                "OnClick": {
+                    "type": 1,
+                    "value": "quit"
+                }
+            }
         }
     ]
 }
