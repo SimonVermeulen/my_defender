@@ -34,6 +34,7 @@
             "addon_data": {
                 "HoverButton_Width": 372,
                 "HoverButton_Height": 380,
+                "IsPlaying": 0,
                 "PositionX": 775.0,
                 "PositionY": 360.0,
                 "OnClick": {
@@ -76,6 +77,7 @@
             "addon_data": {
                 "HoverButton_Width": 326,
                 "HoverButton_Height": 200,
+                "IsPlaying": 0,
                 "PositionX": 785.0,
                 "PositionY": 750.0,
                 "OnClick": {
