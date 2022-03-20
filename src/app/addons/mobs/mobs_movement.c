@@ -36,9 +36,8 @@ int move_mob(object_t *object, engine_t *engine, list_t *position, int *step)
     *position_x = *position_x + normal.x;
     *position_y = *position_y + normal.y;
     rect = (sfFloatRect) {*x - 50, *y - 50, *x + 50, *y + 50};
-    if (sfFloatRect_contains(&rect, *position_x, *position_y)) {
+    if (sfFloatRect_contains(&rect, *position_x, *position_y))
         *step = *step + 1;
-    }
     return 0;
 }
 
