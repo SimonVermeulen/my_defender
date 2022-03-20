@@ -8,8 +8,8 @@
 #ifndef JSON_PARSER_H_
     #define JSON_PARSER_H_
 
-#include <stdio.h>
-#include "linked_list.h"
+    #include <stdio.h>
+    #include "linked_list.h"
 
     #define is_number(c) (c >= '0' && c <= '9') ? 1 : 0
 
@@ -109,7 +109,8 @@ int check_string(const char *buff);
 /*----------VALUE_GETTERS-----------*/
 
 /**
-* @brief Gets the value contained at the given index of buffer and stocks it in tmp 
+* @brief Gets the value contained at the given index of
+* buffer and stocks it in tmp 
 *
 * @param buffer the buffer to get the value from
 * @param index the current index to get value from

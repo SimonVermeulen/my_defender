@@ -9,32 +9,22 @@
 #include "linked_list.h"
 #include "json_parser.h"
 
-static int free_json_recursive(list_t *object);
+static void free_json_recursive(list_t *object);
 
-static int free_object(node_t *current)
+static void free_array(node_t *current)
 {
-    list_t **object_array = NULL;
-    int len = current->len;
-
-    if (current->type == 1) {
-        free_json_recursive(current->value);
-        len++;
-    } else {
-        object_array = current->value;
-        for (int i = 0; i < current->len; i++)
-            free_json_recursive(object_array[i]);
-        free(object_array);
+    for (int i = 0; i < current->len; i++) {
+        free_json_recursive(((list_t **) current->value)[i]);
+        free(((list_t **) current->value)[i]);
     }
-    free(current->key);
-    free(current);
-    return (len);
+    free(current->value);
+    current->value = NULL;
+    current->len = 0;
 }
 
-static int free_json_recursive(list_t *object)
+static void free_json_recursive(list_t *object)
 {
     node_t *current = NULL;
-    node_t *tmp = NULL;
-    int len = 0;
 
     while (object->nb_elements != 0) {
         current = object->head;
@@ -44,17 +34,10 @@ static int free_json_recursive(list_t *object)
             current->value = NULL;
         }
         if (current->type == 10) {
-            for (int i = 0; i < current->len; i++) {
-                free_json_recursive(((list_t **) current->value)[i]);
-                free(((list_t **) current->value)[i]);
-            }
-            free(current->value);
-            current->value = NULL;
-            current->len = 0;
+            free_array(current);
         }
         shift_element(object);
     }
-    return (0);
 }
 
 int free_json_object(list_t *object)
@@ -63,7 +46,7 @@ int free_json_object(list_t *object)
 
     if (object == NULL)
         return 84;
-    value = free_json_recursive(object);
+    free_json_recursive(object);
     free(object);
     return (value);
 }

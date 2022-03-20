@@ -19,8 +19,8 @@ sfVector2f get_normalize_vector(sfVector2f pos, sfVector2f direction)
 
 int move_mob(object_t *object, engine_t *engine, list_t *position, int *step)
 {
-    double *position_x = get_addon("PositionX", 2, object);
-    double *position_y = get_addon("PositionY", 2, object);
+    int *position_x = get_addon("PositionX", 3, object);
+    int *position_y = get_addon("PositionY", 3, object);
     int *speed = get_addon("Speed", 3, object);
     int *x = get_value_list(position, "x", 3);
     int *y = get_value_list(position , "y", 3);

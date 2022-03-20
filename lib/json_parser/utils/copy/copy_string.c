@@ -24,8 +24,6 @@ static char **copy_string_array(char **src, int len)
 
 int copy_string(node_t *src, node_t *dest)
 {
-    char **to_copy_value = NULL;
-    char *str = NULL;
     int len = (src->len == 0) ? 1 : src->len;
 
     if (src->len == 0)
@@ -33,6 +31,6 @@ int copy_string(node_t *src, node_t *dest)
     else
         dest->value = copy_string_array(src->value, len);
     if (!dest->value)
-        return (NULL);
+        return (-1);
     return (0);
 }

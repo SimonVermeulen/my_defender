@@ -26,7 +26,7 @@ int destroy_fonts(engine_t *engine)
 {
     list_t *fonts = NULL;
     node_t *temp = NULL;
-    
+
     if (engine == NULL || engine->fonts == NULL)
         return ERROR;
     fonts = engine->fonts;
@@ -34,7 +34,7 @@ int destroy_fonts(engine_t *engine)
         temp = fonts->head;
         sfFont_destroy(temp->value);
         temp->value = NULL;
-        shift_element(fonts);       
+        shift_element(fonts);
     }
     free(engine->fonts);
     return 0;

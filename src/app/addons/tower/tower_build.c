@@ -9,5 +9,5 @@
 
 int tick_tower_build(object_t *object, engine_t *engine)
 {
-    
+
 }

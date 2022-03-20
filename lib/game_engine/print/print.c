@@ -23,7 +23,8 @@ void make_bubble_sort_print(list_t *stack)
     node_t *traveler_a = stack->head;
     node_t *traveler_b = stack->head;
 
-    for (int i = 0; i < stack->nb_elements; i++, traveler_a = traveler_a->next){
+    for (int i = 0; i < stack->nb_elements;
+        i++, traveler_a = traveler_a->next) {
         for (int j = 0; j < stack->nb_elements; j++, traveler_b =
             traveler_b->next)
             switch_element_sort_print(traveler_a, traveler_b);
@@ -79,7 +80,7 @@ int destroy_print_list(engine_t *engine, sfBool final)
 {
     if (engine == NULL)
         return ERROR;
-    while (engine->print->nb_elements != 0)  {
+    while (engine->print->nb_elements != 0) {
         free(engine->print->head->value);
         engine->print->head->key = NULL;
         engine->print->head->value = NULL;
