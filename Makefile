@@ -32,7 +32,7 @@ SRC				=		src/main.c	\
 						src/app/addons/tower/build_selector/print_ghost.c	\
 						src/app/addons/pause/pause_button.c	\
 						src/app/addons/help/help.c	\
-						src/app/addon/background_sound/background_sound.c	\
+						src/app/addons/background_sound/background_sound.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
