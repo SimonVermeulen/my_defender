@@ -17,7 +17,7 @@ int event_tower_selector(object_t *object, engine_t *engine)
     sfVector2f mouse = get_mouse_position(engine);
 
     if (engine->event.type == sfEvtMouseButtonPressed
-        && engine->event.mouseButton.button == sfMouseLeft && 
+        && engine->event.mouseButton.button == sfMouseLeft &&
         sfFloatRect_contains(&rect, mouse.x, mouse.y) == sfTrue) {
         set_active(sfTrue, selector, engine);
     }
