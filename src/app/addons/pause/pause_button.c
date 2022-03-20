@@ -54,7 +54,6 @@ int event_pause_button(object_t *object, engine_t *engine)
         engine->event.key.code == sfKeyEscape)) {
         stats = (stats == sfFalse) ? sfTrue : sfFalse;
         window_pause(engine->actual_scene, engine, object, stats);
-        window_pause(engine->const_scene, engine, object, stats);
         set_active(stats, pause_menu, engine);
         sfSprite_setTextureRect(object->entity->sprite, (sfIntRect)
             {*width * 2, 0, *width, *height});
