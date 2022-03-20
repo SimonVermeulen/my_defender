@@ -30,6 +30,7 @@ SRC				=		src/main.c	\
 						src/app/addons/mobs_spawner/mobs_spawner.c	\
 						src/app/addons/mobs/mobs_animation.c	\
 						src/app/addons/mobs/mobs_movement.c	\
+						src/app/addons/tower/build_selector/print_ghost.c	\
 
 OBJ 			=		$(SRC:.c=.o)
 
