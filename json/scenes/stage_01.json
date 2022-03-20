@@ -186,13 +186,10 @@
                             "PositionX": 70,
                             "PositionY": 70,
                             "Width": 41,
-                            "Height": 35,
+                            "Height": 34,
                             "AnimationTime": 100000,
                             "AnimationStep": 0,
                             "MovementAnimation": [30, 31, 32, 33],
-                            "AnimationTime": 100000,
-                            "AnimationStep": 0,
-                            "MovementAnimation": [33, 34, 35, 36, 37],
                             "PositionStep": 0,
                             "Paths": [
                                 {
@@ -208,7 +205,7 @@
                                     "y": 890
                                 }
                             ],
-                            "Speed": 1
+                            "Speed": 20
                         }
                     }
                 ]

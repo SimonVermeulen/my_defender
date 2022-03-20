@@ -19,7 +19,6 @@ int on_click_button(object_t *object, engine_t *engine)
     value = get_value_list(on_click, "value", 4);
     if (type == NULL || value == NULL)
         return 0;
-    printf("%s\n", value);
     switch (*type) {
         case 0:
             change_scene(value, engine);

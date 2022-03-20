@@ -79,7 +79,8 @@ int destroy_print_list(engine_t *engine, sfBool final)
 {
     if (engine == NULL)
         return ERROR;
-    while (engine->print->nb_elements != 0) {
+    while (engine->print->nb_elements != 0)  {
+        free(engine->print->head->value);
         engine->print->head->key = NULL;
         engine->print->head->value = NULL;
         shift_element(engine->print);
