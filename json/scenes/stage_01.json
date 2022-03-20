@@ -1,16 +1,6 @@
 {
     "objects": [
         {
-            "name": "ResponsiveController",
-            "addons": ["responsive_window"],
-            "addon_data": {
-                "MaxWidth": 1920,
-                "MaxHeight": 1080,
-                "MinWidth": 800,
-                "MinHeight": 600
-            }
-        },
-        {
             "name": "background",
             "entity": {
                 "texture": "./assets/images/in_game/stage01/background.png",
@@ -1230,6 +1220,16 @@
             },
             "children": {
                 "objects": [
+                    {
+                        "name": "ResponsiveController",
+                        "addons": ["responsive_window"],
+                        "addon_data": {
+                            "MaxWidth": 1920,
+                            "MaxHeight": 1080,
+                            "MinWidth": 800,
+                            "MinHeight": 600
+                        }
+                    },
                     {
                         "name": "PauseMenu",
                         "addons": ["active"],
