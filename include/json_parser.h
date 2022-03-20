@@ -21,15 +21,15 @@
 * @brief launches the parsing of the file at the given path
 *
 * @param path the path to the file
-* @return list_t* the list with all data parsed 
+* @return list_t * the list with all data parsed
 */
 list_t *launch_parsing(char *path);
 
 /**
-* @brief Get the content of the JSON file at path 
+* @brief Get the content of the JSON file at path
 *
 * @param path the path to the JSON file
-* @return char* Content of the JSON file 
+* @return char * Content of the JSON file
 */
 char *get_buffer(char *path);
 
@@ -45,7 +45,7 @@ int stringify(char **buffer);
 * @brief Extracts the data from the given stringify buffer
 *
 * @param buffer the stringified buffer you need to extract the data from
-* @return list_t* the data extracted stocked in a linked list
+* @return list_t * the data extracted stocked in a linked list
 */
 list_t *get_data(char *buffer);
 
@@ -110,7 +110,7 @@ int check_string(const char *buff);
 
 /**
 * @brief Gets the value contained at the given index of
-* buffer and stocks it in tmp 
+* buffer and stocks it in tmp
 *
 * @param buffer the buffer to get the value from
 * @param index the current index to get value from
@@ -182,7 +182,7 @@ int get_string(const char *buff, node_t *new_node, int nb_elements);
 
 /*****************WRITING*****************/
 
-/** 
+/**
 * @brief writes in a given path a json object
 *
 * @param path the path to the new json file
@@ -276,7 +276,7 @@ int free_json_object(list_t *object);
 * @brief copies a json_object
 *
 * @param src the source json_object
-* @return list_t* the copied json_object (NULL if error)
+* @return list_t * the copied json_object (NULL if error)
 */
 list_t *copy_list(list_t *src);
 
