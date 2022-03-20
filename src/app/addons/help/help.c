@@ -16,6 +16,7 @@ int start_help(object_t *object, engine_t *engine)
         return exit_game(engine, 84);
     sfSprite_setTextureRect(object->entity->sprite, (sfIntRect) {0, 0,
         *width, *height});
+    window_pause(object->actual_scene, engine, object, sfTrue);
     return 0;
 }
 
@@ -24,6 +25,7 @@ void check_if_finish(object_t *object, engine_t *engine, sfIntRect box,
 {
     if (box.left >= (width * 3))
         add_function(destroy_object, 0, object, engine);
+    window_pause(object->actual_scene, engine, object, sfFalse);
 }
 
 int event_help(object_t *object, engine_t *engine)

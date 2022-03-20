@@ -30,7 +30,7 @@ int tick_mobs_spawner(object_t *object, engine_t *engine)
 
     if (!time_spawn)
         return exit_game(engine, 84);
-    if (time == *time_spawn) {
+    if (time >= *time_spawn) {
         sfClock_restart(object->clock);
         spawn_mob(object, engine);
     }
