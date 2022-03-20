@@ -8,9 +8,9 @@
 #include "game.h"
 
 const char fonts_path[][256] = {"\0"};
+
 const char fonts_name[][256] = {"\0"};
 
-//le faire avec un chargement json c'est mieux 🦸 🤰
 int load_fonts(engine_t *engine)
 {
     for (int i = 0; fonts_name[i][0] != 0; i++) {
