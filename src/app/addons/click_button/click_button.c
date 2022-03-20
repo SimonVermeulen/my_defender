@@ -35,17 +35,21 @@ int click_button_event(object_t *object, engine_t *engine)
     int *width = get_addon("HoverButton_Width", 3, object);
     int *height = get_addon("HoverButton_Height", 3, object);
     sfVector2f mouse = get_mouse_position(engine);
-    sfVector2f position_object = sfSprite_getPosition(object->entity->sprite);
+    double *position_x = get_addon("PositionX", 2, object);
+    double *position_y = get_addon("PositionY", 2, object);
     sfFloatRect rect;
 
     if (width == NULL || height == NULL)
         return 0;
-    rect = (sfFloatRect) {position_object.x, position_object.y, *width,
+    rect = (sfFloatRect) {*position_x, *position_y, *width,
         *height};
     if (engine->event.type == sfEvtMouseButtonPressed
         && engine->event.mouseButton.button == sfMouseLeft &&
-        sfFloatRect_contains(&rect, mouse.x, mouse.y))
+        sfFloatRect_contains(&rect, mouse.x, mouse.y)) {
+        sfSprite_setTextureRect(object->entity->sprite, (sfIntRect)
+            {*width * 2, 0, *width, *height});
         on_click_button(object, engine);
+    }
     return 0;
 }
 
