@@ -6,33 +6,22 @@
 */
 
 #include "game_engine.h"
-#include "libma.h"
+#include "my.h"
 
-int init_node_for_scene(char const *name, scene_t *scene, engine_t *engine)
+int init_primitive_scene(engine_t *engine, init_scene_function_t init,
+    const char *name)
 {
-    node_t *node = malloc(sizeof(node_t));
-    char *text = my_strdup(name);
+    node_t *node = NULL;
+    primitive_scene_t *primitive = NULL;
 
-    if (node == NULL || text == NULL)
-        return ERROR;
-    node->key = text;
-    node->value = scene;
-    return push_element(engine->scenes, node);
-}
-
-scene_t *init_scene(char const *name, sfBool const_scene, engine_t *engine)
-{
-    scene_t *scene = malloc(sizeof(scene_t));
-
-    if (scene == NULL)
-        return NULL;
-    scene->canvas = create_empty_list();
-    scene->objects = create_empty_list();
-    if (const_scene == sfTrue) {
-        engine->const_scene = scene;
-        return scene;
-    }
-    if (init_node_for_scene(name, scene, engine) != 0)
-        return NULL;
-    return scene;
+    if (engine == NULL)
+        return 84;
+    primitive = malloc(sizeof(primitive_scene_t));
+    if (primitive == NULL)
+        return 84;
+    primitive->init = init;
+    node = create_new_node(primitive, 0, name, engine->scenes);
+    if (node == NULL)
+        return 84;
+    return 0;
 }

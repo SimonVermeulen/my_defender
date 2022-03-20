@@ -1,0 +1,1298 @@
+{
+    "objects": [
+        {
+            "name": "ResponsiveController",
+            "addons": ["responsive_window"],
+            "addon_data": {
+                "MaxWidth": 1920,
+                "MaxHeight": 1080
+            }
+        },
+        {
+            "name": "background",
+            "entity": {
+                "texture": "./assets/images/in_game/stage01/background.png",
+                "order": 0
+            },
+            "addons": ["position", "view_drag", "background_sound"],
+            "addon_data": {
+                "PositionX": 0.0,
+                "PositionY": 0.0
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 640.0,
+                "PositionY": 420.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 769.0,
+                "PositionY": 386.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 777.0,
+                "PositionY": 674.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 771.0,
+                "PositionY": 815.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 919.0,
+                "PositionY": 816.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 1172.0,
+                "PositionY": 842.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 1021.0,
+                "PositionY": 1052.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 919.0,
+                "PositionY": 816.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "SlotTower",
+            "addons": ["position", "tower"],
+            "addon_data": {
+                "PositionX": 1383.0,
+                "PositionY": 986.0,
+                "BuildPath": [
+                    "./assets/images/towers/archer/level01/01.png",
+                    "./assets/images/towers/bomb/01.png",
+                    "./assets/images/towers/mage/level01/01.png",
+                    "./assets/images/towers/viking/01.png"
+                ],
+                "stats": 0,
+                "type": 0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "TowerLoad",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 3
+                        },
+                        "addons": ["active", "load_build", "position"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Time": 0.0
+                        }
+                    },
+                    {
+                        "name": "TowerLevel",
+                        "addons": ["active", "tower_level"],
+                        "addon_data": {
+                            "Enable": 0,
+                            "JsonTowerPath": [
+                                "./json/objects/archer.json",
+                                "./json/objects/bomb.json",
+                                "./json/objects/mage.json",
+                                "./json/objects/viking.json"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "SpriteTower",
+                        "entity": {
+                            "texture": "./assets/images/towers/archer/level01/00.png",
+                            "order": 1
+                        },
+                        "addons": ["origin", "position"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0
+                        }
+                    },
+                    {
+                        "name": "BuildSelector",
+                        "entity": {
+                            "texture": "./assets/images/towers/logo/tower_menu.png",
+                            "order": 3
+                        },
+                        "addons": ["position", "origin", "build_selector"],
+                        "addon_data": {
+                            "Origin": 0,
+                            "PositionX": 0.0,
+                            "PositionY": 0.0,
+                            "Towers": [
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": -138.0,
+                                    "Path": "./assets/images/towers/archer/level01/00.png",
+                                    "type": 0
+                                },
+                                {
+                                    "PositionX": 30.5,
+                                    "PositionY": -137.0,
+                                    "Path": "./assets/images/towers/bomb/00.png",
+                                    "type": 1
+                                },
+                                {
+                                    "PositionX": -129.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/mage/level01/00.png",
+                                    "type": 2
+                                },
+                                {
+                                    "PositionX": 35.5,
+                                    "PositionY": 18.0,
+                                    "Path": "./assets/images/towers/viking/00.png",
+                                    "type": 3
+                                }
+                            ]
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "Valid",
+                                    "entity": {
+                                        "texture": "./assets/images/towers/logo/buy.png",
+                                        "order": 4
+                                    },
+                                    "addons": ["position", "build_valid_selector"],
+                                    "addon_data": {
+                                        "PositionX": 0.0,
+                                        "PositionY": 0.0
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "mobsSpawner",
+            "addons": ["mobs_spawner"],
+            "addon_data": {
+                "SpawnPositionY": 0.0,
+                "SpawnPositionX": 0.0,
+                "TimeSpawn": 20,
+                "mobs": [
+                    {
+                        "name": "LittleGobellin",
+                        "entity": {
+                            "texture": "./assets/images/mobs/little_gobelin/little_gobelin.png",
+                            "order": 2
+                        },
+                        "addons": ["position", "mobs_animation", "mobs_movement"],
+                        "addon_data": {
+                            "PositionX": 928.0,
+                            "PositionY": -37.0,
+                            "Width": 34,
+                            "Height": 34,
+                            "AnimationTime": 100000,
+                            "AnimationStep": 0,
+                            "MovementAnimation": [33, 34, 35, 36, 37],
+                            "PositionStep": 0,
+                            "Paths": [
+                                {
+                                    "x": 928,
+                                    "y": 37
+                                },
+                                {
+                                    "x": 901,
+                                    "y": 420
+                                },
+                                {
+                                    "x": 769,
+                                    "y": 534
+                                },
+                                {
+                                    "x": 691,
+                                    "y": 584
+                                },
+                                {
+                                    "x": 634,
+                                    "y": 698
+                                },
+                                {
+                                    "x": 648,
+                                    "y": 827
+                                },
+                                {
+                                    "x": 713,
+                                    "y": 931
+                                },
+                                {
+                                    "x": 1012,
+                                    "y": 915
+                                },
+                                {
+                                    "x": 1173,
+                                    "y": 989
+                                },
+                                {
+                                    "x": 1273,
+                                    "y": 939
+                                },
+                                {
+                                    "x": 1389,
+                                    "y": 789
+                                },
+                                {
+                                    "x": 1887,
+                                    "y": 757
+                                },
+                                {
+                                    "x": 2000,
+                                    "y": 757
+                                }
+                            ],
+                            "Speed": 15
+                        }
+                    },
+                    {
+                        "name": "MediumGobellin",
+                        "entity": {
+                            "texture": "./assets/images/mobs/medium_gobelin/medium_gobelin.png",
+                            "order": 2
+                        },
+                        "addons": ["position", "mobs_animation", "mobs_movement"],
+                        "addon_data": {
+                            "PositionX": 928.0,
+                            "PositionY": -37.0,
+                            "Width": 41,
+                            "Height": 34,
+                            "AnimationTime": 100000,
+                            "AnimationStep": 0,
+                            "MovementAnimation": [30, 31, 32, 33],
+                            "PositionStep": 0,
+                            "Paths": [
+                                {
+                                    "x": 928,
+                                    "y": 37
+                                },
+                                {
+                                    "x": 901,
+                                    "y": 420
+                                },
+                                {
+                                    "x": 769,
+                                    "y": 534
+                                },
+                                {
+                                    "x": 691,
+                                    "y": 584
+                                },
+                                {
+                                    "x": 634,
+                                    "y": 698
+                                },
+                                {
+                                    "x": 648,
+                                    "y": 827
+                                },
+                                {
+                                    "x": 713,
+                                    "y": 931
+                                },
+                                {
+                                    "x": 1012,
+                                    "y": 915
+                                },
+                                {
+                                    "x": 1173,
+                                    "y": 989
+                                },
+                                {
+                                    "x": 1273,
+                                    "y": 939
+                                },
+                                {
+                                    "x": 1389,
+                                    "y": 789
+                                },
+                                {
+                                    "x": 1887,
+                                    "y": 757
+                                },
+                                {
+                                    "x": 2000,
+                                    "y": 757
+                                }
+                            ],
+                            "Speed": 10
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "PauseButton",
+            "entity": {
+                "order": 4,
+                "texture": "./assets/images/in_game/pause_button.png"
+            },
+            "addons": ["pause_button", "position", "hover_button"],
+            "addon_data": {
+                "HoverButton_Width": 80,
+                "HoverButton_Height": 80,
+                "IsPlaying": 0,
+                "PositionX": 100.0,
+                "PositionY": 100.0
+            },
+            "children": {
+                "objects": [
+                    {
+                        "name": "PauseMenu",
+                        "addons": ["active"],
+                        "addon_data": {
+                            "Enable": 0
+                        },
+                        "children": {
+                            "objects": [
+                                {
+                                    "name": "BoutonLeave",
+                                    "entity": {
+                                        "order": 4,
+                                        "texture": "./assets/images/in_game/parameters/Button_main_menu.png"
+                                    },
+                                    "addons": ["hover_button", "click_button", "position"],
+                                    "addon_data": {
+                                        "PositionX": 500.0,
+                                        "PositionY": 500.0,
+                                        "HoverButton_Width": 400,
+                                        "HoverButton_Height": 142,
+                                        "IsPlaying": 0,
+                                        "OnClick": {
+                                            "type": 0,
+                                            "value": "MainMenu"
+                                        }
+                                    }
+                                },
+                                {
+                                    "name": "BoutonQuit",
+                                    "entity": {
+                                        "order": 4,
+                                        "texture": "./assets/images/in_game/parameters/Button_quit.png"
+                                    },
+                                    "addons": ["hover_button", "click_button", "position"],
+                                    "addon_data": {
+                                        "PositionX": 500.0,
+                                        "PositionY": 700.0,
+                                        "HoverButton_Width": 400,
+                                        "HoverButton_Height": 142,
+                                        "IsPlaying": 0,
+                                        "OnClick": {
+                                            "type": 1,
+                                            "value": "Quit"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "HelpMenu",
+            "addons": ["position", "help"],
+            "entity": {
+                "texture": "./assets/images/tutoriel/all_page.png",
+                "order": 5
+            },
+            "addon_data": {
+                "HoverButton_Width": 1273,
+                "HoverButton_Height": 920,
+                "PositionX": 100.0,
+                "PositionY": 100.0
+            }
+        }
+    ]
+}
