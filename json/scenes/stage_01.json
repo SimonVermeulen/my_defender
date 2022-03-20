@@ -1,14 +1,6 @@
 {
     "objects": [
         {
-            "name": "ResponsiveController",
-            "addons": ["responsive_window"],
-            "addon_data": {
-                "MaxWidth": 1920,
-                "MaxHeight": 1080
-            }
-        },
-        {
             "name": "background",
             "entity": {
                 "texture": "./assets/images/in_game/stage01/background.png",
@@ -1072,7 +1064,7 @@
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
                             "PositionX": 928.0,
-                            "PositionY": -37.0,
+                            "PositionY": -50.0,
                             "Width": 34,
                             "Height": 34,
                             "AnimationTime": 100000,
@@ -1145,7 +1137,7 @@
                         "addons": ["position", "mobs_animation", "mobs_movement"],
                         "addon_data": {
                             "PositionX": 928.0,
-                            "PositionY": -37.0,
+                            "PositionY": -50.0,
                             "Width": 41,
                             "Height": 34,
                             "AnimationTime": 100000,
@@ -1228,6 +1220,16 @@
             },
             "children": {
                 "objects": [
+                    {
+                        "name": "ResponsiveController",
+                        "addons": ["responsive_window"],
+                        "addon_data": {
+                            "MaxWidth": 1920,
+                            "MaxHeight": 1080,
+                            "MinWidth": 800,
+                            "MinHeight": 600
+                        }
+                    },
                     {
                         "name": "PauseMenu",
                         "addons": ["active"],
