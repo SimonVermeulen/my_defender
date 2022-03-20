@@ -8,6 +8,7 @@
 #ifndef GAME_ENGINE_H
     #define GAME_ENGINE_H
     #include <SFML/Graphics.h>
+    #include <SFML/Audio.h>
     #include <stdlib.h>
     #include "linked_list.h"
     #include "json_parser.h"
@@ -44,6 +45,7 @@ typedef struct object_s {
     sfBool is_pause;
     sfBool is_active;
     sfClock *clock;
+    sfMusic *music;
     list_t *addons;
     list_t *addons_data;
     entity_t *entity;
