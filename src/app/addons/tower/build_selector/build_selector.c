@@ -28,10 +28,10 @@ int print_ghost(list_t *tower, object_t *object, engine_t *engine,
 {
     object_t *valid = seek_object_scene(object->childs, "Valid");
     object_t *sprite = seek_object_scene(object->actual_scene, "SpriteTower");
-    int *position_x = get_value_list(tower, "PositionX", 3);
-    int *position_y = get_value_list(tower, "PositionY", 3);
-    int *x = get_addon("PositionX", 3, valid);
-    int *y = get_addon("PositionY", 3, valid);
+    double *position_x = get_value_list(tower, "PositionX", 2);
+    double *position_y = get_value_list(tower, "PositionY", 2);
+    double *x = get_addon("PositionX", 2, valid);
+    double *y = get_addon("PositionY", 2, valid);
     char *path = get_value_list(tower, "Path", 4);
     int *type = get_value_list(tower, "type", 3);
     int *type_parent = get_addon("type", 3, object->parent);
@@ -63,8 +63,8 @@ int event_build_selector(object_t *object, engine_t *engine)
     object_t *valid = seek_object_scene(object->childs, "Valid");
     list_t **tower_list = get_addon("Towers", 10, object);
     int length = search_from_key(object->addons_data, "Towers")->len;
-    int *x = get_addon("PositionX", 3, object);
-    int *y = get_addon("PositionY", 3, object);
+    double *x = get_addon("PositionX", 2, object);
+    double *y = get_addon("PositionY", 2, object);
 
     if (engine->event.type == sfEvtMouseButtonPressed
         && engine->event.mouseButton.button == sfMouseLeft &&
