@@ -17,33 +17,36 @@ int start_hover_button(object_t *object, engine_t *engine)
     return 0;
 }
 
+int play_music_hover(object_t *object, engine_t *engine, int *is_music)
+{
+    if (!*is_music) {
+        sfMusic_play(object->music);
+        *is_music = sfTrue;
+    }
+}
+
 int hover_button_tick(object_t *object, engine_t *engine)
 {
     int *width = get_addon("HoverButton_Width", 3, object);
     int *height = get_addon("HoverButton_Height", 3, object);
     int *is_music = get_addon("IsPlaying", 3, object);
     sfVector2f mouse = get_mouse_position(engine);
-    sfVector2f position_object = sfSprite_getPosition(object->entity->sprite);
+    sfVector2f pos = sfSprite_getPosition(object->entity->sprite);
     sfFloatRect rect;
     sfIntRect rect_texture;
 
     if (width == NULL || height == NULL || !object->music || !is_music)
         return 0;
-    rect = (sfFloatRect) {position_object.x, position_object.y, *width,
-        *height};
+    rect = (sfFloatRect) {pos.x, pos.y, *width, *height};
     rect_texture = (sfIntRect) {0, 0, *width, *height};
     if (sfFloatRect_contains(&rect, mouse.x, mouse.y)) {
-        if (!*is_music) {
-            sfMusic_play(object->music);
-            *is_music = sfTrue;
-        }
+        play_music_hover(object, engine, is_music);
         rect_texture.left = *width;
     } else {
         *is_music = sfFalse;
         sfMusic_stop(object->music);
     }
     sfSprite_setTextureRect(object->entity->sprite, rect_texture);
-    return 0;
 }
 
 int init_hover_button_addons(engine_t *engine)
