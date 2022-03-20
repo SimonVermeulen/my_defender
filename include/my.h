@@ -67,5 +67,6 @@ int my_put_long(long number);
 int my_putnbr_base(unsigned long nbr, char const *base);
 int check_char_pos(char const *string, char found);
 int get_length_long(long nbr);
+char *my_strdup(char const *src);
 
 #endif
