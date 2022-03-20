@@ -54,7 +54,6 @@ int destroy_object(object_t *object)
 {
     node_t *node = NULL;
     node_t *next = NULL;
-
     if (object == NULL)
         return 84;
     sfClock_destroy(object->clock);
