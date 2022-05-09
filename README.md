@@ -7,7 +7,9 @@ Nous avons choisis de créer un moteur de jeu basé sur l'utilisation et la lect
 Après plusieurs jours de brainstorming nous avons commencé à développer la structure de ce dernier en nous inspirant de Unity.  
 En effet nous avons mis en place un système d'addons/scènes stockés grace aux fichier JSON ce qui nous a permis de rajouter facilement du contenu au jeu.  
 
-Après plusieurs semaines de développement de ce dernier, voilà le résultat que nous avons obtenus.  
+Nous avons aussi profité de ce projet en groupe pour pousser notre utilisation de Git, en utilisant les branches ainsi que les pulls request.  
+
+Après plusieurs semaines de développement, voilà le résultat que nous avons obtenus.  
 
 
 Menu Principal:
